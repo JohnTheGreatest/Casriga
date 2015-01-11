@@ -1,0 +1,351 @@
+@* OFFERS: WEDDING *@
+@(title: String)(implicit callbackForm: Form[CallBack], offerForm: Form[OfferForm], subscribeForm : Form[SubscribeForm], info: Info, request: play.api.mvc.Request[Any], session: play.api.db.slick.Config.driver.simple.Session)
+@import helper._
+
+<!DOCTYPE html>
+
+@import models.Currencys
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Riga Rooms">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @spalinks()
+    </head>
+    <body class="mainpage offers-page">
+            <!--[if lt IE 7]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headermini(info.sloganMain)
+
+            <section class="offers">
+
+                <div class="container">
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li><a href="">Акции</a></li>
+                            <li class="currentpage">СПА-тур</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container-metro">
+
+                    <div class="menu-flat offers-menu">
+
+                        <div class="offers-menu__timer">
+                            <p class="offers-menu__timer__header">До конца акций осталось:</p>
+                            <div class="offer__timer">
+                                <span class="offer__timer--icon"></span>
+                                <p class="offer__timer--hours">11&nbsp;:</p><p class="offer__timer--minutes">&nbsp;11:</p><p class="offer__timer--seconds">&nbsp;11</p>
+                            </div>
+                        </div>
+
+                        <ul>
+                            <li>
+                                <a class="flag" href="@routes.Offers.offer("wedding")">
+                                    <div class="svg-wrapper flag__image">
+                                        <img src="@routes.Assets.at("images/offers/icon-wedding.png")" alt="Свадебное путешествие в Ригу Royal Casino">
+                                    </div>
+                                    <div class="offers-menu__content flag__body">
+                                        <p>Свадебная ночь</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="flag" href="@routes.Offers.offer("golf")">
+                                    <div class="svg-wrapper flag__image">
+                                        <img src="@routes.Assets.at("images/offers/icons-golf.png")" alt="Активные мероприятия гольф и теннис Royal Casino">
+                                    </div>
+                                    <div class="offers-menu__content flag__body">
+                                        <p>Гольф и теннис</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="active flag" href="@routes.Offers.offer("spa")">
+                                    <div class="svg-wrapper flag__image">
+                                        <img src="@routes.Assets.at("images/offers/icons-spa.png")" alt="СПА тур в Ригу Royal Casino">
+                                    </div>
+                                    <div class="offers-menu__content flag__body">
+                                        <p>SPA-тур</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="flag" href="@routes.Offers.offer("excursion")">
+                                    <div class="svg-wrapper flag__image">
+                                        <img src="@routes.Assets.at("images/offers/icons-excursion.png")" alt="Экскурсия по Старой Риге Royal Casino">
+                                    </div>
+                                    <div class="offers-menu__content flag__body">
+                                        <p>Старая Рига</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="flag" href="@routes.Offers.offer("party")">
+                                    <div class="svg-wrapper flag__image">
+                                        <img src="@routes.Assets.at("images/offers/icons-party.png")" alt="Вечеринка в номере люкс Нью-Йорк Royal Casino">
+                                    </div>
+                                    <div class="offers-menu__content flag__body">
+                                        <p>Вечеринка</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="flag" href="@routes.Offers.offer("birthday")">
+                                    <div class="svg-wrapper flag__image">
+                                        <img src="@routes.Assets.at("images/offers/icons-birthday.png")" alt="День рождение в номере люкс Нью-Йорк Royal Casino">
+                                    </div>
+                                    <div class="offers-menu__content flag__body">
+                                        <p>Ваш день рождения</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <section class="offers-content">
+                        <div class="offers-content__header">
+                            <h2 class="casino-header__main">Оздоровление души и тела с программой SPA в <br/>Royal Casino SPA&amp;Hotel Resort</h2>
+                            <hr class="objects-delimeter objects-delimeter--mini">
+
+                            <div class="casino-list__content offers-content__list">
+                                <ul>
+                                    <li>Две ночи в номере на выбор: <a href="@routes.RoomController.roomPage("venice")">Venice</a>, <a href="@routes.RoomController.roomPage("vienna")">Vienna</a> или <a href="@routes.RoomController.roomPage("london")">London</a></li>
+                                    <li>Комплимент в номер — шампанское и конфеты</li>
+                                    <li>Спа ритуал 3 часа</li>
+                                    <li>Завтрак в номер</li>
+                                    <li>Трансфер S-class</li>
+                                    <li>Ужин в ресторане Дрова</li>
+                                </ul>
+                            </div>
+
+                            <div class="offers-content__price">
+                                <div class="offer__price--box offers-content__price__lined">
+                                    <span class="offer__price--lthrough">@{1440*Math.round(Currencys.first.value)}</span>
+                                </div>
+                                <div class="offer__price--box offers-content__price__normal">
+                                    <span class="offer__price--normal">@{840*Math.round(Currencys.first.value)}</span>
+                                    <span class="ruble-icon"></span>
+                                </div>
+                                <a href="#offer-booking" class="button button-flat-primary offers-content__price__btn smooth-scroll">
+                                    <span>Забронировать</span>
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+
+                        <div class="offers-content__section">
+                            <h2 class="offers-content__section__header">Две ночи в номере Венеция, Венна или Лондон</h2>
+                            <a href="@routes.RoomController.roomPage("london")">
+                                <img src="@routes.Assets.at("images/offers/london-photo-royal-riga.jpg")" class="offers-content__img" alt="Спа отдых в Риге">
+                                <span class="more">Посмотреть номер</span>
+                            </a>
+                            <p class="offers-content__section__description">Отель Royal Casino представляет своим постояльцам широкий выбор номеров уровня «люкс». Здесь есть все необходимое для отдыха, а широкая кровать и деревянная мебель будут соответствовать ожиданиям даже самых капризных жильцов.  </p>
+
+                        </div>
+
+                        <div class="offers-content__section">
+                            <h2 class="offers-content__section__header">Комплимент в номер — шампанское и конфеты</h2>
+                            <div class="flag flag-wrapper">
+                                <div class="flag-left flag__body">
+                                    <img src="@routes.Assets.at("images/offers/chocolate-royal-casino.png")" class="offers-content__img flag__image" alt="Отель ресторан Риги">
+                                </div>
+                                <div class="flag-right flag__image">
+                                    <p class="flag__body offers-content__section__description">Шампанское Taittinger отлично смакуется вместе с конфетами от рижских кондитеров! Предлагаем вам в этом убедиться на собственном опыте, ведь в номере вас уже поджидает <span class="strong">сладчайший подарок</span> от сотрудников нашего отеля. </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="offers-content__section">
+                            <h2 class="offers-content__section__header">СПА-ритуал 3 часа</h2>
+                            <div class="flag flag-wrapper">
+                                <div class="flag-left flag__body">
+                                    <p class="offers-content__section__description">Season Spa — это центр массажей и других лечебно-восстанавливающих процедур, который находится в отеле. Здесь вас ждут именитые мастера: именно они и организуют для вас проведение <span class="strong">3-часовой целебной процедуры</span>, исцеляющей тело.  </p>
+                                </div>
+                                <div class="flag-right flag__image">
+                                    <img src="@routes.Assets.at("images/offers/spa-massage.jpg")" class="offers-content__img offers-content__image--border" alt="Спа в Риге">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="offers-content__section">
+                            <h2 class="offers-content__section__header">Завтрак в номер</h2>
+                            <div class="flag flag-wrapper">
+                                <div class="flag-left flag__image">
+                                    <img src="@routes.Assets.at("images/offers/breakfast.png")" class="offers-content__img flag__image" alt="Завтрак в Риге">
+                                </div>
+                                <div class="flag-right flag__body">
+                                    <p class="flag__body offers-content__section__description">В программу включен и заботливо поданный в ваш номер завтрак. Утро начнется с пикантных и легких блюд, заряжающих ваш организм <span class="strong">энергией на целый день</span>. Мы гарантируем, что после такого подкрепления вы еще не скоро проголодаетесь, поэтому можете смело отправляться на прогулку по Риге. </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="offers-content__section">
+                            <h2 class="offers-content__section__header">Трансфер S-class</h2>
+                            <div class="flag flag-wrapper">
+                                <div class="flag-left flag__body">
+                                    <p class="offers-content__section__description">Каждый гость нашего отеля Роял Казино может отправиться на автомобиле <span class="strong">S-класса</span> для осмотра столичных достопримечательностей или на деловую встречу. В вашем распоряжении наш квалифицированный водитель, знакомый с Ригой, как со своими пятью пальцами. </p>
+                                </div>
+                                <div class="flag-right flag__image">
+                                    <img src="@routes.Assets.at("images/offers/car-transfer-riga-royal.png")" style="max-width: 240px" class="offers-content__img" alt="Лучший отель Риги">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="offers-content__section">
+                            <h2 class="offers-content__section__header">Ужин в ресторане Дрова</h2>
+                            <div class="flag flag-wrapper">
+                                <div class="flag-left flag__image">
+                                    <img src="@routes.Assets.at("images/offers/drova.jpg")" class="offers-content__img flag__image offers-content__image--border" alt="Рестораны Риги">
+                                </div>
+                                <div class="flag-right flag__body">
+                                    <p class="flag__body offers-content__section__description">Простая и питательная <span class="strong">русская кухня</span> поджидает вас к ужину за столиком в ресторане Дрова. Припомнить вкус родины и попробовать блюда по рецептам наших предков вам предоставится возможность именно здесь. Наслаждайтесь гарнирами и десертами, выпивкой и презентациями от шеф-повара на славянский манер! </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <section id="offer-booking" class="booking-step4-content">
+
+                            <noindex>
+                                <h2 class="casino-header__main">Не откладывайте на потом! Предложение ограничено</h2>
+                            </noindex>
+
+                            <div class="preloader">
+                                <div class="bubblingG">
+                                    <span class="bubblingG_1">
+                                    </span>
+                                    <span class="bubblingG_2">
+                                    </span>
+                                    <span class="bubblingG_3">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="booking-step4-form to-hide">
+
+                            @helper.form(action = routes.Offers.send(), args = 'id -> "offer-form") {
+
+                                @offerForm.globalError.map { error =>
+                                    <p>
+                                        @error.message
+                                    </p>
+                                }
+
+                                <fieldset style="border:0">
+
+                                    <div class="fortune-wheel__booking__datein">
+                                        <div class="frmlabel frmcart">Дата заезда</div>
+                                        <div id="datepicker1-main">
+                                            <input id="datepicker1-text" type="text" name="dateIn" class="frmtxt calender" placeholder="18 июня" />
+                                        </div>
+                                    </div>
+
+                                    <div class="fortune-wheel__booking__dateout">
+                                        <div class="frmlabel frmsmily">Дата выезда</div>
+                                        <div id="datepicker2-main">
+                                            <input id="datepicker2-text" type="text" name="dateOut" class="frmtxt calender" placeholder="22 июня" />
+                                        </div>
+                                    </div>
+
+                                    <div class="clear"></div>
+
+                                    @helper.inputText(offerForm("name"),
+                                        '_label -> "",
+                                        'placeholder -> "Как вас зовут?",
+                                        'type -> "text",
+                                        '_help -> "",
+                                        'class -> "human",
+                                        'required -> ""
+                                    )
+
+                                    @helper.inputText(offerForm("email"),
+                                        '_label -> "",
+                                        'placeholder -> "Ваш электронный адрес",
+                                        'type -> "email",
+                                        '_help -> "",
+                                        'class -> "mail",
+                                        'required -> ""
+                                    )
+
+                                    @helper.inputText(offerForm("number"),
+                                        '_label -> "",
+                                        'placeholder -> "Ваш номер телефона",
+                                        'type -> "tel",
+                                        '_help -> "",
+                                        'class -> "phone",
+                                        'required -> ""
+                                    )
+
+                                    <input name="url" type="hidden" value="@request.uri">
+
+                                </fieldset>
+
+                                <div class="booking-step4-info">
+                                    <p style="text-align: center; font-size: 1em;">Временно оплата проживания и доп. услуг<br>происходит по приезду</p>
+                                    <span class="payment-systems"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="booking-thankyou">
+                                <div class="booking-step4-form flag">
+                                    <img class="flag__image" src="@routes.Assets.at("images/thankyou-boy.png")" alt="Thank you from all of Royal Casino SPA&Hotel Resort Team" />
+                                    <p class="flag__body">Большое вам спасибо за то, что выбрали именно Royal Casino SPA&Hotel Resort.<br/><br/>
+                                        Мы отправили на вашу почту письмо с деталями бронирования. Ознакомьтесь пожалуйста и <b>до скорой встречи!</b>
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <span class="horz-delimenter"></span>
+
+                            <div class="booking-step4-form to-hide text-center">
+                                <button class="button button-3d-action bookingform-btn" type="submit" value="Забронировать">
+                                    <span>Забронировать</span>
+                                </button>
+                            </div>
+
+                            }
+
+                        </section>
+
+                        <section class="booking-step1 bg-top">
+                            <div class="booking-step4-form text-center">
+                                @elements.helpblock()
+                            </div>
+                        </section>
+
+                    </section>
+
+                    <div class="clear"></div>
+
+
+                </div>
+
+
+            </section>
+            @elements.footer()
+        </div>
+        @spascripts()
+    </body>
+</html>

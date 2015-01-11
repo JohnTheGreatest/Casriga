@@ -1,0 +1,1027 @@
+@* STEP1 BOOKING *@
+
+@(title: String, delta: Int, dateInRus: String, dateOutRus: String)(implicit callbackForm: Form[CallBack], request: play.api.mvc.Request[Any])
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Riga Rooms">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @booking.step2.step2links()
+    </head>
+    <body class="mainpage">
+        <!--[if lt IE 8]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headerbooking()
+
+            <section class="booking-bg">
+                <div class="container border-top">
+
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="#">Главная</a></li>
+                            <li class="currentpage"><a href="#">Бронирование</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="pagesteps">
+                        <ul>
+                            <li><div class="sqrbox"></div><br />Время</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li><div class="sqrbox activebox"></div><br />Номер</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li style="margin:0px -25px;"><div class="sqrbox"></div><br />Предложения</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li><div class="sqrbox"></div><br />Данные</li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="booking-step2-content">
+                <div class="container">
+
+                    <p class="change-prev-stage">
+                                @dateInRus - @dateOutRus
+                             <a href="@routes.Booking.step1()">Изменить дату</a>
+                    </p>
+
+                    <ul class="step2-roomslist">
+                        <li class="step2-roomslist-content">
+                            <div class="rooms-photo__desc">
+                                <div class="rooms-photo__desc__content">
+                                    <h3>Номер Paris</h3>
+                                </div>
+                            </div>
+                            <div class="rooms-photo">
+                                <div class="rooms-photo__img">
+                                    <a href="@routes.RoomController.paris()"><span class="question-mark"></span></a>
+                                    <img src="@routes.Assets.at("images/rooms/paris-1.jpg")"/>
+                                </div>
+                            </div>
+                            <div class="rooms-benefits">
+                                    <ul class="options-list">
+                                        <li>
+                                            <div class="flag">
+                                                <div class="option-img-wrapper flag__body">
+                                                    <img src="@routes.Assets.at("images/options/square-meter.png")"/>
+                                                </div>
+                                                <p class="flag__body options-list-content">136 м<sup>2</sup></p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flag">
+                                                <div class="option-img-wrapper flag__body">
+                                                    <img src="@routes.Assets.at("images/options/beth.png")"/>
+                                                </div>
+                                                <p class="flag__body options-list-content">Сауна в<br>номере</p>
+                                            </div>
+                                        </li>
+                                        <li class="bed">
+                                            <div class="flag">
+                                                <div class="option-img-wrapper flag__body">
+                                                    <img src="@routes.Assets.at("images/options/bed.png")"/>
+                                                </div>
+                                                <p class="flag__body options-list-content">2 кровати<br>King-Size</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flag">
+                                                <div class="option-img-wrapper flag__body">
+                                                    <img src="@routes.Assets.at("images/options/snowflake.png")"/>
+                                                </div>
+                                                <p class="flag__body options-list-content">Кондиционер</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flag">
+                                                <div class="option-img-wrapper flag__body">
+                                                    <img src="@routes.Assets.at("images/options/tv.png")"/>
+                                                </div>
+                                                <p class="flag__body options-list-content">Телевизор 107"</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flag">
+                                                <div class="option-img-wrapper flag__body">
+                                                    <img src="@routes.Assets.at("images/options/fitness.png")"/>
+                                                </div>
+                                                <p class="flag__body options-list-content">Бесплатный фитнес</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flag">
+                                                <div class="option-img-wrapper flag__body">
+                                                    <img src="@routes.Assets.at("images/options/clubbing.png")"/>
+                                                </div>
+                                                <p class="flag__body options-list-content">Посещение ночных клубов</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                            </div>
+
+                            <div class="rooms-content">
+                                <p>Атмосфера волнующей романтики Парижа XIX века, которой наполнена каждая комната номера, подарит незабываемые воспоминания вам и вашим любимым.</p>
+                                <p class="price"><span class="bold">@{java.text.NumberFormat.getIntegerInstance.format(delta*34600)}</span> рублей
+                                    (@{delta} @{
+                                        delta.toString.takeRight(1).toInt match {
+                                            case 1 => "ночь"
+                                            case d if 2 to 4 contains d  =>  {
+                                               if(12 to 15 contains delta) "ночей"
+                                                else "ночи"
+                                            }
+                                            case _ => "ночей"
+                                        }
+                                    })
+                                </p>
+                                <p class="price-offer"><span class="orange-text">Только сейчас!</span> Получите скидку 25% на этот номер.</p>
+                                <a class="select-button" href="#">Получить скидку</a>
+                            </div>
+                        </li>
+
+
+                        <!-- Dubai -->
+                        <li class="step2-roomslist-content">
+                            <div class="rooms-photo__desc">
+                                <div class="rooms-photo__desc__content">
+                                    <h3>Номер Dubai</h3>
+                                </div>
+                            </div>
+                            <div class="rooms-photo">
+                                <div class="rooms-photo__img">
+                                    <a href="@routes.RoomController.paris()"><span class="question-mark"></span></a>
+                                    <img src="@routes.Assets.at("images/rooms/dubai-1.jpg")"/>
+                                </div>
+                            </div>
+                            <div class="rooms-benefits">
+                                <ul class="options-list">
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/square-meter.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">185 м<sup>2</sup></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/beth.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Сауна в<br>номере</p>
+                                        </div>
+                                    </li>
+                                    <li class="bed">
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/bed.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">2 кровати<br>King-Size</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/snowflake.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Кондиционер</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/tv.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Телевизор 107"</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/fitness.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Бесплатный фитнес</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/clubbing.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Посещение ночных клубов</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="rooms-content">
+                                <p>
+                                    185 кв. метров роскоши и удовольствий – это номер DUBAI. В просторных комнатах вы сможете провести незабываемо любой праздник, будь то день рождения, годовщина свадьбы или мальчишник.
+                                    <br/><br/>Эксклюзивный дизайн, комфортные функциональные зоны, позволяющие каждому проводить время, как он пожелает,
+                                </p>
+                                <p class="price"><span class="bold">@{java.text.NumberFormat.getIntegerInstance.format(delta*73500)}</span> рублей
+                                    (@{delta} @{
+                                        delta.toString.takeRight(1).toInt match {
+                                            case 1 => "ночь"
+                                            case d if 2 to 4 contains d  =>  {
+                                                if(12 to 15 contains delta) "ночей"
+                                                else "ночи"
+                                            }
+                                            case _ => "ночей"
+                                        }
+                                    })
+                                </p>
+                                <a class="select-button" href="#">Выбрать номер</a>
+                            </div>
+                        </li>
+
+                        <!-- Venice -->
+                        <li class="step2-roomslist-content">
+                            <div class="rooms-photo__desc">
+                                <div class="rooms-photo__desc__content">
+                                    <h3>Номер Venecia</h3>
+                                </div>
+                            </div>
+                            <div class="rooms-photo">
+                                <div class="rooms-photo__img">
+                                    <a href="@routes.RoomController.paris()"><span class="question-mark"></span></a>
+                                    <img src="@routes.Assets.at("images/rooms/venecia-1.jpg")"/>
+                                </div>
+                            </div>
+                            <div class="rooms-benefits">
+                                <ul class="options-list">
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/square-meter.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">67 м<sup>2</sup></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/beth.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Сауна в<br>номере</p>
+                                        </div>
+                                    </li>
+                                    <li class="bed">
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/bed.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">1 кровать<br>King-Size</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/clubbing.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Посещение ночных клубов</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/snowflake.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Кондиционер</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/tv.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Телевизор 107"</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/fitness.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Бесплатный фитнес</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="rooms-content">
+                                <p>Атмосфера волнующей романтики Парижа XIX века, которой наполнена каждая комната номера, подарит незабываемые воспоминания вам и вашим любимым.</p>
+                                <p class="price"><span class="bold">@{java.text.NumberFormat.getIntegerInstance.format(delta*22050)}</span> рублей
+                                    (@{delta} @{
+                                        delta.toString.takeRight(1).toInt match {
+                                            case 1 => "ночь"
+                                            case d if 2 to 4 contains d  =>  {
+                                                if(12 to 15 contains delta) "ночей"
+                                                else "ночи"
+                                            }
+                                            case _ => "ночей"
+                                        }
+                                    })
+                                </p>
+                                <a class="select-button" href="#">Выбрать номер</a>
+                            </div>
+                        </li>
+
+                        <!-- Vienne -->
+                        <li class="step2-roomslist-content">
+                            <div class="rooms-photo__desc">
+                                <div class="rooms-photo__desc__content">
+                                    <h3>Номер Vienne</h3>
+                                </div>
+                            </div>
+                            <div class="rooms-photo">
+                                <div class="rooms-photo__img">
+                                    <a href="@routes.RoomController.paris()"><span class="question-mark"></span></a>
+                                    <img src="@routes.Assets.at("images/rooms/viene-1.jpg")" alt="Номер Вена в Royal Casino SPA&Hotel Resort"/>
+                                </div>
+                            </div>
+                            <div class="rooms-benefits">
+                                <ul class="options-list">
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/square-meter.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">76 м<sup>2</sup></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/beth.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Сауна в<br>номере</p>
+                                        </div>
+                                    </li>
+                                    <li class="bed">
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/bed.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">1 кровать<br>King-Size</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/clubbing.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Посещение ночных клубов</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/snowflake.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Кондиционер</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/tv.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Телевизор 107"</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/fitness.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Бесплатный фитнес</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="rooms-content">
+                                <p>
+                                    Номер, созданный специально для влюбленных. Здесь продумано все – роскошная кровать, множество зеркал в изысканных рамах, стилизованная под старину мебель.
+                                    <br/><br/>Декоративные элементы интерьера (комоды, расписные потолки) подчеркивают исторический стиль Вены. Приятные пастельные тона дарят ощущение гармонии и теплоты.
+                                </p>
+                                <p class="price"><span class="bold">@{java.text.NumberFormat.getIntegerInstance.format(delta*22050)}</span> рублей
+                                    (@{delta} @{
+                                        delta.toString.takeRight(1).toInt match {
+                                            case 1 => "ночь"
+                                            case d if 2 to 4 contains d  =>  {
+                                                if(12 to 15 contains delta) "ночей"
+                                                else "ночи"
+                                            }
+                                            case _ => "ночей"
+                                        }
+                                    })
+                                </p>
+                                <a class="select-button" href="#">Выбрать номер</a>
+                            </div>
+                        </li>
+
+                        <!-- Moscow -->
+                        <li class="step2-roomslist-content">
+                            <div class="rooms-photo__desc">
+                                <div class="rooms-photo__desc__content">
+                                    <h3>Номер Moscow</h3>
+                                </div>
+                            </div>
+                            <div class="rooms-photo">
+                                <div class="rooms-photo__img">
+                                    <a href="@routes.RoomController.paris()"><span class="question-mark"></span></a>
+                                    <img src="@routes.Assets.at("images/rooms/moscow-1.jpg")" alt="Номер Москва в Royal Casino SPA&Hotel Resort"/>
+                                </div>
+                            </div>
+                            <div class="rooms-benefits">
+                                <ul class="options-list">
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/square-meter.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">190 м<sup>2</sup></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/beth.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Сауна в<br>номере</p>
+                                        </div>
+                                    </li>
+                                    <li class="bed">
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/bed.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">2 кровати<br>King-Size</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/clubbing.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Посещение ночных клубов</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/snowflake.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Кондиционер</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/tv.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Телевизор 107"</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/fitness.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Бесплатный фитнес</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="rooms-content">
+                                <p>
+                                    Вы попадете в неожиданную и так многим знакомую атмосферу огромного московского мегаполиса. В номере Москва все создано для самых изысканных постояльцев.
+                                </p>
+                                <p class="price"><span class="bold">@{java.text.NumberFormat.getIntegerInstance.format(delta*73500)}</span> рублей
+                                    (@{delta} @{
+                                        delta.toString.takeRight(1).toInt match {
+                                            case 1 => "ночь"
+                                            case d if 2 to 4 contains d  =>  {
+                                                if(12 to 15 contains delta) "ночей"
+                                                else "ночи"
+                                            }
+                                            case _ => "ночей"
+                                        }
+                                    })
+                                </p>
+                                <a class="select-button" href="#">Выбрать номер</a>
+                            </div>
+                        </li>
+
+                        <!-- New York -->
+                        <li class="step2-roomslist-content">
+                            <div class="rooms-photo__desc">
+                                <div class="rooms-photo__desc__content">
+                                    <h3>Номер New York</h3>
+                                </div>
+                            </div>
+                            <div class="rooms-photo">
+                                <div class="rooms-photo__img">
+                                    <a href="@routes.RoomController.paris()"><span class="question-mark"></span></a>
+                                    <img src="@routes.Assets.at("images/rooms/newyork-1.jpg")" alt="Номер Нью-Йорк в Royal Casino SPA&Hotel Resort"/>
+                                </div>
+                            </div>
+                            <div class="rooms-benefits">
+                                <ul class="options-list">
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/square-meter.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">135 м<sup>2</sup></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/beth.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Сауна в<br>номере</p>
+                                        </div>
+                                    </li>
+                                    <li class="bed">
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/bed.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">2 кровати<br>King-Size</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/clubbing.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Посещение ночных клубов</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/snowflake.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Кондиционер</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/tv.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Телевизор 107"</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/fitness.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Бесплатный фитнес</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="rooms-content">
+                                <p>
+                                    Экстравагантный номер-люкс наделен своим особенным характером. В модном интерьере слились воедино черный и белый, свобода и благородство, сдержанность и шик.
+                                    <br/><br/>Этот номер по праву можно назвать жемчужиной отеля. Модный дизайн продуман до мелочей. Каждая деталь, будь то статуэтка, светильник или мебель являются завершенным штрихом художественной красоты.
+                                </p>
+                                <p class="price"><span class="bold">@{java.text.NumberFormat.getIntegerInstance.format(delta*34300)}</span> рублей
+                                    (@{delta} @{
+                                        delta.toString.takeRight(1).toInt match {
+                                            case 1 => "ночь"
+                                            case d if 2 to 4 contains d  =>  {
+                                                if(12 to 15 contains delta) "ночей"
+                                                else "ночи"
+                                            }
+                                            case _ => "ночей"
+                                        }
+                                    })
+                                </p>
+                                <a class="select-button" href="#">Выбрать номер</a>
+                            </div>
+                        </li>
+
+                        <!-- Versace -->
+                        <li class="step2-roomslist-content">
+                            <div class="rooms-photo__desc">
+                                <div class="rooms-photo__desc__content">
+                                    <h3>Номер Versace</h3>
+                                </div>
+                            </div>
+                            <div class="rooms-photo">
+                                <div class="rooms-photo__img">
+                                    <a href="@routes.RoomController.paris()"><span class="question-mark"></span></a>
+                                    <img src="@routes.Assets.at("images/rooms/versace-1.jpg")" alt="Номер Версаче в Royal Casino SPA&Hotel Resort"/>
+                                </div>
+                            </div>
+                            <div class="rooms-benefits">
+                                <ul class="options-list">
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/square-meter.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">135 м<sup>2</sup></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/beth.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Сауна в<br>номере</p>
+                                        </div>
+                                    </li>
+                                    <li class="bed">
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/bed.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">2 кровати<br>King-Size</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/clubbing.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Посещение ночных клубов</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/snowflake.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Кондиционер</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/tv.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Телевизор 107"</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/fitness.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Бесплатный фитнес</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="rooms-content">
+                                <p>
+                                    Этот номер особенный. Умеренная роскошь, без лишних броских деталей, но с обилием элементов из дерева, шелковых тканей и натурального камня – идиллия высокого стиля.
+                                    <br/><br/>Каждая комната – произведение искусства. Каждое решение гармонично дополняет единый ансамбль. Просторные комнаты, изящество в классическом интерьере создают ощущение легкости и внутреннего комфорта.
+                                </p>
+                                <p class="price"><span class="bold">@{java.text.NumberFormat.getIntegerInstance.format(delta*49000)}</span> рублей
+                                    (@{delta} @{
+                                        delta.toString.takeRight(1).toInt match {
+                                            case 1 => "ночь"
+                                            case d if 2 to 4 contains d  =>  {
+                                                if(12 to 15 contains delta) "ночей"
+                                                else "ночи"
+                                            }
+                                            case _ => "ночей"
+                                        }
+                                    })
+                                </p>
+                                <a class="select-button" href="#">Выбрать номер</a>
+                            </div>
+                        </li>
+
+                        <!-- Barcelona -->
+                        <li class="step2-roomslist-content">
+                            <div class="rooms-photo__desc">
+                                <div class="rooms-photo__desc__content">
+                                    <h3>Номер Barcelona</h3>
+                                </div>
+                            </div>
+                            <div class="rooms-photo">
+                                <div class="rooms-photo__img">
+                                    <a href="@routes.RoomController.paris()"><span class="question-mark"></span></a>
+                                    <img src="@routes.Assets.at("images/rooms/barcelona-1.jpg")" alt="Номер Версаче в Royal Casino SPA&Hotel Resort"/>
+                                </div>
+                            </div>
+                            <div class="rooms-benefits">
+                                <ul class="options-list">
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/square-meter.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">82 м<sup>2</sup></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/beth.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Сауна в<br>номере</p>
+                                        </div>
+                                    </li>
+                                    <li class="bed">
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/bed.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">2 кровати<br>King-Size</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/clubbing.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Посещение ночных клубов</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/snowflake.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Кондиционер</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/tv.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Телевизор 107"</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/fitness.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Бесплатный фитнес</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="rooms-content">
+                                <p>
+                                    Неповторимость и очарование Барселоны, воплощенные в мягких художественных формах мебели, красочной мозаике, удивительных рельефах стен и обтекаемых зеркалах, дарят постояльцам номера новые ощущения.
+                                    <br/><br/>Эстетическая красота, романтичность и утонченный стиль архитектора Гауди действительно стоят вашего восхищения.
+                                </p>
+                                <p class="price"><span class="bold">@{java.text.NumberFormat.getIntegerInstance.format(delta*26950)}</span> рублей
+                                    (@{delta} @{
+                                        delta.toString.takeRight(1).toInt match {
+                                            case 1 => "ночь"
+                                            case d if 2 to 4 contains d  =>  {
+                                                if(12 to 15 contains delta) "ночей"
+                                                else "ночи"
+                                            }
+                                            case _ => "ночей"
+                                        }
+                                    })
+                                </p>
+                                <a class="select-button" href="#">Выбрать номер</a>
+                            </div>
+                        </li>
+
+                        <!-- London -->
+                        <li class="step2-roomslist-content">
+                            <div class="rooms-photo__desc">
+                                <div class="rooms-photo__desc__content">
+                                    <h3>Номер London</h3>
+                                </div>
+                            </div>
+                            <div class="rooms-photo">
+                                <div class="rooms-photo__img">
+                                    <a href="@routes.RoomController.paris()"><span class="question-mark"></span></a>
+                                    <img src="@routes.Assets.at("images/rooms/london-1.jpg")" alt="Номер Лондон в Royal Casino SPA&Hotel Resort"/>
+                                </div>
+                            </div>
+                            <div class="rooms-benefits">
+                                <ul class="options-list">
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/square-meter.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">58 м<sup>2</sup></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/beth.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Сауна в<br>номере</p>
+                                        </div>
+                                    </li>
+                                    <li class="bed">
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/bed.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">2 кровати<br>King-Size</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/clubbing.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Посещение ночных клубов</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/snowflake.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Кондиционер</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/tv.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Телевизор 107"</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/fitness.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Бесплатный фитнес</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="rooms-content">
+                                <p>
+                                    Традиционная красота и элегантность – три синонима английского стиля. Этот номер понравится людям, которые предпочитают классические ценности, лаконичность и сдержанность в выражении мыслей, идей и в интерьере.
+                                    <br/><br/>В номере вы найдете кресла и столик, за которым хочется сесть и выпить хорошего чая или виски. Кожаные пуфы для большего удобства.
+                                </p>
+                                <p class="price"><span class="bold">@{java.text.NumberFormat.getIntegerInstance.format(delta*22050)}</span> рублей
+                                    (@{delta} @{
+                                        delta.toString.takeRight(1).toInt match {
+                                            case 1 => "ночь"
+                                            case d if 2 to 4 contains d  =>  {
+                                                if(12 to 15 contains delta) "ночей"
+                                                else "ночи"
+                                            }
+                                            case _ => "ночей"
+                                        }
+                                    })
+                                </p>
+                                <a class="select-button" href="#">Выбрать номер</a>
+                            </div>
+                        </li>
+
+                        <!-- Las Vegas -->
+                        <li class="step2-roomslist-content">
+                            <div class="rooms-photo__desc">
+                                <div class="rooms-photo__desc__content">
+                                    <h3>Номер Las Vegas</h3>
+                                </div>
+                            </div>
+                            <div class="rooms-photo">
+                                <div class="rooms-photo__img">
+                                    <a href="@routes.RoomController.paris()"><span class="question-mark"></span></a>
+                                    <img src="@routes.Assets.at("images/rooms/lasvegas-1.jpg")" alt="Номер Лас Вегас в Royal Casino SPA&Hotel Resort"/>
+                                </div>
+                            </div>
+                            <div class="rooms-benefits">
+                                <ul class="options-list">
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/square-meter.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">49 м<sup>2</sup></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/beth.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Сауна в<br>номере</p>
+                                        </div>
+                                    </li>
+                                    <li class="bed">
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/bed.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">2 кровати<br>King-Size</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/clubbing.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Посещение ночных клубов</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/snowflake.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Кондиционер</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/tv.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Телевизор 107"</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flag">
+                                            <div class="option-img-wrapper flag__body">
+                                                <img src="@routes.Assets.at("images/options/fitness.png")"/>
+                                            </div>
+                                            <p class="flag__body options-list-content">Бесплатный фитнес</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="rooms-content">
+                                <p>
+                                    Лас Вегас - город, который притягивает самых рискованных и азартных людей со всего света. В номере вы будете удивлены изысканным стилем, высоким уровнем декора.
+                                </p>
+                                <p class="price"><span class="bold">@{java.text.NumberFormat.getIntegerInstance.format(delta*13230)}</span> рублей
+                                    (@{delta} @{
+                                        delta.toString.takeRight(1).toInt match {
+                                            case 1 => "ночь"
+                                            case d if 2 to 4 contains d  =>  {
+                                                if(12 to 15 contains delta) "ночей"
+                                                else "ночи"
+                                            }
+                                            case _ => "ночей"
+                                        }
+                                    })
+                                </p>
+                                <a class="select-button" href="#">Выбрать номер</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </section>
+            <section class="booking-step1 bg-top">
+
+                <div class="container">
+                    <div class="simpledivider">
+                        <p>Обращайтесь. Мы обещаем помочь.<br />
+                            Высочайший уровень обслуживания <strong>- наше все.</strong><br />
+                        </p>
+                        <img src="@routes.Assets.at("images/juliaphoto.png")" alt="julia" />
+                        <p>Ваш личный помощник - Юлия.</p>
+                        <div class="phonenum"><span>8 (495)</span> 777-66-77</div>
+                        <a href="#" class="emaillink">@Html("julia@riga-royal.ru")</a>	<br />
+                        <a href="#callback-form" class="contactlink">Мы перезвоним</a><br />
+                    </div>
+                </div>
+            </section>
+            @elements.footerlight()
+        </div>
+        @booking.step2.step2scripts()
+    </body>
+</html>

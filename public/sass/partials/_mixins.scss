@@ -1,0 +1,81 @@
+@import "compass/utilities/general/clearfix";
+
+// Media Query mixin
+@mixin MQ($canvas) {
+	
+	@if $canvas == XS {
+		@media only screen and (min-width: $XS) { @content; }
+	}
+	
+	@else if $canvas == S {
+		@media only screen and (min-width: $S) { @content; }
+	}
+	
+	@else if $canvas == M {
+		@media only screen and (min-width: $M) { @content; }
+	}
+	
+	@else if $canvas == L {
+		@media only screen and (min-width: $L) { @content; }
+	}
+	
+	@else if $canvas == XL {
+		@media only screen and (min-width: $XL) { @content; }
+	}
+	
+}
+
+/* Ribbon */
+@mixin ribbon($background-color, $height) {
+  background-color: $background-color;
+  @include opacity(.83);
+  height: $height;
+}
+
+/* Vertical Centering */
+
+/* Vertical Alignment */
+
+@mixin vertical-align-block-wrapper {
+  display: table;
+
+  // ie6 ie7
+  *position:relative;
+}
+
+@mixin vertical-align-block {
+  display: table-cell;
+  vertical-align: middle;
+
+  // ie6 ie7
+  *position: absolute;
+  *top: 50%;
+}
+
+@mixin vertical-wrapper {
+  display: block;
+
+  &:before {
+    content:''; /* и */
+    height: 100%; /* вот */
+    display: inline-block; /* оно! */
+    vertical-align: middle;
+  }
+}
+
+@mixin vertical-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin button-flat-border($border-color) {
+  border: 3px solid $border-color;
+}
+
+@function makelongshadow($color, $j) {
+  $val: 0px 0px $color;
+  @for $i from 1 through $j {
+    $val: #{$val}, #{$i}px #{$i}px #{$color};
+  }
+  @return $val;
+}

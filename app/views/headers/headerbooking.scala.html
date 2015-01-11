@@ -1,0 +1,23 @@
+
+@()(implicit callbackForm: Form[CallBack], info: Info, request: play.api.mvc.Request[Any])
+
+<div class="hamburger-wrapper">
+    <div id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<header>
+    <div class="container">
+        @elements.menudropdown()
+        <div class="logolight">
+            <a href="@routes.Application.index()"><img src="@routes.Assets.at("images/logo_light.png")" alt="logo_light"></a>
+        </div>
+        @elements.contacts()
+    </div>
+</header>
+
+
+
+

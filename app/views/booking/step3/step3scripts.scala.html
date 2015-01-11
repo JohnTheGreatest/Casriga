@@ -1,0 +1,150 @@
+@()(implicit request: play.api.mvc.Request[Any])
+
+@elements.mainscripts()
+
+<script src="@routes.Assets.at("javascripts/icheck.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    var menu = $('.menudropdown ul');
+
+    $(document).ready(function () {
+
+        $(".menudropdown").hover(function(event){
+            event.stopPropagation();
+            menu.toggleClass('hidden');
+        });
+
+        $(".menudropdown").click(function(event){
+            event.stopPropagation();
+        });
+
+        // Initialize iCheck
+        $('input:checkbox').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            increaseArea: '20%' // optional
+        });
+
+        // Initialize initial page state form Cookies or DB
+        // First, uncheck all if no cookies at all
+        $('input:checkbox' ).each(function(e){
+           $(this ).iCheck('uncheck')
+        });
+
+        //String from Cookies
+        var addons = "@request.session.get("addons").getOrElse("None")";
+
+        //Set all checked addons on page
+        if(addons != "None") {
+            $('input:checkbox' ).each(function(e){
+                var id = $(this ).attr('id');
+                if(addons.indexOf(id) != -1 ) {
+                    $(this ).iCheck('check');
+                }
+            });
+        }
+
+        // Prepare sum of addons on checked boxes
+
+
+        $(":checked" ).each(function (e){
+            var price = $(this ).closest("tr").find(".green-text" ).html( );
+            var accum = $('#addons-sum' ).html();
+            var priceParsed = parseInt(price);
+            var accumParsed = parseInt(accum);
+            var sum = priceParsed + accumParsed;
+
+            var roomSum = $('#room-sum' ).html();
+
+            $('#addons-sum' ).html(sum);
+
+            $('#overall-sum' ).html(parseInt(roomSum)+parseInt($('#addons-sum' ).html()));
+        });
+
+        // ifChecked event
+        $('input:checkbox' ).on('ifChecked', function(e) {
+            var price = $(this ).closest("tr").find(".green-text" ).html( );
+            var accum = $('#addons-sum' ).html();
+            var priceParsed = parseInt(price);
+            var accumParsed = parseInt(accum);
+            var sum = priceParsed + accumParsed;
+
+            var roomSum = $('#room-sum' ).html();
+
+            $('#addons-sum' ).html(sum);
+
+            $('#overall-sum' ).html(parseInt(roomSum)+parseInt($('#addons-sum' ).html()));
+        });
+
+        // unChecked event
+        $('input:checkbox' ).on('ifUnchecked', function(e) {
+            var price = $(this ).closest("tr").find(".green-text" ).html( );
+            var accum = $('#addons-sum' ).html();
+            var priceParsed = parseInt(price);
+            var accumParsed = parseInt(accum);
+            var sum = accumParsed - priceParsed;
+
+            var roomSum = $('#room-sum' ).html();
+
+            $('#addons-sum' ).html(sum);
+
+            $('#overall-sum' ).html(parseInt(roomSum)+parseInt($('#addons-sum' ).html()));
+
+        });
+
+        // let tr also be clicked
+        $('.booking-step3__list').on('click', 'tr', function (e) {
+            $(this).find('input:checkbox' ).iCheck('toggle');
+        });
+
+        // Stop tr event on a link
+        $ ('.gray-question-mark' ).click(function(e){
+            e.stopPropagation();
+        });
+
+
+        // Send data via Ajax
+        $('.booking-right__button' ).click(function(e) {
+            // Prepare data
+            var addons = [];
+
+            $(":checked" ).each(function (e){
+               var temp = $(this).attr("id");
+               addons.push(temp);
+            });
+
+            var obj = {};
+
+            obj = {
+                addons: addons.toString()
+            };
+
+            var jsonData = JSON.stringify(obj);
+
+            // Preloader
+            $('.to-hide' ).hide(500);
+
+            $('.preloader').css({
+                'display' : 'block'
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "@routes.Booking.step3save()",
+                dataType: "text",
+                data: jsonData,
+                contentType: "application/json; charset=utf-8"
+                }).done(function ( data ) {
+                    window.location.href = '@routes.Booking.step4()';
+                }).fail(function ( data ) {
+                    alert("Извините, наши серверы временно недоступны. Пожалуйста, оформите заказ по телефону.");
+            });
+
+        });
+    });
+
+    $(document).click( function(){
+        menu.addClass('hidden');
+    });
+
+</script>

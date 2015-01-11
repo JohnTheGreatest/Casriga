@@ -1,0 +1,104 @@
+@* CASINO PAGE *@
+@(title: String)(implicit callbackForm: Form[CallBack], subscribeForm : Form[SubscribeForm], info: Info, request: play.api.mvc.Request[Any])
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Riga Rooms">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @bloglinks()
+    </head>
+    <body class="mainpage casino-page">
+            <!--[if lt IE 7]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headermini("Казино тур в Ригу. Роскошь в деталях")
+
+            <section class="objects-casino-blog casino-blog-main">
+
+                <div class="container">
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li><a href="@routes.ObjectPages.casinoMain()">Казино</a></li>
+                            <li class="currentpage">Статьи</li>
+                        </ul>
+                    </div>
+                </div>
+
+                    <section id="news" class="news-section">
+                        <div class="container">
+
+                            <h2 class="news-section__header">Интернесные заметки из мира казино</h2>
+
+                            <ul class="news-section__list">
+                                <li>
+                                    <a class="news_section__img hover-effect" href="@routes.ObjectPages.casinoArticles("samoe-dorogoe-kazino")">
+                                        <div class="mask">
+                                            <p>Вы знали о том, что каждый год казино может приносить госбюджету 5-15% доходности? Безусловно, прибыли без затрат не бывает, и многие игорные заведения идут на отчаянные шаги ради новых посетителей. </p>
+                                            <span>Подробнее</span>
+                                        </div>
+                                        <img src="@routes.Assets.at("images/objects/blog/kazino-venetion-macao.jpg")" alt="ТОП-5 самых дорогих казино мира Venetion Macao">
+                                    </a>
+                                    <div class="news_section__content">
+                                        <h3 class="news_section__header">ТОП-5 самых дорогих казино мира</h3>
+                                        <hr class="objects-delimeter objects-delimeter--mini news_section-delimeter">
+                                        <div class="news_section__button-wrapper">
+                                            <a class="news_section__button" href="@routes.ObjectPages.casinoArticles("samoe-dorogoe-kazino")">Читать</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a class="news_section__img hover-effect" href="@routes.ObjectPages.casinoArticles("vigrish-v-kazino")">
+                                        <div class="mask">
+                                            <p>Столицы азарта даруют своим следователям немалые выигрыши, о которых говорят во всеуслышание, и ущербные проигрыши, о которых предпочитают молчать. Кому же из всех фортуна улыбается шире?  </p>
+                                            <span>Подробнее</span>
+                                        </div>
+                                        <img src="@routes.Assets.at("images/objects/blog/win-or-loose-riga-casino.jpg")" alt="Самые крупные выигрыши в казино кому они достаются">
+                                    </a>
+                                    <div class="news_section__content">
+                                        <h3 class="news_section__header">Крупнейшие выигрыши: кому фортуна улыбается шире?</h3>
+                                        <hr class="objects-delimeter objects-delimeter--mini news_section-delimeter">
+                                        <div class="news_section__button-wrapper">
+                                            <a class="news_section__button" href="@routes.ObjectPages.casinoArticles("vigrish-v-kazino")">Читать</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a class="news_section__img hover-effect" href="@routes.ObjectPages.casinoArticles("samoe-izvestnoe-kazino")">
+                                        <div class="mask">
+                                            <p>Имя и репутация — главные «козыри» каждого казино. О многих заведениях мы не слышали, о многих успели услышать, а лишь единицам научились доверять. Сегодня речь пойдет о наиболее известных игорных точках в мире. </p>
+                                            <span>Подробнее</span>
+                                        </div>
+                                        <img src="@routes.Assets.at("images/objects/blog/monaco-casino.jpg")" alt="Самые известный казино мира: топ-4 по версии Royal Casino SPA and Hotel Resort">
+                                    </a>
+                                    <div class="news_section__content">
+                                        <h3 class="news_section__header">Самые известные казино мира: топ-4 лучших игорных заведений</h3>
+                                        <hr class="objects-delimeter objects-delimeter--mini news_section-delimeter">
+                                        <div class="news_section__button-wrapper">
+                                            <a class="news_section__button" href="@routes.ObjectPages.casinoArticles("samoe-izvestnoe-kazino")">Читать</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </section>
+
+            </section>
+            @elements.footer()
+        </div>
+        @blogscripts()
+    </body>
+</html>

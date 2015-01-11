@@ -1,0 +1,40 @@
+@(callbackForm: Form[CallBack])(implicit request: play.api.mvc.Request[Any])
+
+@import helper._
+
+@helper.form(action = routes.Application.send(), args = 'class -> "mfp-hide white-popup-block", 'id -> "callback-form") {
+
+    @callbackForm.globalError.map { error =>
+        <p>
+            @error.message
+        </p>
+    }
+
+    <fieldset style="border:0">
+
+        @helper.inputText(callbackForm("username"),
+            '_label -> "Введите ваше имя",
+            '_help -> "",
+            'class -> "frmtxt-callback",
+            'required -> ""
+        )
+
+        @helper.inputText(callbackForm("tel"),
+            '_label -> "Введите ваш телефон",
+            'type -> "tel",
+            '_help -> "",
+            'class -> "frmtxt-callback",
+            'required -> ""
+        )
+
+        <input name="url" type="hidden" value="@request.uri">
+
+    </fieldset>
+
+    <button class="button button-flat-royal button-pill callback-btn" type="submit" value="Жду звонка">
+        <i class="icon-phone-callback"></i>
+        <span>Жду звонка</span>
+    </button>
+
+}
+

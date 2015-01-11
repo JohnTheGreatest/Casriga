@@ -1,0 +1,29 @@
+@import "compass";
+@import "sassy-buttons";
+@import "partials/variables";
+@import "partials/fonts";
+@import "partials/placeholders";
+@import "partials/mixins";
+
+/* Factory */
+@import "partials/factory/lists";
+@import "partials/factory/forms";
+@import "partials/factory/hover";
+
+@import "partials/normalize";
+@import "partials/fonts";
+@import "partials/base";
+@import "partials/layout";
+@import "partials/modules";
+@import "partials/flag";
+
+/* Imports for pages */
+@import "partials/pages/rooms";
+@import "partials/pages/roomsinner";
+@import "partials/pages/booking";
+@import "partials/pages/casino";
+@import "partials/pages/offers";
+@import "partials/pages/contacts";
+@import "partials/pages/blog";
+
+

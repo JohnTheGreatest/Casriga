@@ -1,0 +1,8 @@
+@()(implicit callbackForm: Form[CallBack], info: Info, request: play.api.mvc.Request[Any])
+
+<div class="topcontact">
+    <span class="contact-icon"></span>
+    <div class="contactphone"><p>@info.telRussia</p></div>
+    <a class="topcontact-callback" href="#callback-form"><p>Мы перезвоним</p></a>
+    @elements.callbackform(callbackForm)
+</div>

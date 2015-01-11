@@ -1,0 +1,37 @@
+
+@objects.objectsscripts()
+
+<script src="@routes.Assets.at("javascripts/jquery.lazy.js")" type="text/javascript"></script>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-534fff1f63ac6ffc"></script>
+
+<script type="text/javascript">
+
+    var addthis_config = {
+        data_track_addressbar: false
+    }
+
+    /*var addthis_share = {
+        url_transforms : {
+            shorten: {
+                twitter: 'bitly'
+            }
+        },
+            shorteners : {
+                bitly : {}
+            }
+    }*/
+
+    $(document).ready(function(){
+
+        $(".news_section__button" ).hover(function(e){
+            $(this ).closest(".news_section__content" ).find(".news_section-delimeter").toggleClass("news_section-delimeter--orange");
+        });
+
+        $(".lazy").lazy({
+            effect: "fadeIn",
+            effectTime: 1000
+        });
+
+    });
+</script>

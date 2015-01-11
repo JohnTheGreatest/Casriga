@@ -1,0 +1,947 @@
+@import "susy";
+
+$total-columns  : 12;             // a 12-column grid
+$column-width   : 6em;            // each column is 6em wide
+$gutter-width   : 1em;            // 1em gutters between columns
+$grid-padding   : $gutter-width;  // grid-padding equal to gutters
+
+$border-box-sizing: true;
+
+.container {
+	@include container;
+	position: relative;
+	@extend %clearfix;
+}
+
+/* Main Page */
+
+/* [MENU+CONTACTS] */
+
+.topcontact {
+	@include span-columns(12 omega,12);
+	
+	@include MQ(L) {
+		@include span-columns(3 omega,12);
+	}
+}
+
+.topmenu {
+	@include span-columns(12 omega,12);
+	
+	@include MQ(M) {
+		@include span-columns(9,12);
+	}
+}
+
+/* Opacity Block [Text+SocialIcons] */
+
+.bannertextdiv {
+	
+	@include span-columns(12 omega,12);
+	
+	@include MQ(L) {
+		@include span-columns(10,12);
+	}
+}
+
+.socialicon {
+	@include span-columns(12 omega,12);
+	
+	@include MQ(L) {
+		@include span-columns(2 omega,12);
+	}
+}
+
+/* Custom Container of Metro Styled Elements Isolated for RoundError */
+
+@include with-grid-settings(12,7em,0em,1em) {
+
+  .container-metro {
+    @include container;
+    position: relative;
+    @extend %clearfix;
+  }
+
+  .box--three-col-wrapper {
+    position: relative;
+    @include single-transition(all 1s);
+    @extend %clearfix;
+    margin: 0 !important; padding: 0 !important; /* Chrome 1px bug */
+
+    @include span-columns(12 omega, 12);
+
+      @include MQ(S) {
+        @include span-columns(6 alpha,12);
+        @include nth-omega(2n);
+      }
+
+      @include MQ(L) {
+        @include span-columns(3 ,12);
+        /*@include isolate(1);
+        &:last-child { @include isolate(10); }*/
+      }
+    }
+
+  .box--two-col-wrapper {
+    position: relative;
+    @include single-transition(all 1s);
+    @extend %clearfix;
+    margin: 0 !important; padding: 0 !important; /* Chrome 1px bug */
+
+    @include span-columns(12 omega, 12);
+
+    @include MQ(S) {
+      @include span-columns(4 ,12);
+    }
+
+
+    @include MQ(L) {
+      @include span-columns(2 ,12);
+
+     /* @include isolate(8);
+      &:nth-child(2) {
+        @include isolate(4);
+      }
+      &:nth-child(3) {
+        @include isolate(6);
+      }*/
+    }
+  }
+
+  /* HotDeals and Trust Section */
+
+  .offer {
+    @include single-transition(all 1s);
+
+    @include span-columns(12 omega, 12);
+
+    @include MQ(M) {
+      @include span-columns(6,12);
+    }
+
+    @include MQ(L) {
+      @include span-columns(4,12);
+    }
+
+
+  }
+
+  .offer-image {
+    @include single-transition(all 1s);
+
+    @include span-columns(12 omega, 12);
+
+    @include MQ(M) {
+      @include span-columns(6,12);
+    }
+
+    @include MQ(L) {
+      @include span-columns(3,12);
+    }
+
+
+  }
+
+  .offer-promise {
+    @include single-transition(all 1s);
+
+    @include span-columns(12 omega, 12);
+
+    @include MQ(L) {
+      @include span-columns(5 omega,12);
+    }
+
+  }
+
+};
+
+/* FOOTER */
+.purple_pattern {
+
+  @extend %clearfix;
+  @include span-columns (12 omega, 12);
+
+  .footerbut {
+    @extend %clearfix;
+    @include span-columns (12 omega, 12);
+
+    .footerbut_question {
+      @extend %clearfix;
+
+      @include span-columns (12 omega, 12);
+      text-align: center;
+
+      @include MQ(M) {
+        @include span-columns (4, 12);
+        text-align: center;
+      }
+
+    }
+
+    .footerbut_tel {
+      @extend %clearfix;
+
+      @include span-columns (12 omega, 12);
+      text-align: center;
+
+      @include MQ(M) {
+        @include span-columns (4, 12);
+        text-align: center;
+      }
+    }
+
+    .footerbut_book {
+      @extend %clearfix;
+
+      @include span-columns (12 omega, 12);
+      text-align: center;
+
+
+      @include MQ(M) {
+        @include span-columns (4 omega, 12);
+        text-align: center;
+      }
+    }
+
+  }
+
+  .footermenu {
+
+    @include span-columns (12 omega, 12);
+
+    @include MQ (L) {
+      @include span-columns (6, 12);
+    }
+
+
+  }
+
+  .newsletterdiv {
+
+    @include span-columns (12 omega, 12);
+
+    @include MQ (L) {
+      @include span-columns (6 omega, 12);
+    }
+
+  }
+
+  .footerlogo {
+
+    @include span-columns (12 omega, 12);
+
+  }
+
+}
+
+/* PAGES LISTING LAYOUT */
+
+.rooms-list-outer {
+
+  @include span-columns (12 omega, 12);
+
+  .rooms-list {
+
+    @include span-columns (12 omega, 12);
+
+
+    .rooms-element {
+      @include single-transition(all .5s);
+      @include span-columns (12 omega, 12);
+
+      @include MQ(S) {
+        @include span-columns (6 , 12);
+        @include nth-omega(2n);
+      }
+
+      @include MQ(L) {
+        @include span-columns (4 , 12);
+        @include remove-nth-omega(2n);
+
+        @include nth-omega(3n);
+      }
+    }
+
+  }
+
+}
+
+/* ROOMS INNER LAYOUT */
+
+.rooms-header {
+  @include span-columns (12 omega, 12);
+
+  .rooms-header__left {
+    @include span-columns(2, 12);
+  }
+
+  .rooms-header__img {
+    @include span-columns(8, 12);
+  }
+
+  .rooms-header__right {
+    @include span-columns(2 omega, 12);
+  }
+}
+
+.slideranddesc {
+  @include pie-clearfix();
+  @include span-columns (12 omega, 12);
+
+  .slidercontainer {
+    @include span-columns (12 omega, 12);
+    padding: 0;
+
+    @include MQ(L) {
+      @include span-columns (8, 12);
+    }
+
+  }
+
+  .sliderdesc {
+
+    @include span-columns (12 omega, 12);
+
+    @include MQ(L) {
+      @include span-columns (4 omega, 12);
+    }
+
+  }
+}
+
+@include with-grid-settings(12,7em,0em,1em) {
+  .roomfeatures {
+    @include span-columns (12 omega, 12);
+
+    .rfeatures-wrapper {
+
+      @include span-columns (6, 12);
+      @include nth-omega(2n);
+
+      @include MQ(S) {
+        @include span-columns (4, 12);
+        @include remove-nth-omega(2n);
+        @include nth-omega(3n);
+      }
+
+
+      @include MQ(L) {
+        @include span-columns (2, 12);
+        @include remove-nth-omega(3n);
+        @include nth-omega(6n);
+      }
+
+    }
+
+  }
+}
+
+/* ROOMS DESCRIPRION */
+
+.roomdesc {
+
+  @include span-columns (12 omega, 12);
+
+
+    .roomdesccol {
+
+      @include span-columns (12 omega, 12);
+
+      @include MQ(S) {
+        @include span-columns (6, 12);
+        @include nth-omega(2n);
+
+
+        &:nth-child(3) {
+          @include span-columns (12 omega, 12);
+        }
+      }
+
+      @include MQ(M) {
+        @include span-columns (4, 12);
+        @include remove-nth-omega(2n);
+        @include nth-omega(3n);
+
+        &:nth-child(3) {
+          @include span-columns (4, 12);
+          @include nth-omega();
+        }
+
+      }
+    }
+}
+
+/* WHY ROOM */
+
+.why-room__content {
+  @include pie-clearfix();
+
+  .why-room__content__text--wrapper {
+
+    @include span-columns (12 omega, 12);
+
+    @include MQ(M) {
+      @include span-columns (6 omega, 12);
+    }
+
+  }
+
+  .layout-right {
+    float: right !important;
+  }
+
+  .layout-left {
+    float: left !important;
+  }
+
+  .why-room__content__photo {
+
+    @include span-columns (12 omega, 12);
+
+    @include MQ(M) {
+      @include span-columns (6, 12);
+    }
+
+  }
+}
+
+/* SPECIAL-OFFER */
+
+.specialoffer__text {
+
+  @include span-columns (12 omega, 12);
+
+  @include MQ(M) {
+    @include span-columns (3, 12);
+  }
+
+}
+
+.specialoffer-accordion-wrapper {
+
+  @include span-columns (12 omega, 12);
+
+  @include MQ(M) {
+    @include span-columns (9 omega, 12);
+  }
+
+}
+
+/* BOOKING: STEP1 */
+
+.menudropdown-wrapper {
+  @include MQ(M) {
+    @include span-columns (3, 12);
+  }
+}
+
+.logolight {
+  @include span-columns (12 omega, 12);
+
+  @include MQ(L) {
+    @include span-columns (6, 12);
+  }
+}
+
+.bookfrmbox {
+
+   @include pad(3,3);
+
+  .datepicker-wrapper {
+
+    @include span-columns (12 omega, 12);
+
+    @include MQ(L) {
+      @include span-columns (4, 12);
+    }
+  }
+
+  .datepicker2-wrapper {
+    @include span-columns (12 omega, 12);
+
+    @include MQ(L) {
+      @include span-columns (4, 12);
+    }
+  }
+
+  .numberpicker-wrapper {
+    @include span-columns (12 omega, 12);
+
+    @include MQ(L) {
+      @include span-columns (4 omega, 12);
+    }
+  }
+
+}
+
+/* BOOKING: STEP2 */
+
+.step2-roomslist {
+
+  @include span-columns (12 omega, 12);
+
+  .step2-roomslist-content {
+    @include span-columns (12 omega, 12);
+
+    .rooms-photo {
+      @include span-columns (12 omega, 12);
+
+      @include MQ(L) {
+        @include span-columns (5, 12);
+      }
+
+      .rooms-photo__img {
+
+      }
+
+    }
+
+    .rooms-photo__desc {
+      @include span-columns (12 omega, 12);
+
+      .rooms-photo__desc__content {
+        @include span-columns (12 omega, 12);
+
+        @include MQ(L) {
+          @include span-columns (5, 12);
+        }
+
+      }
+
+    }
+
+    .rooms-benefits {
+      @include span-columns (12 omega, 12);
+
+      @include MQ(L) {
+        @include span-columns (3, 12);
+      }
+    }
+
+    .rooms-content {
+      @include span-columns (12 omega, 12);
+
+      @include MQ(L) {
+        @include span-columns (4 omega, 12);
+      }
+    }
+
+  }
+}
+
+/* BOOKING: STEP3 */
+.helper-left {
+  @include span-columns (12 omega, 12);
+
+  @include MQ(M) {
+    @include span-columns (6, 12);
+  }
+}
+
+.booking-right {
+  @include span-columns (12 omega, 12);
+
+  @include MQ(M) {
+    @include span-columns (6 omega, 12);
+  }
+}
+
+/* BOOKING: STEP4 */
+.booking-step4-form {
+  @include span-columns (12 omega, 12);
+
+  @include MQ(M) {
+    @include pad(3,3);
+    @include span-columns (12 omega, 12);
+  }
+}
+
+/* OBJECTS: CASINO */
+
+.objects-menu {
+
+  @include MQ(L) {
+    @include span-columns (2, 12);
+  }
+
+}
+
+.casino-content {
+  @include span-columns (12 omega, 12);
+
+  @include MQ(L) {
+    @include span-columns (10 omega, 12);
+  }
+}
+
+@include with-grid-settings(12,7em,0em,1em) {
+
+  .casino-promo {
+
+    @include span-columns (12 omega, 12);
+
+    .casino-promo__content {
+
+      @include span-columns (12 omega, 12);
+
+      @include MQ(M) {
+        @include span-columns (6, 12);
+      }
+
+    }
+
+    .casino-promo__video {
+
+      @include span-columns (12 omega, 12);
+
+      @include MQ(M) {
+        @include remove-nth-omega(12);
+        @include span-columns (6 omega, 12);
+      }
+
+    }
+  }
+
+  .casino-menu {
+    @include pie-clearfix();
+    @include span-columns (12 omega, 12);
+
+    @include MQ(M) {
+      @include remove-nth-omega(12);
+      @include span-columns (5, 12);
+    }
+
+
+  }
+
+  .casino-contacts {
+    @include pie-clearfix();
+    @include span-columns (12 omega, 12);
+
+    @include MQ(M) {
+      @include remove-nth-omega(12);
+      @include span-columns (6 omega, 12);
+    }
+
+    .casino-contacts-social {
+      @include span-columns (12 omega, 12);
+
+      @include MQ(M) {
+        @include remove-nth-omega(12);
+        @include span-columns (4, 12);
+      }
+
+
+      .casino-contacts-twitter {
+        @include MQ(S) {
+          @include span-columns (6, 12);
+        }
+
+        @include MQ(M) {
+          @include remove-nth-omega(6);
+          @include span-columns (12 omega, 12);
+        }
+      }
+
+      .casino-contacts-instagram {
+
+        @include MQ(S) {
+          @include span-columns (6 omega, 12);
+        }
+
+        @include MQ(M) {
+          @include remove-nth-omega(6);
+          @include span-columns (12 omega, 12);
+        }
+      }
+    }
+
+    .casino-contacts__tel {
+
+      @include span-columns (12 omega, 12);
+
+      @include MQ(M) {
+        @include remove-nth-omega(12);
+        @include span-columns (8 omega, 12);
+      }
+
+    }
+
+
+  }
+
+}
+
+/* CASINO-LIST */
+
+.casino-list {
+  @include pie-clearfix();
+  @include span-columns (12 omega, 12);
+
+  .casino-list__header {
+    @include span-columns (12 omega, 12);
+  }
+
+  .casino-list__content {
+    @include span-columns (12 omega, 12);
+
+    @include MQ(M) {
+      @include pad(3,3);
+      @include span-columns (12, 12);
+    }
+  }
+}
+
+/* CASINO-CHOOSE */
+
+.casino-choose {
+
+    .casino-choose-self {
+      @include span-columns (12 omega, 12);
+
+      @include MQ(M) {
+        @include remove-nth-omega(12);
+        @include span-columns (6, 12);
+      }
+    }
+
+    .casino-choose-djanket {
+      @include span-columns (12 omega, 12);
+
+      @include MQ(M) {
+        @include remove-nth-omega(12);
+        @include span-columns (6 omega, 12);
+      }
+    }
+
+}
+
+/* REVIEWS */
+
+.casino-reviews__content {
+  @include span-columns (12 omega, 12);
+
+  @include MQ(L) {
+    @include pad(2,2);
+  }
+}
+
+/* CASINO CTA */
+.casino-cta {
+
+  .casino-cta__header {
+
+    @include MQ(L) {
+      @include pad(2,2);
+    }
+
+  }
+
+  .casino-cta__form {
+
+    @include span-columns(12 omega, 12);
+
+    @include MQ(M) {
+      @include pad(2,2);
+    }
+
+    @include MQ(L) {
+      @include pad(3,3);
+    }
+
+  }
+}
+
+/* OFFERS */
+
+@include with-grid-settings(12,7em,0em,1em) {
+
+  .offers-menu__timer {
+
+  }
+
+  .offers-menu {
+
+    @include MQ(S) {
+      @include span-columns (2, 12);
+    }
+
+    @include MQ(L) {
+      @include span-columns (4, 12);
+    }
+  }
+
+  .offers-content {
+
+    @include span-columns (12 omega, 12);
+
+    @include MQ(S) {
+      @include span-columns (10 omega, 12);
+    }
+
+    @include MQ(L) {
+      @include span-columns (8 omega, 12);
+    }
+  }
+
+  .offers-content__list {
+    @include span-columns (12 omega, 12);
+
+    @include MQ(L) {
+      @include pad(1,1);
+    }
+
+  }
+
+  .offers-content__price {
+    @include span-columns (12 omega, 12);
+
+    @include MQ(L) {
+      @include pad(1,1);
+    }
+
+    .offers-content__price__lined {
+
+    }
+
+    .offers-content__price__normal {
+
+    }
+
+    .offers-content__price__btn {
+
+    }
+  }
+}
+
+/* FORTUNE WHEEL IN ROOMS */
+.fortune-wheel__booking {
+
+  @include MQ(L) {
+    @include pad(1,1);
+  }
+}
+
+.fortune-wheel__booking__header {
+ @include pad(2,2);
+}
+
+.fw-modal {
+  @include MQ(L) {
+    @include pad(3,3);
+  }
+}
+
+.offers {
+
+  .booking-step4-form {
+
+    @include MQ(M) {
+      @include pad(1,1);
+    }
+
+  }
+}
+
+/* CONTACTS */
+
+.contacts {
+
+  .contacts-address {
+    width: 100%;
+
+    @include MQ(M) {
+      width: 50%;
+    }
+
+    .casino-contacts {
+      @include span-columns (12, 12);
+
+      @include MQ(M) {
+        @include pad(1,1);
+      }
+
+      .casino-contacts__tel {
+        @include span-columns (12, 12);
+      }
+    }
+  }
+
+}
+
+.contacts-form {
+  width: 100%;
+
+  @include MQ(M) {
+    width: 50%;
+  }
+
+  .booking-step4-form {
+    @include span-columns (12, 12);
+    padding: 0;
+  }
+}
+
+/* ERRORS */
+
+.notfound {
+  @include pad(3,3);
+}
+
+/* CASINO-NEWS */
+.news-section__list {
+
+  li {
+    @include single-transition(all 1s);
+    @include span-columns (12 omega, 12);
+
+    @include MQ(M) {
+      @include remove-nth-omega(12);
+      @include span-columns (4, 12);
+      @include nth-omega(3n);
+    }
+
+  }
+}
+
+/* CASINO BLOG */
+.casino-blog__synopsis {
+
+  @include MQ(L) {
+    @include pad(2,2);
+  }
+}
+
+.casino-blog__bg__content {
+
+    @include MQ(L) {
+      @include pad(3,3);
+    }
+}
+
+.casino-cta__left {
+
+  @include span-columns (12 omega, 12);
+
+  @include MQ(M) {
+    @include span-columns (6, 12);
+  }
+
+  @include MQ(L) {
+    @include span-columns (8, 12);
+  }
+
+}
+
+.casino-cta__logo {
+
+  @include MQ(M) {
+    @include remove-nth-omega(12);
+    @include span-columns (6 omega, 12);
+  }
+
+  @include MQ(L) {
+    @include remove-nth-omega(6);
+    @include span-columns (4 omega, 12);
+  }
+}

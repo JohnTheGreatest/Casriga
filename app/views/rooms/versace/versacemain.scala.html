@@ -1,0 +1,440 @@
+@* ROOM PAGE // PARIS *@
+
+@(title: String, room: Room, dateIn: Option[String], dateOut: Option[String], people: Option[String])(implicit callbackForm: Form[CallBack], subscribeForm : Form[SubscribeForm], info: Info, request: play.api.mvc.Request[Any])
+@import java.util.Locale
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Riga Rooms">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+        @versacelinks()
+    </head>
+    <body class="mainpage rooms-inner">
+            <!--[if lt IE 8]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headermini(info.sloganMain)
+
+            <section class="rooms-area">
+                <div class="container">
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li><a href="@routes.RoomController.rooms()">Номера</a></li>
+                            <li class="currentpage">@room.name</li>
+                        </ul>
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div class="rooms-header">
+                        <div class="rooms-header__left">
+                            <a href="@routes.RoomController.roomPage("newyork")">
+                                <span class="rooms-header__left--icon"></span>
+                                <p class="rooms-header__content">New York</p>
+                            </a>
+                        </div>
+
+                        <div class="rooms-header__img">
+                            <img src="@routes.Assets.at("images/rooms/versace-logo.png")" alt="@room.photoAlt" />
+                        </div>
+
+                        <div class="rooms-header__right">
+                            <a href="@routes.RoomController.roomPage("barcelona")">
+                                <span class="rooms-header__right--icon"></span>
+                                <p class="rooms-header__content">Barcelona</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="slideranddesc">
+
+                        <div class="slidercontainer">
+                            <div id="bannerscollection_zoominout_opportune">
+                                <div class="myloader"></div>
+                                    <!-- CONTENT -->
+                                <ul class="bannerscollection_zoominout_list">
+                                    <li data-initialZoom="1.2" data-finalZoom="1" data-horizontalPosition="center" data-verticalPosition="center"><img src="@routes.Assets.at("images/rooms/versace-slider-1.jpg")" alt="Luxury Отель и гостиница Риги - номер Версаче" width="1069" height="486" /></li>
+                                    <li data-initialZoom="1.2" data-finalZoom="1" data-horizontalPosition="center" data-verticalPosition="center" data-text-id="#bannerscollection_zoominout_photoText2" data-target="_blank" ><img src="@routes.Assets.at("images/rooms/versace-slider-2.jpg")" alt="@room.photoAlt" width="1069" height="486" /></li>
+                                    <li data-initialZoom="1.2" data-finalZoom="1" data-horizontalPosition="center" data-verticalPosition="center" data-text-id="#bannerscollection_zoominout_photoText3" data-target="_blank" ><img src="@routes.Assets.at("images/rooms/versace-slider-3.jpg")" alt="@room.photoAlt" width="1069" height="486" /></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sliderdesc">
+                            <div class="sliderdescinner">
+
+                                <div class="slider-ro-wrapper">
+                                    <div class="sliderreview"><a class="smooth-scroll" href="#reviews">Посмотреть отзывы (6)</a></div>
+                                    <div class="sliderparticipate"><a href="#">Учавствует в акции!</a></div>
+                                </div>
+
+                                <div class="sliderprice">
+                                    @if(!room.discount.isEmpty) {
+                                        <div class="pricecrossed">@room.price</div>
+                                        <div class="priceoffer"><p>@{java.text.NumberFormat.getIntegerInstance(new Locale("ru", "RU")).format(room.price*(views.utils.Helpers.getHundreds(room.discount.getOrElse(1))))}</p></div>
+                                    } else {
+                                        <div class="priceoffer"><p>@{java.text.NumberFormat.getIntegerInstance(new Locale("ru", "RU")).format(room.price)}</p></div>
+                                    }
+                                    <div class="pernight">/ ночь</div>
+                                </div>
+                            </div>
+
+                            <noindex>
+                            <div class="sliderfacility">
+                                    <ul>
+                                        <li>Завтрак в номере или ресторане на выбор</li>
+                                        <li>Круглосуточное обслуживание в номере</li>
+                                        <li>Круглосуточная работа рецепции</li>
+                                        <li>Прачечная и глаженье белья</li>
+                                        <li>Услуги фитнес-центра</li>
+                                        <li>Посещение ночных клубов</li>
+                                        <li>Бесплатная автостоянка</li>
+                                        <li>Бесплатный чай и кофе в номере</li>
+                                        <li>Бесплатная минеральная вода</li>
+                                    </ul>
+                            </div>
+                            </noindex>
+
+                            <div class="book-btn-wrapper">
+                                <a href="@routes.Booking.step1()" class="sliderbooknow">Забронировать</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="roomfeatures">
+                        <ul>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/2bedsicon.png")" alt="2bedsicon" /></div>
+                                            <div class="featurestext">2 кровати King-Size</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/saunaroomicon.png")" alt="saunaroomicon" /></div>
+                                            <div class="featurestext">Русская баня</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/airconditionicon.png")" alt="airconditionicon" /></div>
+                                            <div class="featurestext">Кондиционер</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/tvicon.png")" alt="tvicon" /></div>
+                                            <div class="featurestext">Телевизор 107“</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/cosmeticsicon.png")" alt="cosmeticsicon" /></div>
+                                            <div class="featurestext">Косметика BVLGARI</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/terreceicon.png")" alt="terreceicon" /></div>
+                                            <div class="featurestext">Терраса для отдыха</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="roomdesc">
+                        <div class="roomdesccol">
+                            <p>Экстравагантный номер-люкс наделен своим особенным характером. В модном интерьере слились воедино черный и белый, свобода и благородство, сдержанность и шик.<br/><br/> Этот номер по праву можно назвать <span class="strong">жемчужиной отеля</span>. Модный дизайн продуман до мелочей. Каждая деталь, будь то статуэтка, светильник или мебель являются завершенным штрихом художественной красоты.
+                            </p>
+                        </div>
+                        <div class="roomdesccol">
+                            <p>Есть большой обеденный стол, за которым удобно работать и отдыхать. Просторная и комфортная ванная комната, сауна, джакузи, <span class="strong">вдохновляющая комната отдыха</span> открывают неограниченные возможности для развлечений прямо в номере.<br/><br/> Если же вам захочется спокойствия и тишины, вы можете уединиться на просторном балконе, с которого открывается прекрасный вид на Центральный парк. </p>
+                        </div>
+                        <div class="roomdesccol">
+                            <p>Этот номер идеально подходит для <span class="strong">проведения небольших вечеринок</span> – здесь много места, есть удобный бар и множество диванов, стульев и соф. Беспроводной интернет и технологии высшего класса особенно оценят деловые постояльцы.
+                                Если вы хотите ощутить себя властелином мира, оторваться с друзьями, устроить мальчишник, провести время незабываемо и ярко – выбирайте номер, который подойдет вам своим характером.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <div class="why-room__header"><h2>Почему стоит выбрать номер Версаче?</h2></div>
+
+            <section class="why-room why-room--history graypattern">
+
+                <div class="container">
+
+                    <div class="why-room__content">
+
+                        <div class="why-room__content__photo">
+                            <img src="@routes.Assets.at("images/rooms/versace-history.png")" alt="История номера Нью-Йорк в отеле Риги Royal Casino SPA&Hotel Resort" />
+                        </div>
+
+                        <div class="why-room__content__text--wrapper why-room__content--history">
+
+                            <div class="why-room__content__text table-wrapper">
+
+                                <div class="why-room__content__text__desc table-block">
+                                    <h3>ИСТОРИЯ</h3>
+                                    <p>Роспись потолков на итальянский манер и открытый «подиум» апартаментов — каждая деталь здесь говорит об эстетике, превозносит имидж и воспевает красоту. Версаче ознаменовал появление модных канонов для элиты, а данный номер станет для вас триумфом стиля и эталоном того, как должен выглядеть настоящий изысканный комфорт «от кутюр».</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="why-room why-room--interior">
+
+                <div class="container">
+
+                    <div class="tridtour">
+                        <a href="@info.tourLink" target="_blank">
+                            <img src="@routes.Assets.at("images/3dtour.png")" alt="3D tour button" />
+                        </a>
+                    </div>
+
+                    <div class="why-room__content no-padding-t">
+
+                        <div class="why-room__content__photo layout-right">
+                            <a href="@info.tourLink" target="_blank">
+                                <img class="imgshadow" src="@routes.Assets.at("images/rooms/versace-3d.jpg")" alt="Рига отель казино" />
+                                <div class="img3dbut"></div>
+                            </a>
+                        </div>
+
+                        <div class="why-room__content__text--wrapper why-room__content--interior layout-left">
+
+                            <div class="why-room__content__text table-wrapper">
+
+                                <div class="why-room__content__text__desc table-block">
+                                    <h3>ИНТЕРЬЕР</h3>
+                                    <p>Сочетание классицизма, романтизма, ампира порождает удивительное ощущение прикосновения к чему-то великому. Великолепие и зрелищность расписных потолков, элегантность классической мебели, сдержанная торжественность общего убранства создают праздничную атмосферу, в которой комфортно работать и отдыхать.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="why-room why-room--bathroom graypattern">
+
+                <div class="container">
+
+                    <div class="why-room__content">
+
+                        <div class="why-room__content__photo">
+                            <img class="imagewithshadow" src="@routes.Assets.at("images/rooms/versace-inner-1.jpg")" alt="Отель Роял в Риге" />
+                        </div>
+
+                        <div class="why-room__content__text--wrapper why-room__content--bathroom">
+
+                            <div class="why-room__content__text table-wrapper">
+
+                                <div class="why-room__content__text__desc table-block">
+                                    <h3>РОСПИСЬ НА ПОТОЛКАХ</h3>
+                                    <p>Расписные потолки и резная деревянная мебель дадут почувствовать себя лордом или бароном, находящимся в покоях великолепного дворца. Например, в гостях у Луи XIV или Карла VII. </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            @elements.wheel(dateIn, dateOut, people)
+
+            @elements.reviews()
+
+            <section class="why-room why-room--bath">
+
+                <div class="container">
+
+                    <div class="why-room__content no-padding-t">
+
+                        <div class="why-room__content__photo layout-right">
+                            <img class="imgshadow" src="@routes.Assets.at("images/rooms/versace-inner-2.jpg")" alt="Рига отдых в отеле" />
+                        </div>
+
+                        <div class="why-room__content__text--wrapper why-room__content--interior layout-left">
+
+                            <div class="why-room__content__text table-wrapper">
+
+                                <div class="why-room__content__text__desc table-block">
+                                    <h3>ВАННАЯ КОМНАТА</h3>
+                                    <p>Ванна с джакузи в черно-белых тонах поражает воображение утонченной красотой. Золоченные аксессуары, столешницы из черного мрамора, косметика Bvlgari, махровые полотенца, халаты и тапочки, огромные зеркала – все до мелочей продумано для вашего абсолютного комфорта.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="why-room why-room--interior1 graypattern">
+
+                <div class="container">
+
+                    <div class="why-room__content">
+
+                        <div class="why-room__content__photo">
+                            <img class="imagewithshadow" src="@routes.Assets.at("images/rooms/versace-inner-3.jpg")" alt="Летний отдых Рига" />
+                        </div>
+
+                        <div class="why-room__content__text--wrapper why-room__content--bathroom">
+
+                            <div class="why-room__content__text table-wrapper">
+
+                                <div class="why-room__content__text__desc table-block">
+                                    <h3>ДВЕ БОЛЬШИЕ КРОВАТИ</h3>
+                                    <p>Особенность номера – две большие великолепные кровати King size с шикарными покрывалами, тончайшим сатиновым постельным бельем, подушками разных размеров на любой вкус. Здесь вы почувствуете себя королем и королевой.  </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="why-room why-room--interior">
+
+                <div class="container">
+
+                    <div class="why-room__content no-padding-t">
+
+                        <div class="why-room__content__photo layout-right">
+                            <img class="imgshadow" src="@routes.Assets.at("images/rooms/newyork-inner-4.jpg")" alt="Лучший отдых в Риге" />
+                        </div>
+
+                        <div class="why-room__content__text--wrapper why-room__content--interior layout-left">
+
+                            <div class="why-room__content__text table-wrapper">
+
+                                <div class="why-room__content__text__desc table-block">
+                                    <h3>КОСМЕТИКА BVLGARI</h3>
+                                    <p>Известного итальянского бренда, продукция которого отличается высочайшим качеством, сделает вашу кожу мягкой и шелковистой и наполнит каждый день комфортом и свежестью.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="why-room why-room--2beds graypattern">
+
+                <div class="container">
+
+                    <div class="why-room__content">
+
+                        <div class="why-room__content__photo">
+                            <img src="@routes.Assets.at("images/rooms/dubai-offer.png")" alt="Бесплатное вино, фруктовая тарелка при заказе номера в отеле Риги Royal Casino SPA&Hotel Resort" />
+                        </div>
+
+                        <div class="why-room__content__text--wrapper why-room__content--2bed">
+
+                            <div class="why-room__content__text table-wrapper">
+
+                                <div class="why-room__content__text__desc table-block">
+                                    <h3>ПРИЯТНЫЙ ПОДАРОК</h3>
+                                    <p>Бутылка хорошего вина и фруктовая плата. В стоимость номера включены: завтрак, посещение бассейна, фитнес-центра и  ночных клубов.</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+            @elements.specialoffers()
+            @elements.footer()
+        </div>
+        @rooms.versace.versacescripts(dateIn, dateOut, people)
+    </body>
+</html>

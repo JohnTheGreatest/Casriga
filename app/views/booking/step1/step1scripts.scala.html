@@ -1,0 +1,193 @@
+@(dateIn: Option[String], dateOut: Option[String], people: Option[String])
+
+@elements.mainscripts()
+<script src="@routes.Assets.at("javascripts/jquery-ui-1.10.4.custom.min.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/jquery.ui.touch-punch.min.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/bannerscollection_zoominout.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/ui.datepicker-ru.js")" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+    var menu = $('.menudropdown ul');
+
+    $(document).ready(function () {
+
+        $(".menudropdown").hover(function(event){
+            event.stopPropagation();
+            menu.toggleClass('hidden');
+        });
+
+        $(".menudropdown").click(function(event){
+            event.stopPropagation();
+        });
+
+        // Set Array of Months
+        var fullMonthArray = $.datepicker.regional['ru'].monthNames;
+
+        // Retrive session and parse it to Date
+        var dateIn = new Date();
+        var dateOut = new Date();
+        dateOut.setDate(dateOut.getDate()+3); // Plus 3 days
+
+        @if(!dateIn.isEmpty) {
+            dateIn = $.datepicker.parseDate("D M dd yy", "@dateIn", {
+                dayNamesShort: $.datepicker.regional[ "" ].dayNamesShort,
+                monthNamesShort: $.datepicker.regional[ "" ].monthNamesShort,
+            });
+        }
+
+        @if(!dateOut.isEmpty) {
+            dateOut = $.datepicker.parseDate("D M dd yy", "@dateOut", {
+            dayNamesShort: $.datepicker.regional[ "" ].dayNamesShort,
+            monthNamesShort: $.datepicker.regional[ "" ].monthNamesShort,
+            });
+        }
+
+        $.datepicker.setDefaults(
+            $.extend($.datepicker.regional["ru"])
+        );
+
+
+        $("#datepicker").datepicker({
+            defaultDate: dateIn,
+            minDate: 0,
+
+            onSelect: function(date) {
+                var d = $(this).datepicker('getDate' );
+                $('.booktabbox .book-in' ).html( d.getDate()); //change date
+                var pickerMonth = $("#datepicker" ).datepicker('getDate' ).getMonth(); //get number of month
+                var currentPickerMonth1 = fullMonthArray[pickerMonth]; // current month in Array
+                $('.booktabbox .title-in' ).html(currentPickerMonth1); // change month
+                // give second datepicker minDate
+                $('#datepicker2' ).datepicker('option', 'minDate', date);
+                $("#datepicker2 .ui-datepicker" ).hide();
+            }
+        }, $.datepicker.regional['ru']);
+
+        // From datepicker to frontend
+        var pickerMonth1 = $("#datepicker" ).datepicker('getDate' ).getMonth();
+        var pickerDate1 = $("#datepicker" ).datepicker('getDate' ).getDate();
+
+        var currentPickerMonth1 = fullMonthArray[pickerMonth1];
+        $('.booktabbox .title-in' ).html(currentPickerMonth1);
+        $('.booktabbox .book-in' ).html(pickerDate1); //change date
+
+        $("#datepicker2").datepicker({
+            defaultDate: dateOut,
+            minDate: dateIn,
+
+            onSelect: function(date) {
+                var d = $(this).datepicker('getDate' ).getDate(); // retrive date as Date()
+                $('.booktabbox .book-out' ).html(d); // make text
+                var pickerMonth = $("#datepicker2" ).datepicker('getDate' ).getMonth();
+                var currentPickerMonth2 = fullMonthArray[pickerMonth];
+                $('.booktabbox .title-out' ).html(currentPickerMonth2);
+            }
+        },
+            $.datepicker.regional['ru']
+        );
+
+        var pickerDate2 = $("#datepicker2" ).datepicker('getDate' ).getDate();
+        var pickerMonth2 = $("#datepicker2" ).datepicker('getDate' ).getMonth();
+
+        var currentPickerMonth2 = fullMonthArray[pickerMonth2];
+
+        // To 2nd datepicker
+        $('.booktabbox .title-out' ).html(currentPickerMonth2);
+
+        @if(dateOut.isEmpty) {
+            $('.booktabbox .book-out' ).html(pickerDate2); //change date
+        } else {
+            $('.booktabbox .book-out' ).html(pickerDate2); //change date
+        }
+
+            $("#datepicker .ui-datepicker").hide();
+            $("#datepicker2 .ui-datepicker").hide();
+
+            $("#datepicker").hover(function(){
+                $("#datepicker .ui-datepicker").fadeIn("fast");
+            },function(){
+                $("#datepicker .ui-datepicker").fadeOut("fast");
+            });
+
+            $("#datepicker2").hover(function(){
+                $("#datepicker2 .ui-datepicker").fadeIn("fast");
+            },function(){
+             $("#datepicker2 .ui-datepicker").fadeOut("fast");
+            });
+
+            $("#numberpicker").hover(function(){
+                $(".listnumber").fadeIn("fast");
+            },function(){
+                $(".listnumber").fadeOut("fast");
+            });
+
+            // number event handler
+
+            // let's check if data is String then make it smaller
+            var currentNumber = $('.booktabbox .book-ppl' ).html();
+
+            if ( !$.isNumeric(currentNumber) ) {
+                $('.booktabbox .book-ppl' ).addClass("size1-5");
+            }
+
+            $('.listnumber a' ).click(function(e) {
+               var currentNumber = $(this ).html(); //take current number
+               $('.booktabbox .book-ppl' ).removeClass("size1-5");
+               if ( !$.isNumeric(currentNumber) ) {
+                $('.booktabbox .book-ppl' ).addClass("size1-5");
+               }
+               $('.booktabbox .book-ppl' ).html(currentNumber); //change it
+
+
+               e.preventDefault();
+            });
+
+            $("#datepicker").on("blur", function(e) { $(this).datepicker("hide"); });
+            $("#datepicker2").on("blur", function(e) { $(this).datepicker("hide"); });
+
+            $(".greenbut" ).click(function(e){
+            //save all data from pickers
+
+                bookIn = $("#datepicker" ).datepicker('getDate' ).toDateString();
+                bookOut = $("#datepicker2" ).datepicker('getDate' ).toDateString();
+                var ppl = $('.booktabbox .book-ppl' ).html();
+
+                //convert to JSON
+                var obj = {};
+                obj = {
+                    dateIn: bookIn,
+                    dateOut: bookOut,
+                    people: ppl
+                };
+                var jsonData = JSON.stringify(obj);
+
+                $.ajax({
+                    type: "POST",
+                    url: "@routes.Booking.step1save()",
+                    dataType: "text",
+                    data: jsonData,
+                    contentType: "application/json; charset=utf-8"
+                }).done(function ( data ) {
+                    window.location.href = '@routes.Booking.step2()';
+                }).fail(function ( data ) {
+                    alert("Извините, наши серверы временно недоступны. Пожалуйста, оформите заказ по телефону.");
+                });
+                e.preventDefault();
+
+            });
+
+    });
+
+    $(document).on('touchstart', function (event) {
+        if (!$(event.target).closest('.ui-datepicker').length) {
+        $('.ui-datepicker').hide()
+        }
+    });
+
+    $(document).click( function(e){
+        menu.addClass('hidden');
+    });
+
+</script>

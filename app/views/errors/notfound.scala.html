@@ -1,0 +1,66 @@
+@* STEP1 BOOKING *@
+
+@(title: String)(implicit callbackForm: Form[CallBack], info: Info)
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @notfoundlinks()
+    </head>
+    <body class="mainpage notfound-page">
+            <!--[if lt IE 8]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+
+            <section class="booking-bg">
+                <div class="container border-top">
+
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li class="currentpage">404</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="not-found">
+                <div class="container">
+                    <div class="notfound">
+                        <img src="@routes.Assets.at("images/notfound.png")" alt="Страница не найдена Royal Casino">
+                    </div>
+                </div>
+            </section>
+            <section class="booking-step1 bg-top">
+
+                <div class="container">
+                    <div class="simpledivider">
+                        <p>Что-то ищете?<br />
+                            Мы всегда рады подобрать вам наилучший вариант проживания в Риге.<br/>
+                            Обращайтесь. Мы обещаем помочь.
+                        </p>
+                        <img src="@routes.Assets.at("images/juliaphoto.png")" alt="julia" />
+                        <p>Ваш личный помощник - Юлия.</p>
+                        <div class="phonenum">@info.telRussia</div>
+                        <a href="#" class="emaillink">@Html("julia@riga-royal.ru")</a>	<br />
+                    </div>
+                </div>
+            </section>
+            @notfoundscripts()
+            @elements.footerlight()
+        </div>
+
+    </body>
+</html>

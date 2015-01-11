@@ -1,0 +1,53 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Main Pages
+GET         /                                controllers.Application.index
+GET         /nomera                          controllers.RoomController.rooms
+
+# Rooms Pages
+GET         /nomera/:name                    controllers.RoomController.roomPage(name: String)
+POST        /sendcallback                    controllers.Application.send
+POST        /wheelCongrats                   controllers.RoomController.wheelCongrats
+POST        /wheelTry                        controllers.RoomController.wheelTry
+POST        /sendsubscribe                   controllers.Application.sendSubscribe
+
+# Ajax
+GET         /assets/javascript/routes        controllers.Application.javascriptRoutes
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                    controllers.Assets.at(path="/public", file)
+GET         /favicon.png                     controllers.Assets.at(path="/public", file="images/favicon.png")
+GET         /favicon.ico                     controllers.Assets.at(path="/public", file="images/favicon.ico")
+GET         /robots.txt                      controllers.Assets.at(path="/public", file="robots.txt")
+
+# Booking
+GET         /booking                         controllers.Booking.step1
+GET         /booking/step1                   controllers.Booking.step1
+POST        /booking/step1                   controllers.Booking.step1save
+GET         /booking/step2                   controllers.Booking.step2
+POST        /booking/step2                   controllers.Booking.step2save
+GET         /booking/step3                   controllers.Booking.step3
+POST        /booking/step3                   controllers.Booking.step3save
+GET         /booking/step4                   controllers.Booking.step4
+POST        /sendbooking                     controllers.Booking.send
+
+# Casino
+GET         /casino/kazino-riga              controllers.ObjectPages.casinoMain
+GET         /casino/casino-info              controllers.ObjectPages.casinoArticlesMain
+GET         /casino/:name                    controllers.ObjectPages.casinoArticles(name: String)
+
+# SPA
+GET         /spa-v-rige                      controllers.ObjectPages.casinoArticles(name: String)
+
+# Offers
+GET         /offers/:name                    controllers.Offers.offer(name: String)
+POST        /offers/send                     controllers.Offers.send
+
+# Contacts
+GET         /contacts                        controllers.Contacts.index
+POST        /contacts                        controllers.Contacts.send
+
+# Errors
+GET         /404                             controllers.Errors.error404

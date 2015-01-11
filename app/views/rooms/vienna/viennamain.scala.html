@@ -1,0 +1,350 @@
+@* ROOM PAGE // PARIS *@
+
+@(title: String, room: Room, dateIn: Option[String], dateOut: Option[String], people: Option[String])(implicit callbackForm: Form[CallBack], subscribeForm : Form[SubscribeForm], info: Info, request: play.api.mvc.Request[Any])
+@import java.util.Locale
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Riga Rooms">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+        @viennalinks()
+    </head>
+    <body class="mainpage rooms-inner">
+            <!--[if lt IE 8]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headermini(info.sloganMain)
+
+            <section class="rooms-area">
+                <div class="container">
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li><a href="@routes.RoomController.rooms()">Номера</a></li>
+                            <li class="currentpage">@room.name</li>
+                        </ul>
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div class="rooms-header">
+                        <div class="rooms-header__left">
+                            <a href="@routes.RoomController.roomPage("Venice")">
+                                <span class="rooms-header__left--icon"></span>
+                                <p class="rooms-header__content">Venice</p>
+                            </a>
+                        </div>
+
+                        <div class="rooms-header__img">
+                            <img src="@routes.Assets.at("images/rooms/vienna-logo.png")" alt="@room.photoAlt" />
+                        </div>
+
+                        <div class="rooms-header__right">
+                            <a href="@routes.RoomController.roomPage("moscow")">
+                                <span class="rooms-header__right--icon"></span>
+                                <p class="rooms-header__content">Moscow</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="slideranddesc">
+
+                        <div class="slidercontainer">
+                            <div id="bannerscollection_zoominout_opportune">
+                                <div class="myloader"></div>
+                                    <!-- CONTENT -->
+                                <ul class="bannerscollection_zoominout_list">
+                                    <li data-initialZoom="1.2" data-finalZoom="1" data-horizontalPosition="center" data-verticalPosition="center"><img src="@routes.Assets.at("images/rooms/vienna-inner-slider-1.jpg")" alt="Luxury Отель Риги - номер Вена" width="1069" height="486" /></li>
+                                    <li data-initialZoom="1.2" data-finalZoom="1" data-horizontalPosition="center" data-verticalPosition="center" data-text-id="#bannerscollection_zoominout_photoText2" data-target="_blank" ><img src="@routes.Assets.at("images/rooms/vienna-inner-slider-2.jpg")" alt="@room.photoAlt" width="1069" height="486" /></li>
+                                    <li data-initialZoom="1.2" data-finalZoom="1" data-horizontalPosition="center" data-verticalPosition="center" data-text-id="#bannerscollection_zoominout_photoText3" data-target="_blank" ><img src="@routes.Assets.at("images/rooms/vienna-inner-slider-3.jpg")" alt="@room.photoAlt" width="1069" height="486" /></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sliderdesc">
+                            <div class="sliderdescinner">
+
+                                <div class="slider-ro-wrapper">
+                                    <div class="sliderreview"><a class="smooth-scroll" href="#reviews">Посмотреть отзывы (6)</a></div>
+                                    <div class="sliderparticipate"><a href="@routes.Offers.offer("wedding")">Учавствует в акции!</a></div>
+                                </div>
+
+                                <div class="sliderprice">
+                                    @if(!room.discount.isEmpty) {
+                                        <div class="pricecrossed">@room.price</div>
+                                        <div class="priceoffer"><p>@{java.text.NumberFormat.getIntegerInstance(new Locale("ru", "RU")).format(room.price*(views.utils.Helpers.getHundreds(room.discount.getOrElse(1))))}</p></div>
+                                    } else {
+                                        <div class="priceoffer"><p>@{java.text.NumberFormat.getIntegerInstance(new Locale("ru", "RU")).format(room.price)}</p></div>
+                                    }
+                                    <div class="pernight">/ ночь</div>
+                                </div>
+
+                                <div>
+                                    <a href="#" class="sliderbooknow-mobile">Забронировать</a>
+                                </div>
+                            </div>
+
+                            <noindex>
+                            <div class="sliderfacility">
+                                    <ul>
+                                        <li>Завтрак в номере или ресторане на выбор</li>
+                                        <li>Круглосуточное обслуживание в номере</li>
+                                        <li>Круглосуточная работа рецепции</li>
+                                        <li>Прачечная и глаженье белья</li>
+                                        <li>Услуги фитнес-центра</li>
+                                        <li>Посещение ночных клубов</li>
+                                        <li>Бесплатная автостоянка</li>
+                                        <li>Бесплатный чай и кофе в номере</li>
+                                        <li>Бесплатная минеральная вода</li>
+                                    </ul>
+                            </div>
+                            </noindex>
+
+                            <div class="book-btn-wrapper">
+                                <a href="@routes.Booking.step1()" class="sliderbooknow">Забронировать</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="roomfeatures">
+                        <ul>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/2bedsicon.png")" alt="2bedsicon" /></div>
+                                            <div class="featurestext">1 кровать King-Size</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/saunaroomicon.png")" alt="saunaroomicon" /></div>
+                                            <div class="featurestext">Сауна в номере</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/airconditionicon.png")" alt="airconditionicon" /></div>
+                                            <div class="featurestext">Кондиционер</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/tvicon.png")" alt="tvicon" /></div>
+                                            <div class="featurestext">Телевизор 107“</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/cosmeticsicon.png")" alt="cosmeticsicon" /></div>
+                                            <div class="featurestext">Косметика BVLGARI</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="rfeatures-wrapper">
+                                <div class="table-wrapper">
+                                    <div class="it-wrapper-iblock">
+                                        <div class="it-wrapper">
+                                            <div class="featuresicon"><img src="@routes.Assets.at("images/icons/terreceicon.png")" alt="terreceicon" /></div>
+                                            <div class="featurestext">Терраса для отдыха</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="roomdesc">
+                        <div class="roomdesccol">
+                            <p> Номер, созданный специально <span class="strong">для влюбленных</span>. Здесь продумано все – роскошная кровать, множество зеркал в изысканных рамах, стилизованная под старину мебель. Декоративные элементы интерьера (комоды, расписные потолки) подчеркивают исторический стиль Вены. Приятные пастельные тона дарят ощущение гармонии и теплоты.
+                            </p>
+                        </div>
+                        <div class="roomdesccol">
+                            <p>Нежность и чувственность, воплощенные в номере Vienna, непременно вызовут приятные эмоции и ощущение окрыленности. При этом в нем удобно распределены функциональные зоны, поэтому приятно отдыхать и работать. <span class="strong">Романтические выходные</span>, медовый месяц или отпуск, вне зависимости от повода вы проведет время незабываемо.</p>
+                        </div>
+                        <div class="roomdesccol">
+                            <p>Для этого в нашем отеле вы можете заказать ужин в ресторане, spa-процедуры, провести время в джакузи, бассейне, сауне или отправиться в ночной клуб. Все, что вы можете пожелать, есть на территории нашего комплекса.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <div class="why-room__header"><h2>Почему стоит выбрать номер Вена?</h2></div>
+
+            <section class="why-room why-room--history graypattern">
+
+                <div class="container">
+
+                    <div class="why-room__content">
+
+                        <div class="why-room__content__photo">
+                            <img src="@routes.Assets.at("images/rooms/vienna-history.png")" alt="История номера Вена в отеле Риги Royal Casino SPA&Hotel Resort" />
+                        </div>
+
+                        <div class="why-room__content__text--wrapper why-room__content--history">
+
+                            <div class="why-room__content__text table-wrapper">
+
+                                <div class="why-room__content__text__desc table-block">
+                                    <h3>ИСТОРИЯ</h3>
+                                    <p>В этом номере вы сможете почувствовать себя в городе дворцов, живописных пейзажей и оригинальных архитектурных решений. Городе вдохновения, искусства, романтики и счастья. Говорят, в этом городе пробуждаются мечты. И это настроение чувствуется в каждой детали интерьера номера. Почувствуйте себя гостем в резиденции короля. </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="why-room why-room--interior">
+
+                <div class="container">
+
+                    <div class="tridtour">
+                        <a href="@info.tourLink" target="_blank">
+                            <img src="@routes.Assets.at("images/3dtour.png")" alt="paris_img" />
+                        </a>
+                    </div>
+
+                    <div class="why-room__content no-padding-t">
+
+                        <div class="why-room__content__photo layout-right">
+                            <a href="@info.tourLink" target="_blank">
+                                <img class="imgshadow" src="@routes.Assets.at("images/rooms/vienna-3d.jpg")" alt="Гостиница в Риге номер Вена" />
+                                <div class="img3dbut"></div>
+                            </a>
+                        </div>
+
+                        <div class="why-room__content__text--wrapper why-room__content--interior layout-left">
+
+                            <div class="why-room__content__text table-wrapper">
+
+                                <div class="why-room__content__text__desc table-block">
+                                    <h3>ИНТЕРЬЕР</h3>
+                                    <p>Прекраснейшая, роскошная, элегантная, неповторимая – эти эпитеты можно часто услышать в адрес легендарного города Вены. Каждая деталь интерьера номера подтверждает это. Золотая лепка на потолках, большие зеркала, роскошные шторы с ламбрекенами, кровать King size, изысканная резная мебель создадут ощущение отдыха в шикарном дворце венского короля.
+                                        <br/><br/>
+                                        Проведите отдых незабываемо в роскошных апартаментах в утонченном венском стиле!
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="why-room why-room--bathroom graypattern">
+
+                <div class="container">
+
+                    <div class="why-room__content">
+
+                        <div class="why-room__content__photo">
+                            <img class="imagewithshadow" src="@routes.Assets.at("images/rooms/vienna-inner-1.jpg")" alt="Роскошный отель Риги" />
+                        </div>
+
+                        <div class="why-room__content__text--wrapper why-room__content--bathroom">
+
+                            <div class="why-room__content__text table-wrapper">
+
+                                <div class="why-room__content__text__desc table-block">
+                                    <h3>РОСКОШЬ</h3>
+                                    <p>В светлых роскошных покоях все зоны удобно распределены – уютная зона отдыха, огромная кровать, стену напротив которой украшает большой LCD-телевизор. А белоснежная ванная с золотыми узорами, косметическим зеркалом, мягкими халатами и тапочками, косметикой Bvlgari, огромными зеркалами сделает процесс принятия ванной незабываемым. </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            @elements.wheel(dateIn, dateOut, people)
+
+            @elements.reviews()
+
+
+            <section class="why-room why-room--2beds graypattern">
+
+                <div class="container">
+
+                    <div class="why-room__content">
+
+                        <div class="why-room__content__photo">
+                            <img src="@routes.Assets.at("images/rooms/dubai-offer.png")" alt="Бесплатное вино, фруктовая тарелка при заказе номера в отеле Риги Royal Casino SPA&Hotel Resort" />
+                        </div>
+
+                        <div class="why-room__content__text--wrapper why-room__content--2bed">
+
+                            <div class="why-room__content__text table-wrapper">
+
+                                <div class="why-room__content__text__desc table-block">
+                                    <h3>ПРИЯТНЫЙ ПОДАРОК</h3>
+                                    <p>Бутылка хорошего вина и фруктовая плата. В стоимость номера включены: завтрак, посещение бассейна, фитнес-центра и  ночных клубов.</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+            @elements.specialoffers()
+            @elements.footer()
+        </div>
+        @rooms.vienna.viennascripts(dateIn, dateOut, people)
+    </body>
+</html>

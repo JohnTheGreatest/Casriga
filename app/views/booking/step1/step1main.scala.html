@@ -1,0 +1,139 @@
+@* STEP1 BOOKING *@
+
+@(title: String, dateIn: Option[String], dateOut: Option[String], people: Option[String])(implicit callbackForm: Form[CallBack], info: Info, request: play.api.mvc.Request[Any])
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Онлайн бронирование отелей в Европе: выбрать и снять номер в гостинице не выходя из дома. Скидки для всех от 20 до 70%!">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @booking.step1.step1links()
+
+        <!-- SEARCH ENGINES -->
+        <meta name="author" content="Royal Casino">
+        <link rel="canonical" href="@routes.Booking.step1().absoluteURL(false)(request)">
+
+    </head>
+    <body class="mainpage">
+            <!--[if lt IE 8]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headerbooking()
+
+            <section class="booking-bg">
+                <div class="container border-top">
+
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li class="currentpage">Бронирование</li>
+                        </ul>
+                    </div>
+
+                    <div class="pagesteps">
+                        <ul>
+                            <li><div class="sqrbox activebox"></div><br />Время</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li><div class="sqrbox"></div><br />Номер</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li style="margin:0px -25px;"><div class="sqrbox"></div><br />Предложения</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li><div class="sqrbox"></div><br />Данные</li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="booking-step1-content">
+                <div class="container">
+
+                    <div class="bookfrmbox">
+
+                    <div class="datepicker-wrapper">
+
+                        <div class="booktab" id="datepicker" >
+                            <div class="booktabtitle">Дата заезда</div>
+
+                            <div class="booktabbox">
+                                <div class="booktabboxtitle title-in"><p>август</p></div>
+                                <div class="booktabboxinner book-in">13</div>
+                                <div class="booktabboxtitle2"><img src="@routes.Assets.at("images/arrowup.png")" alt="arrowup" /></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="datepicker2-wrapper">
+
+                        <div class="booktab" id="datepicker2" >
+                            <div class="booktabtitle">Дата выезда</div>
+                            <div class="booktabbox">
+                                <div class="booktabboxtitle title-out"><p>сентябрь</p></div>
+                                <div class="booktabboxinner book-out">15</div>
+                                <div class="booktabboxtitle2"><img src="@routes.Assets.at("images/arrowup.png")" alt="arrowup" /></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="numberpicker-wrapper">
+
+                        <div class="booktab" id="numberpicker">
+                            <div class="booktabtitle">Сколько Вас?</div>
+                            <div class="booktabbox">
+                                <div class="booktabboxtitle"><p>&nbsp;</p></div>
+                                <div class="booktabboxinner book-ppl">@{if(!people.isEmpty) people else 2}</div>
+                                <div class="booktabboxtitle2"><img src="@routes.Assets.at("images/arrowup.png")" alt="arrowup" /></div>
+                            </div>
+                            <div class="listnumber">
+                                <ul>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a class="size1-5" href="#">больше</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                        <div class="clear"></div>
+
+                    </div>
+
+                        <div class="stage1">
+                            <a href="@routes.Booking.step2()" class="greenbut" style="margin:20px auto;"><img src="@routes.Assets.at("images/icons/but_arr_green.png")" alt="menu_arr_green" />Выбрать номер</a>
+                        </div>
+
+                </div>
+            </section>
+            <section class="booking-step1 bg-top">
+
+                <div class="container">
+                    <div class="simpledivider">
+                        <p>Обращайтесь. Мы обещаем помочь.<br />
+                        Высочайший уровень обслуживания <strong>- наше все.</strong><br />
+                        </p>
+                        <img src="@routes.Assets.at("images/juliaphoto.png")" alt="julia" />
+                        <p>Ваш личный помощник - Юлия.</p>
+                        <div class="phonenum">@info.telRussia</div>
+                        <a href="#" class="emaillink">@Html("julia@riga-royal.ru")</a>	<br />
+                        <a href="#callback-form" class="contactlink">Мы перезвоним</a><br />
+                    </div>
+                </div>
+            </section>
+            @elements.footerlight()
+        </div>
+        @booking.step1.step1scripts(dateIn,dateOut,people)
+    </body>
+</html>

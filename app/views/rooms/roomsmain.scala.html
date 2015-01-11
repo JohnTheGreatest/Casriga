@@ -1,0 +1,84 @@
+@* ROOM PAGE *@
+@(title: String, rooms: List[(Room, RoomListing, List[Feature])])(implicit callbackForm: Form[CallBack], subscribeForm : Form[SubscribeForm], info: Info, request: play.api.mvc.Request[Any])
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    	<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Лучшие апартаменты в Риге:  всего 3 шага для бронирования. Забронируй сегодня и получи скидку от 20 до 70%!">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @roomslinks()
+    </head>
+    <body class="mainpage">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+    	    @headers.headermini(info.sloganMain)
+
+            <section class="rooms-area">
+                <div class="container">
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li class="currentpage">Номера</li>
+                        </ul>
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div class="rooms-list-outer">
+                        <ul class="rooms-list">
+
+                            @rooms.map { r =>
+                            <li class="rooms-element">
+                                <a class="rooms-list__thumb" href="@routes.RoomController.roomPage(r._1.name.toLowerCase.replaceAll("\\s",""))">
+                                    <span class="diamond" style="background-image: url(@routes.Assets.at(r._2.iconUrl))"></span>
+                                    <img src="@routes.Assets.at(r._2.photoUrl)" alt="@r._2.photoAlt" />
+                                    <span class="more">Подробнее</span>
+                                </a>
+                                <div class="desc">
+                                    <h2>@r._2.name</h2>
+                                    <span class="long-dash"></span>
+                                    <ul class="options-list">
+                                        <li style="float: left; margin-left: 20px; background-image: url(@routes.Assets.at("images/options/square-meter.png"))">
+                                            @r._1.squaremeters.toString м<sup>2</sup>
+                                        </li>
+                                        @r._3.zipWithIndex.map { f =>
+                                            @if(f._2 until 3) {
+                                                <li style="float: left; margin-left: 20px; background-image: url(@routes.Assets.at(f._1.iconUrl))">
+                                                    @Html(f._1.text)
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                    <div class="clear"></div>
+                                    <span class="short-dash"></span>
+                                    <a href="@routes.RoomController.roomPage(r._1.name.toLowerCase.replaceAll("\\s",""))" class="button button-flat-royal rooms-element__button">
+                                        <span class="play-icon"></span>
+                                        <span class="button__text">Подробнее</span>
+                                    </a>
+                                    <p class="desc__text">@r._2.ctatext</p>
+                                </div>
+                            </li>
+                            }
+
+                            </ul>
+                        </div>
+
+                    <div class="clear"></div>
+
+                </div>
+            </section>
+            @elements.footer()
+        </div>
+        @roomsscripts()
+    </body>
+</html>

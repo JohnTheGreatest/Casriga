@@ -1,0 +1,308 @@
+.topbanner--mini {
+  min-height: 250px;
+  max-height: 250px;
+}
+
+.rooms-list {
+
+  @include pie-clearfix();
+
+  .rooms-element {
+    margin-top: 50px;
+    border: 1px solid #dee9eb;
+    border-radius: 5px;
+    background: #ffffff;
+    position: relative;
+    -webkit-box-shadow: 0 1px 2px 0 #e8e7ec;
+    -moz-box-shadow: 0 1px 2px 0 #e8e7ec;
+    -o-box-shadow: 0 1px 2px 0 #e8e7ec;
+    box-shadow: 0 1px 2px 0 #e8e7ec;
+    display: inline-block;
+    text-align: center;
+
+    &:nth-child(3n+3) {
+      .more {
+        @include background-image(linear-gradient(bottom, #edb735 0%, #f6c245 100%));
+      }
+    }
+
+    &:nth-child(3n+2) {
+      .more {
+        @include background-image(linear-gradient(bottom, #97b535 0%, #aed13c 100%));
+      }
+    }
+
+    &:nth-child(3n+1) {
+      .more {
+        @include background-image(linear-gradient(bottom, #6b4589 0%, #8154a5 100%));
+      }
+    }
+
+
+    .diamond {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      top: -36px;
+      left: 50%;
+      margin-left: -36px;
+      display: block;
+    }
+
+    .paris--icon {
+      background: image-url('rooms/paris-icon.png',false,false) no-repeat;
+    }
+
+    .dubai--icon {
+      background: image-url('rooms/dubai-icon.png',false,false) no-repeat;
+    }
+
+    .newyork--icon {
+      background: image-url('rooms/newyork-icon.png',false,false) no-repeat;
+    }
+
+    .versace--icon {
+      background: image-url('rooms/versace-icon.png',false,false) no-repeat;
+    }
+
+    .barcelona--icon {
+      background: image-url('rooms/barcelona-icon.png',false,false) no-repeat;
+    }
+
+    .venice--icon {
+      background: image-url('rooms/venice-icon.png',false,false) no-repeat;
+    }
+
+    .viene--icon {
+      background: image-url('rooms/viene-icon.png',false,false) no-repeat;
+    }
+
+    .moscow--icon {
+      background: image-url('rooms/moscow-icon.png',false,false) no-repeat;
+    }
+
+    .london--icon {
+      background: image-url('rooms/london-icon.png',false,false) no-repeat;
+    }
+
+    .vegas--icon {
+      background: image-url('rooms/vegas-icon.png',false,false) no-repeat;
+    }
+
+    .desc {
+      padding: 15px 20px 20px;
+
+      .desc__text {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .more-href {
+        position: relative;
+
+        display: block;
+        width: 220px;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        .text {
+          background: #eeb834;
+          color: #ffffff;
+          font-size: 20px;
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          padding-left: 40px;
+          padding-right: 40px;
+          display: inline-block;
+          position: relative;
+          left: 50%;
+          margin-left: -72px;
+        }
+
+        .play-icon {
+
+          width: 40px;
+          height: 40px;
+          background: #f6cb63;
+          display: inline-block;
+          position: absolute;
+
+          &:before {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ffffff;
+            border-radius: 999px;
+            display: block;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            content: "";
+          }
+
+          &:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-width: 5px 8px;
+            border-color: transparent transparent transparent #fccb65;
+            border-style: solid;
+            top: 50%;
+            left: 50%;
+            margin-top: -5px;
+            margin-left: -3px;
+          }
+
+        }
+      }
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 20px;
+      margin-top: 0;
+      text-align: center;
+    }
+
+
+    .long-dash {
+      border-bottom: 1px solid #dde8ea;
+      display: block;
+      width: 140px;
+      position: relative;
+      left: 50%;
+      margin-left: -70px;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+
+    .short-dash {
+      border-bottom: 1px solid #dde8ea;
+      display: block;
+      width: 60px;
+      position: relative;
+      left: 50%;
+      margin-left: -30px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .options-list {
+
+    @include pie-clearfix();
+    float: left;
+
+    li {
+      display: table;
+      height: 30px;
+      padding-left: 50px;
+      line-height: 15px;
+      margin-left: 20px;
+      background-repeat: no-repeat;
+      margin-bottom: 15px;
+
+      p {
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+
+    }
+
+    .meter {
+      background-image: image-url('options/square-meter.png',false,false);
+    }
+
+    .beth {
+      background-image: image-url('options/beth.png',false,false);
+    }
+
+    .bed {
+      background-image: image-url('options/bed.png',false,false);
+    }
+
+    .snowflake {
+      background-image: image-url('options/snowflake.png',false,false);
+    }
+
+    .tv {
+      background-image: image-url('options/tv.png',false,false);
+    }
+
+  }
+}
+
+.more {
+  @include single-transition(all .2s);
+  position: absolute;
+  top: 50%;
+  height: 40px;
+  left: 50%;
+  width: 130px;
+  margin-left: -65px;
+  margin-top: -20px;
+  text-shadow: 0 1px 1px 0 rgba(0,0,0,0.7);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+  line-height: 40px;
+  opacity: 0;
+  @include background-clip(padding-box);
+}
+
+.rooms-list__thumb {
+  position: relative;
+  display: block;
+
+  &:hover {
+    .more {
+        opacity: 0.93;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    vertical-align: top; /* Thing with extra 3px */
+    @include border-top-radius(5px);
+  }
+
+}
+
+.rooms-element__button {
+    margin-left: 35px;
+    position: relative;
+
+    &:hover {
+      color: white;
+    }
+
+    .play-icon {
+      width: 35px;
+      height: 40px;
+      display: inline-block;
+      position: absolute;
+      left: -35px;
+      background: #f6cb63 image-url('rooms/icon-play.png',false,false) no-repeat center center;
+    }
+
+  .button__text {
+    font-size: 1.3em;
+    font-weight: bold;
+
+    @include MQ(S) {
+      font-size: .9em;
+    }
+
+    @include MQ(M) {
+      font-size: 1.3em;
+    }
+  }
+}

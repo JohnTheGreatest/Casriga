@@ -1,0 +1,40 @@
+.flag {
+  display:table;
+}
+
+.flag__image,
+.flag__body{
+
+  display:table-cell;
+  vertical-align:middle;
+
+  /* To be responsivness */
+  @include MQ(M) {
+    float: none;
+  }
+
+
+  .flag--top &{
+    vertical-align:top;
+  }
+
+  .flag--bottom &{
+    vertical-align:bottom;
+  }
+}
+
+.flag__image{
+
+  padding-right:10px;
+
+  > img{
+    display:block;
+    max-width:none;
+  }
+
+  .flag--rev &{
+    padding-right:0;
+    padding-left:10px;
+  }
+}
+

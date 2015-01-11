@@ -1,0 +1,135 @@
+@* STEP1 BOOKING *@
+
+@(title: String, dateInRus: String, dateOutRus: String, addons: List[Addon])(implicit callbackForm: Form[CallBack], request: play.api.mvc.Request[Any], info: Info)
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Riga Rooms">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @booking.step3.step3links()
+    </head>
+    <body class="mainpage">
+            <!--[if lt IE 8]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headerbooking()
+
+            <section class="booking-bg">
+                <div class="container border-top">
+
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li class="currentpage">Бронирование</li>
+                        </ul>
+                    </div>
+
+                    <div class="pagesteps">
+                        <ul>
+                            <li><div class="sqrbox"></div><br />Время</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li><div class="sqrbox"></div><br />Номер</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li style="margin:0px -25px;"><div class="sqrbox activebox"></div><br />Предложения</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li><div class="sqrbox"></div><br />Данные</li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="booking-step2-content">
+                <div class="container">
+                    <div class="change-prev-stage">
+
+                        <div class="change-date">
+                            <p>@dateInRus - @dateOutRus</p>
+                            <a href="@routes.Booking.step1()">Изменить дату</a>
+                        </div>
+
+                        <div class="change-room">
+                            <p>@request.session.get("room")</p>
+                            <a href="@routes.Booking.step2()">Изменить номер</a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+                <section class="booking-step3-content">
+                    <div class="container">
+                        <h1 class="booking-step3__header">Выберите дополнительные предложения:</h1>
+
+                        <table class="booking-step3__list">
+                            @addons.map { a =>
+                            <tr>
+                                <td class="column1">
+                                    <input id="@a.id.getOrElse("0")" type="checkbox">
+                                    <label for="@a.id.getOrElse("0")">@a.name</label>
+                                </td>
+                                <td class="column2">
+                                    <a class="gray-question-mark" href="#"></a>
+                                </td>
+                                <td class="column3">
+                                    <span>+ <span class="green-text">@a.price</span> рублей</span>
+                                </td>
+                            </tr>
+                            }
+                        </table>
+                    </div>
+                </section>
+
+            <section class="booking-step3 bg-top">
+
+                <div class="container">
+                    <div class="booking-right">
+                        <table class="booking-right__list">
+                            <tr>
+                                <td class="column1">Проживание:</td>
+                                <td class="column2"></td>
+                                <td class="column3"><span id="room-sum" class="green-text">@Html(request.session.get("price").getOrElse("0"))</span> рублей</td>
+                            </tr>
+                            <tr>
+                                <td class="column1">Доп.услуги:</td>
+                                <td class="column2"></td>
+                                <td class="column3"><span id="addons-sum" class="green-text">0</span> рублей</td>
+                            </tr>
+                            <tr>
+                                <td class="column1"></td>
+                                <td class="column2 text-right bg-clear"><b>Итого:</b></td>
+                                <td class="column3"><span id="overall-sum" class="green-text">0</span> рублей</td>
+                            </tr>
+                        </table>
+                        <div class="preloader"></div>
+                        <a href="#" class="button button-3d-action booking-right__button to-hide"><span>Продолжить</span></a>
+                    </div>
+                    <div class="helper-left">
+                        <div class="flag centered">
+                            <img class="helper-left__photo flag__image centered" src="@routes.Assets.at("images/juliaphoto.png")" alt="Юлия - ваш личный помощник в Royal Casino SPA&Hotel Resort" />
+                            <div class="helper-left__content flag__body">
+                                <p>Ваш личный помощник - <b>Юлия</b></p>
+                                <div class="phonenum">@info.telRussia</div>
+                                <a href="#" class="emaillink">@Html("julia@riga-royal.ru")</a>	<br />
+                                <a href="#callback-form" class="contactlink">Мы перезвоним</a><br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            @elements.footerlight()
+        </div>
+        @booking.step3.step3scripts()
+    </body>
+</html>

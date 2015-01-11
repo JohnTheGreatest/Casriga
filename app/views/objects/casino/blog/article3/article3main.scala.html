@@ -1,0 +1,188 @@
+@* CASINO PAGE *@
+@(title: String)(implicit callbackForm: Form[CallBack], subscribeForm : Form[SubscribeForm], info: Info, request: play.api.mvc.Request[Any])
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- SEARCH ENGINES -->
+        <meta name="author" content="Royal Casino Riga">
+        <meta name="description" content="Самые известные казино мира: самые богатые и красивые игорные заведения, в которых стоит побывать каждому азартному игроку">
+
+        <!-- THE TWITTER MACHINE -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@Html("@rigaroyal")">
+        <meta name="twitter:creator" content="@Html("@rigaroyal")">
+        <meta name="twitter:title" content="Самые известные казино мира: топ-4 лучших игорных заведений">
+        <meta name="twitter:description" content="Самые известные казино мира: самые богатые и красивые игорные заведения, в которых стоит побывать каждому азартному игроку">
+        <meta name="twitter:image:src" content="@routes.Assets.at("images/objects/blog/samoe-izvestnoe-kazino-anons-twitter.jpg").absoluteURL(false)(request)">
+
+        <!-- FACESPACE -->
+        @*<meta property="fb:admins" content="579622216,709634581">
+        <meta property="fb:app_id" content="1389892087910588">*@
+        <meta property="og:url" content="@routes.ObjectPages.casinoArticles("vigrish-v-kazino").absoluteURL(false)(request)">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Самые известные казино мира: топ-4 лучших игорных заведений">
+        <meta property="og:image" content="@routes.Assets.at("images/objects/blog/samoe-izvestnoe-kazino-anons.jpg").absoluteURL(false)(request)">
+        <meta property="og:description" content="Самые известные казино мира: самые богатые и красивые игорные заведения, в которых стоит побывать каждому азартному игроку">
+        <meta property="og:site_name" content="Royal Casino SPA and Hotel Resort">
+        @*<meta property="article:author" content="https://www.facebook.com/NCerminara">*@
+        <meta property="article:publisher" content="https://www.facebook.com/rigaroyal">
+
+        <!-- G++ -->
+        <meta itemprop="name" content="Самые известные казино мира: топ-4 лучших игорных заведений">
+        <meta itemprop="description" content="Самые известные казино мира: самые богатые и красивые игорные заведения, в которых стоит побывать каждому азартному игроку">
+        <meta itemprop="image" content="@routes.Assets.at("images/objects/blog/samoe-izvestnoe-kazino-anons.jpg").absoluteURL(false)(request)">
+
+        @article3links()
+    </head>
+    <body class="mainpage casino-page">
+            <!--[if lt IE 7]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headermini("Luxury-отель в Риге. Роскошь в деталях")
+
+            <section class="objects-casino-blog">
+
+                <div class="container">
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li><a href="@routes.ObjectPages.casinoMain()">Казино</a></li>
+                            <li><a href="@routes.ObjectPages.casinoArticlesMain()">Статьи</a></li>
+                            <li class="currentpage">Лучшие игорные заведения</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container">
+
+                        <h1 class="casino-blog__header"><span class="f-size1-7">С</span>амые известные казино мира: четверка лучших игорных заведений</h1>
+                        <hr class="objects-delimeter objects-delimeter--mini">
+                        <p class="casino-blog__synopsis">Имя и репутация — главные «козыри» каждого казино. О многих заведениях мы не слышали, о многих успели услышать, а лишь единицам научились доверять. Сегодня речь пойдет о наиболее известных игорных точках в мире — Макао, Монако, Атлантик-Сити и, конечно же, Лас-Вегасе. Мы узнаем, какие казино считаются самыми популярными и почему.</p>
+
+                        <div class="casino-blog__social">
+
+                        </div>
+
+                    <section class="casino-blog__default">
+
+                        <div class="casino-blog__default__number-wrapper">
+                            <span id="number1" class="casino-blog__default__number"><p>1</p></span>
+                        </div>
+
+                        <div class="flag flag-wrapper">
+                            <div class="flag-left flag__body">
+                                <h2 class="casino-blog__head">Однажды в Вегасе…</h2>
+                                <p class="casino-blog__description">С 1946 года в планетарной столице азарта открыло свои двери скандально известное заведение «Flamingo», владельцем которого стал гангстер Багси. Название казино было выбрано благодаря длинным ногам подружки владельца, которая развлекалась игрой на деньги, хотя некоторые все еще считают, что поблизости изредка прогуливалась популяция настоящих фламинго. Впрочем, имя у казино менялось не раз, его даже выкупала корпорация Хилтон, однако наибольшую популярность оно завоевало при съемках знаменитых «11 друзей Оушена» в 1960 году и римейке 2001 года.</p>
+                            </div>
+                            <div class="flag-right flag__image">
+                                <img src="@routes.Assets.at("images/objects/blog/lasvegas-riga-casino.jpg")" id="img1" class="casino-blog__img" alt="Самое известное казино Vegas">
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+
+                <section class="casino-blog__default casino-blog__bg lazy" style="min-height:500px" data-src="../assets/images/objects/blog/macau-casino-royal-riga.jpg">
+
+                    <div class="casino-blog__bg__content">
+                        <div class="container">
+                            <div class="casino-blog__default__number-wrapper">
+                                <span id="number2" class="casino-blog__default__number"><p>2</p></span>
+                            </div>
+                            <h2 class="casino-blog__bg__header">Китай велик во всем</h2>
+                            <p class="casino-blog__description bg-darker"><strong>Venetian Macau</strong> — наиболее большое казино мира, но уступающее предыдущим в популярности. Макао гордится масштабным комплексом, включающим с 2007 года помимо мест для развлечений еще и завод компании Boeing, а также отель с 3 тысячами апартаментов и казино. Целых <strong>4 тысячи автоматов и 850 столов</strong> для игры покоряют воображение гостей. Отсюда можно на пароме выплыть в Гонконг, почувствовать себя в Венеции, взойдя на мостик Вздохов и прогулявшись по аналогу площади св. Марка. </p>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="casino-blog__cta">
+                    <div class="container">
+                        <div class="casino-cta__left">
+                            <h3 class="casino-blog__cta__header">Почувствуйте истинный вкус азарта в одном из лучших казино СНГ<br/><strong>Royal Casino SPA&Hotel Resort</strong></h3>
+                            <div class="casino-blog__cta__content">
+                                <a href="@routes.ObjectPages.casinoMain()" class="casino-blog__cta__button button-flat--white"><span>Подробнее</span></a>
+                                <p class="casino-blog__cta__why">Узнайте все о лучшем казино Риги, ознакомьтесь с отзывами игроков.</p>
+                            </div>
+                        </div>
+
+                        <div class="casino-cta__logo">
+                            <a href="@routes.ObjectPages.casinoMain()">
+                                <img src="@routes.Assets.at("images/objects/blog/riga-royal-logo-bg.png")" alt="Казино Риги Royal Casino">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="container">
+
+                    <section class="casino-blog__default">
+
+                        <div class="casino-blog__default__number-wrapper">
+                            <span id="number3" class="casino-blog__default__number"><p>3</p></span>
+                        </div>
+
+                        <div class="flag flag-wrapper">
+                            <div class="flag-left flag__image">
+                                <img src="@routes.Assets.at("images/objects/blog/trump-taj-mahal-royal-casino.jpg")" id="img3" class="casino-blog__img" alt="Всемирно известные казино Атлантик Сити">
+                            </div>
+                            <div class="flag-right flag__body">
+                                <h2 class="casino-blog__head">Город атлантов игры</h2>
+                                <p class="casino-blog__description">Самые известные казино мира есть и в Атлантик-сити — в частности, <strong>«Taj Mahal» Дональда Трампа</strong>. Помпезное открытие 1990 года и присутствие Джексона повлияло на его популярность: посетители мигом расположились за 90 столами и во второй по величине в городе комнате для игры в покер. Именно ее нам и демонстрировала кинолента «Шулер» 1998 года.  </p>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <section class="casino-blog__default">
+
+                        <div class="casino-blog__default__number-wrapper">
+                            <span id="number4" class="casino-blog__default__number"><p>4</p></span>
+                        </div>
+
+                        <div class="flag flag-wrapper">
+                            <div class="flag-left flag__body">
+                                <h2 class="casino-blog__head">Королевский размер</h2>
+                                <p class="casino-blog__description">Самым известным казино Монако считают <strong>«Monte Carlo»</strong>, где проводят финал ежегодного турнира по покеру в Европе. Парадоксально, но граждане Монако лишены права входа в комнаты для игр. Старое казино гордится своей историей с 1858 года, когда прошло 4 года после легализации азарта в этом городе-государстве и его начали строить. Известно, что именно здесь любил поигрывать сам Джеймс Бонд: сцены из серий «Золотой глаз», «Никогда не говори «Никогда» и «Казино «Рояль» были отсняты именно в этих залах.</p>
+                            </div>
+                            <div class="flag-right flag__image">
+                                <img src="@routes.Assets.at("images/objects/blog/monaco-casino.jpg")" id="img4" class="casino-blog__img" alt="Наиболее известные казино Монако">
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <div class="casino-blog__social">
+                        <h3 class="casino-blog__social__header casino-blog__header">Пожалуйста, поделитесь этой статьей</h3>
+                        <!-- AddThis Button BEGIN -->
+                        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                            <a class="addthis_button_vk"></a>
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" tw:url="@routes.ObjectPages.casinoArticles("samoe-dorogoe-kazino").absoluteURL(false)(request)"></a>
+                            <a class="addthis_button_google_plusone_share"></a>
+                            <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Button END -->
+                    </div>
+
+                </div>
+
+            </section>
+            @elements.footer()
+        </div>
+        @article3scripts()
+    </body>
+</html>

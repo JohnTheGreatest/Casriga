@@ -1,0 +1,60 @@
+%single-transition {
+	@include single-transition(all, .3s, ease-in-out, 0s);
+}
+
+%clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+%center-block {
+	margin: 0 auto;
+	position: relative;
+}
+
+
+%inline {
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    zoom:1; /* hasLayout ie7 trigger */
+}
+
+/* Box with background size */
+%box--imgwrapper {
+   background-size: cover;
+   background-position: center center;
+   background-repeat: no-repeat;
+   max-width: 100%;
+   width: 100%;
+   float: left;
+ }
+
+%box--imgwrapper-new {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  max-width: 100%;
+  width: 100%;
+}
+
+%inline-block {
+  display: inline-block;
+  /* IE 7 hack */
+  *zoom:1;
+  *display: inline;
+}
+
+%flip {
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  -ms-filter: fliph; /*IE*/
+  filter: fliph; /*IE*/
+}

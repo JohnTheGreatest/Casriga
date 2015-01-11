@@ -1,0 +1,107 @@
+@(dateIn: Option[String], dateOut: Option[String], people: Option[String], rooms:List[Room], isH1: Boolean = false)(implicit callbackForm: Form[CallBack], info: Info, request: play.api.mvc.Request[Any])
+
+    <div class="hamburger-wrapper">
+			<div id="hamburger">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+	</div>
+	<header>
+    	<div class="container">
+            @elements.contacts()
+            @elements.menu()
+        </div>
+        <section class="topbanner">
+        	<div class="container">
+            	<div class="logo"><a href="@routes.Application.index()" title="Отель в Риге (Латвия) - Royal Casino SPA and Hotel Resort"></a></div>
+                <div class="topbannerform">
+            	<form method="POST" action="@routes.Booking.step1save()">
+                	<div class="frmlabel frmcart">Дата заезда</div>
+                    <div id="datepicker1-main">
+                        <input id="datepicker1-text" type="text" name="checkin" class="frmtxt calender" placeholder="18 июня" />
+                    </div>
+                    <div class="frmlabel frmsmily">Дата выезда</div>
+                    <div id="datepicker2-main">
+                        <input id="datepicker2-text" type="text" name="checkout" class="frmtxt calender" placeholder="22 июня" />
+                    </div>
+                    <div class="frminner4">
+                        <div class="frminner1 rightside">
+                            <div class="frmlabel">Количество человек</div>
+                            <input id="peoplePicker" type="text" name="people" class="frmtxt frmtxtmini" value=@people.getOrElse("2") />
+                        </div>
+                    </div>
+                    <div class="frminner2">
+                        <input id="booking-button" type="submit" name="submit" class="frmbut" value="Забронировать" />
+                    </div>
+                </form>
+            </div>
+            </div>
+            <div class="topbanner_text">
+                <div class="container">
+                	
+                        <div class="bannertextdiv">
+                        	    @if(isH1) {
+                                    <h1 class="bannertext">Luxury-отель в Риге. Роскошь в деталях</h1>
+                                }else{
+                                    <p class="bannertext">Luxury-отель в Риге. Роскошь в деталях</p>
+                                }
+
+	                            <span class="bannerstar">
+                                        <img src="@routes.Assets.at("images/star.png")" alt="5-star luxury hotel" />
+                                        <img src="@routes.Assets.at("images/star.png")" alt="5-звездочный отелю Риги" />
+                                        <img src="@routes.Assets.at("images/star.png")" alt="Лучшая гостиница Риги" />
+                                        <img src="@routes.Assets.at("images/star.png")" alt="5 звезд" />
+                                        <img src="@routes.Assets.at("images/star.png")" alt="Отель Риги 5 звезд" />
+	                            </span>
+	                       
+                        </div>
+                        <div class="socialicon">
+                        	<a href="https://www.twitter.com/rigaroyal" target="_blank"><img src="@routes.Assets.at("images/twitter.png")" alt="Royal Casino Twitter account" /></a> <!--TODO: Alt's for SEO -->
+                            <a href="https://www.facebook.com/rigaroyal" target="_blank"><img src="@routes.Assets.at("images/facebook.png")" alt="Royal Casino Facebook account" /></a>
+                            <a href="" class="hint hint--left" data-hint="Скоро"><img src="@routes.Assets.at("images/vkontakte.png")" alt="vkontakte" /></a>
+                        </div>
+                        
+                </div>
+            </div>
+            <div class="maintopbanner">
+                <div id="layerslider" style="width: 100%; height: 519px;">
+                    <div class="ls-layer" rel="slidedelay: 3000; slidedirection: right;" style="background: url(../assets/images/rooms/mainbanners/otel-riga.jpg) top center">
+                        <div class="container">
+                        	<div class="binfo-wrapper">
+                            	<span class="binfo-header">Модный номер New York</span><br /><br />
+                                <p>Уникальный дизайн и атмосфера. Почувствуйте себя королем в этих удивительных аппартаментах. </p><br />
+                                <img src="@routes.Assets.at("images/icons/slidericon.png")" alt="slidericon" />&nbsp;1-4&nbsp;&nbsp;
+                                <img src="@routes.Assets.at("images/icons/slidericon1.png")" alt="slidericon" />&nbsp;2 KingSize&nbsp;&nbsp;
+                                <img src="@routes.Assets.at("images/icons/slidericon2.png")" alt="slidericon" />&nbsp;1-2&nbsp;
+                                <div class="binfo-text"><a href="@routes.RoomController.roomPage("newyork")" style="color:#FFF;text-decoration:underline;">История номера</a>&nbsp;/&nbsp;<a href="@routes.Booking.step1()" style="color:#ff943d;text-decoration:underline;">Забронировать</a></div>
+
+                                <div class="binfo-star">
+                                    <p style="line-height: 78px;">
+                                        <strong>-@{rooms.map{r => if(r.name == "New York") if(!r.discount.isEmpty) r.discount }}</strong> %
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ls-layer" rel="slidedelay: 3000; slidedirection: right;" style="background: url(../assets/images/rooms/versace-banner.jpg) top center">
+                        <div class="container">
+                        	<div class="binfo-wrapper">
+                            	<span class="binfo-header">Идиллия высокого стиля номера Versace</span><br /><br />
+                                <p>Уникальный дизайн и атмосфера. Почувствуйте себя королем в этих удивительных аппартаментах. </p><br />
+                                <img src="@routes.Assets.at("images/icons/slidericon.png")" alt="slidericon" />&nbsp;1-4&nbsp;&nbsp;
+                                <img src="@routes.Assets.at("images/icons/slidericon1.png")" alt="slidericon" />&nbsp;2 KingSize&nbsp;&nbsp;
+                                <img src="@routes.Assets.at("images/icons/slidericon2.png")" alt="slidericon" />&nbsp;1-2&nbsp;
+                                <div class="binfo-text"><a href="@routes.RoomController.roomPage("versace")" style="color:#FFF;text-decoration:underline;">История номера</a>&nbsp;/&nbsp;<a href="@routes.Booking.step1()" style="color:#ff943d;text-decoration:underline;">Забронировать</a></div>
+                                <div class="binfo-star"><br /><img src="@routes.Assets.at("images/currency1.png")" alt="currency" /><strong>@{rooms.map{r => if(r.name == "Versace") r.price}}</strong><br />/ночь</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+
+
+

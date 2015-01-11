@@ -1,0 +1,52 @@
+
+@(slogan: String, isH1: Boolean = false)(implicit callbackForm: Form[CallBack], info: Info, request: play.api.mvc.Request[Any])
+
+<div class="hamburger-wrapper">
+    <div id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<header>
+    <div class="container">
+        @elements.contacts()
+        @elements.menu()
+    </div>
+    <section class="topbanner topbanner--mini">
+        <div class="container">
+            <div class="logo"><a href="@routes.Application.index" title="Отель в Риге (Латвия) - Royal Casino SPA and Hotel Resort"></a></div>
+        </div>
+        <div class="topbanner_text">
+            <div class="container">
+
+                <div class="bannertextdiv">
+                    @if(isH1) {
+                        <h1 class="bannertext">@slogan</h1>
+                    }else{
+                        <p class="bannertext">@slogan</p>
+                    }
+
+                    <span class="bannerstar">
+                        <img src="@routes.Assets.at("images/star.png")" alt="5-star luxury hotel" />
+                        <img src="@routes.Assets.at("images/star.png")" alt="5-звездочный отелю Риги" />
+                        <img src="@routes.Assets.at("images/star.png")" alt="Лучшая гостиница Риги" />
+                        <img src="@routes.Assets.at("images/star.png")" alt="5 звезд" />
+                        <img src="@routes.Assets.at("images/star.png")" alt="Отель Риги 5 звезд" />
+                    </span>
+
+                </div>
+                <div class="socialicon">
+                    <a href="https://www.twitter.com/rigaroyal" target="_blank"><img src="@routes.Assets.at("images/twitter.png")" alt="Royal Casino Twitter account" /></a> <!--TODO: Alt's for SEO -->
+                    <a href="https://www.facebook.com/rigaroyal" target="_blank"><img src="@routes.Assets.at("images/facebook.png")" alt="Royal Casino Facebook account" /></a>
+                    <a href="" class="hint hint--left" data-hint="Скоро"><img src="@routes.Assets.at("images/vkontakte.png")" alt="Royal Casino Vkontakte account" /></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</header>
+
+
+
+

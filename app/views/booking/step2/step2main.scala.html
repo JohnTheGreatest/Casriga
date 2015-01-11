@@ -1,0 +1,162 @@
+@* STEP2 BOOKING *@
+
+@(title: String, delta: Int, dateInRus: String, dateOutRus: String, rooms: List[(Room, List[Feature])])(implicit callbackForm: Form[CallBack], request: play.api.mvc.Request[Any], info: Info)
+@import views.utils._
+@import java.util.Locale
+
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Riga Rooms">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @booking.step2.step2links()
+    </head>
+    <body class="mainpage">
+        <!--[if lt IE 8]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headerbooking()
+
+            <section class="booking-bg">
+                <div class="container border-top">
+
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li class="currentpage">Бронирование</li>
+                        </ul>
+                    </div>
+
+                    <div class="pagesteps">
+                        <ul>
+                            <li><div class="sqrbox"></div><br />Время</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li><div class="sqrbox activebox"></div><br />Номер</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li style="margin:0px -25px;"><div class="sqrbox"></div><br />Предложения</li>
+                            <li class="linebox"><div class="linegray"></div></li>
+                            <li><div class="sqrbox"></div><br />Данные</li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="booking-step2-content">
+                <div class="container">
+
+                    <p class="change-prev-stage">
+                                @dateInRus - @dateOutRus
+                             <a href="@routes.Booking.step1()">Изменить дату</a>
+                    </p>
+
+                    <ul class="step2-roomslist">
+
+                        @rooms.map{ r =>
+                        <li class="step2-roomslist-content">
+                            <div class="rooms-photo__desc">
+                                <div class="rooms-photo__desc__content">
+                                    <h3>Номер @r._1.name</h3>
+                                </div>
+                            </div>
+                            <div class="rooms-photo">
+                                <div class="rooms-photo__img">
+                                    <a href="@routes.RoomController.roomPage(r._1.name.toLowerCase.replaceAll("\\s",""))"><span class="question-mark"></span></a>
+                                    <img src="@routes.Assets.at(r._1.photoUrl)"/>
+                                </div>
+                            </div>
+                            <div class="rooms-benefits">
+                                    <ul class="options-list">
+                                        <li>
+                                            <div class="flag">
+                                                <div class="option-img-wrapper flag__body">
+                                                    <img src="@routes.Assets.at("images/options/square-meter.png")"/>
+                                                </div>
+                                                <p class="flag__body options-list-content">@r._1.squaremeters.toString м<sup>2</sup></p>
+                                            </div>
+                                        </li>
+                                        @r._2.map{ f =>
+                                        <li>
+                                            <div class="flag">
+                                                <div class="option-img-wrapper flag__body">
+                                                    <img src="@routes.Assets.at(f.iconUrl)"/>
+                                                </div>
+                                                <p class="flag__body options-list-content">@Html(f.text)</p>
+                                            </div>
+                                        </li>
+                                        }
+                                    </ul>
+                            </div>
+
+                            <div class="rooms-content">
+                                <p>@Html(r._1.text)</p>
+                                <p class="price">
+                                    @if(!r._1.discount.isEmpty) {
+                                        <span class="discount">@{java.text.NumberFormat.getIntegerInstance(new Locale("ru", "RU")).format(delta*r._1.price)}</span>
+                                        <span id="price" class="bold">@{java.text.NumberFormat.getIntegerInstance(new Locale("ru", "RU")).format(delta*(r._1.price*(views.utils.Helpers.getHundreds(r._1.discount.getOrElse(1)))))}</span> рублей
+                                    } else {
+                                        <span id="price" class="bold">@{java.text.NumberFormat.getIntegerInstance(new Locale("ru", "RU")).format(delta*r._1.price)}</span> рублей
+                                    }
+                                    (@{delta} @{
+                                        delta.toString.takeRight(1).toInt match {
+                                            case 1 => {
+                                                if(delta == 11) "ночей"
+                                                else "ночь"
+                                            }
+                                            case d if 2 to 4 contains d  =>  {
+                                               if(12 to 15 contains delta) "ночей"
+                                               else "ночи"
+                                            }
+                                            case _ => "ночей"
+                                        }
+                                    })
+                                </p>
+
+                                @if(!r._1.discount.isEmpty) {
+                                    <p class="price-offer"><span class="orange-text">Только сейчас!</span> Получите скидку @r._1.discount% на этот номер.</p>
+                                    <a class="select-button" href="#">
+                                        Получить скидку
+                                    </a>
+                                } else {
+                                    <a class="select-button" href="#">
+                                        Выбрать номер
+                                    </a>
+                                }
+                            </div>
+                        </li>
+                        }
+
+                    </ul>
+                </div>
+            </section>
+            <section class="booking-step1 bg-top">
+
+                <div class="container">
+                    <div class="simpledivider">
+                        <p>Обращайтесь. Мы обещаем помочь.<br />
+                            Высочайший уровень обслуживания <strong>- наше все.</strong><br />
+                        </p>
+                        <img src="@routes.Assets.at("images/juliaphoto.png")" alt="julia" />
+                        <p>Ваш личный помощник - Юлия.</p>
+                        <div class="phonenum"><span>@info.telRussia</div>
+                        <a href="#" class="emaillink">@Html("julia@riga-royal.ru")</a>	<br />
+                        <a href="#callback-form" class="contactlink">Мы перезвоним</a><br />
+                    </div>
+                </div>
+            </section>
+            @elements.footerlight()
+        </div>
+        @booking.step2.step2scripts()
+    </body>
+</html>

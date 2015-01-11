@@ -1,0 +1,204 @@
+@* CASINO PAGE *@
+@(title: String)(implicit callbackForm: Form[CallBack], subscribeForm : Form[SubscribeForm], info: Info, request: play.api.mvc.Request[Any])
+@import java.util.Date
+
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- SEARCH ENGINES -->
+        <meta name="author" content="Royal Casino">
+        <meta name="description" content="Самое дорогое казино в мире: пять самых известных и роскошных игорных заведений, о которых Вы должны знать">
+
+        <!-- THE TWITTER MACHINE -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@Html("@rigaroyal")">
+        <meta name="twitter:creator" content="@Html("@rigaroyal")">
+        <meta name="twitter:title" content="ТОП-5 самых дорогих казино мира">
+        <meta name="twitter:description" content="Самое дорогое казино в мире: пять самых известных и роскошных игорных заведений, о которых Вы должны знать">
+        <meta name="twitter:image:src" content="@routes.Assets.at("images/objects/blog/samoe-dorogoe-kazino-anons.jpg").absoluteURL(false)(request)">
+
+        <!-- FACESPACE -->
+        @*<meta property="fb:admins" content="579622216,709634581">
+        <meta property="fb:app_id" content="1389892087910588">*@
+        <meta property="og:url" content="@routes.ObjectPages.casinoArticles("samoe-dorogoe-kazino").absoluteURL(false)(request)">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="ТОП-5 самых дорогих казино мира">
+        <meta property="og:image" content="@routes.Assets.at("images/objects/blog/samoe-dorogoe-kazino-anons.jpg").absoluteURL(false)(request)"/>
+        <meta property="og:description" content="Самое дорогое казино в мире: пять самых известных и роскошных игорных заведений, о которых Вы должны знать">
+        <meta property="og:site_name" content="Royal Casino SPA and Hotel Resort">
+        @*<meta property="article:author" content="https://www.facebook.com/NCerminara">*@
+        <meta property="article:publisher" content="https://www.facebook.com/rigaroyal">
+
+        <!-- G++ -->
+        <meta itemprop="name" content="ТОП-5 самых дорогих казино мира">
+        <meta itemprop="description" content="Самое дорогое казино в мире: пять самых известных и роскошных игорных заведений, о которых Вы должны знать">
+        <meta itemprop="image" content="@routes.Assets.at("images/objects/blog/samoe-dorogoe-kazino-anons.jpg").absoluteURL(false)(request)">
+
+        @article1links()
+    </head>
+    <body class="mainpage casino-page">
+            <!--[if lt IE 7]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headermini("Luxury-отель в Риге. Роскошь в деталях")
+
+            <section class="objects-casino-blog">
+
+                <div class="container">
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li><a href="@routes.ObjectPages.casinoMain()">Казино</a></li>
+                            <li><a href="@routes.ObjectPages.casinoArticlesMain()">Статьи</a></li>
+                            <li class="currentpage">5 самых дорогих казино</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container">
+
+                        <h1 class="casino-blog__header"><span class="f-size1-7">ТОП-5</span> самых дорогих казино мира: игра по-крупному</h1>
+                        <hr class="objects-delimeter objects-delimeter--mini">
+                        <p class="casino-blog__synopsis">Вы знали о том, что каждый год казино может приносить госбюджету 5-15% доходности? Безусловно, прибыли без затрат не бывает, и многие игорные заведения идут на отчаянные шаги ради новых посетителей. Стоимость проектов порой превышает разумные рамки — а все потому, что каждому казино хочется «перещеголять» соседнее.
+                        <br/><br/>И теперь в Лас-Вегасе мы можем встретить собственную Эйфелеву башню и аналог пирамид, а Макао и Сингапур готов покорить вас невиданными развлечениями прямо у игровых комплексов. О рекордсменах этого направления мы и расскажем в нашей статье.</p>
+
+                        <div class="casino-blog__social">
+
+                        </div>
+
+                        <section class="casino-blog__default">
+
+                            <div class="casino-blog__default__number-wrapper">
+                                <span id="number1" class="casino-blog__default__number"><p>1</p></span>
+                            </div>
+
+                            <div class="flag flag-wrapper">
+                                <div class="flag-left flag__body">
+                                    <p class="casino-blog__description">Пальму первенства можно смело отдать знаменитому <span class="strong">City Center Las Vegas</span> — это самое дорогое казино в мире на данный момент. Масштабный комплекс отстраивался более трех лет и потребовал немалых затрат — около 8,5 миллиардов долларов. Здесь довольно просторная территория (более 300 тыс.кв.м) и целый игорный город в огромном мегаполисе под названием Вегас. Торговые центры и супермаркеты, казино и отели… Инфраструктура, цель которой — получать ваши несметные богатства. </p>
+                                </div>
+                                <div class="flag-right flag__image">
+                                    <img src="@routes.Assets.at("images/objects/blog/kazino-tur-city-center-lasvegas.jpg")" id="img1" class="casino-blog__img" alt="Самое дорогое казино City Center Vegas">
+                                </div>
+                            </div>
+
+                        </section>
+
+                </div>
+
+                <section class="casino-blog__default casino-blog__bg lazy" data-src="../assets/images/objects/blog/kazino-tur-marina-bay-sands.jpg">
+
+                    <div class="casino-blog__bg__content">
+                        <div class="container">
+                            <div class="casino-blog__default__number-wrapper">
+                                <span id="number2" class="casino-blog__default__number"><p>2</p></span>
+                            </div>
+
+                            <p class="casino-blog__description">Сингапурский комплекс <strong>Marina Bay Sands</strong>, открытый еще в 2011 году, занимает вторую позицию нашего рейтинга среди пяти самых дорогих казино мира. Из шикарных игорных залов вы попадаете в одни из 2500 элитных апартаментов, местный музей или театр, ресторан или торгово-выставочный центр. Многие кутилы едут сюда, чтобы восхититься популярнейшим SkyPark. </p>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="casino-blog__default casino-blog__bg casino-blog__bg--pad lazy" data-src="../assets/images/objects/blog/kazino-tur-resorts-world-sentosa.jpg">
+
+                    <div class="casino-blog__bg__content">
+                        <div class="container">
+                            <div class="casino-blog__default__number-wrapper">
+                                <span id="number3" class="casino-blog__default__number"><p>3</p></span>
+                            </div>
+
+                            <p class="casino-blog__description">Третье место законно занимает грандиозный <strong>Resorts World Sentosa</strong> того же государства, уютно разместившийся на островке. Включая шестерку наилучших отелей и спа-центр, парк аттракционов и крупнейший на всей планете океанариум, комплекс привлекает и своим маститым казино, в котором ежедневно оставляют баснословные суммы. </p>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="casino-blog__cta">
+                        <div class="container">
+                            <div class="casino-cta__left">
+                                <h3 class="casino-blog__cta__header">Почувствуйте истинный вкус азарта в одном из лучших казино СНГ<br/><strong>Royal Casino SPA&Hotel Resort</strong></h3>
+                                <div class="casino-blog__cta__content">
+                                    <a href="@routes.ObjectPages.casinoMain()" class="casino-blog__cta__button button-flat--white"><span>Подробнее</span></a>
+                                    <p class="casino-blog__cta__why">Узнайте все о лучшем казино Риги, ознакомьтесь с отзывами игроков.</p>
+                                </div>
+                            </div>
+
+                            <div class="casino-cta__logo">
+                                <a href="@routes.ObjectPages.casinoMain()">
+                                    <img src="@routes.Assets.at("images/objects/blog/riga-royal-logo-bg.png")" alt="Казино Риги Royal Casino">
+                                </a>
+                            </div>
+                        </div>
+                </section>
+
+                <div class="container">
+
+                    <section class="casino-blog__default">
+
+                        <div class="casino-blog__default__number-wrapper">
+                            <span id="number4" class="casino-blog__default__number"><p>4</p></span>
+                        </div>
+
+                        <div class="flag flag-wrapper">
+                            <div class="flag-left flag__image">
+                                <img src="@routes.Assets.at("images/objects/blog/kazino-tur-wynn-las-vegas.jpg")" id="img2" class="casino-blog__img" alt="Дорогое казино мира Wynn Vegas">
+                            </div>
+                            <div class="flag-right flag__body">
+                                <p class="casino-blog__description">Четвертым самым дорогим казино мира по праву считают <strong>Wynn Las Vegas</strong> на знаменитой Лас-Вегас стрип с ночным клубом и водопадом внутри него. Здесь разместился отель компании Wynn Resorts, названный в честь большого человека в игровом бизнесе и знаменитого миллиардера Стива Винна. Комплекс считают первым в городе, включившим в свой состав дилерские центры Мазератти и Феррари. </p>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <hr class="objects-delimeter">
+
+                    <section class="casino-blog__default">
+
+                        <div class="casino-blog__default__number-wrapper">
+                            <span id="number5" class="casino-blog__default__number"><p>5</p></span>
+                        </div>
+
+                        <div class="flag flag-wrapper">
+                            <div class="flag-left flag__body">
+                                <p class="casino-blog__description">И последним в нашем рейтинге считается <strong>Venetion Macao</strong> с наибольшим на свете казино — более 50 тыс.кв.м! Корпорация Las Vegas Sands владеет комплексом и заботится не только о его доходности, но и эстетике: лучшее казино Макао выполнено в венецианском стиле и включает отель с каналами, вдоль которых проплывают настоящие гондольеры.  </p>
+                            </div>
+                            <div class="flag-right flag__image">
+                                <img src="@routes.Assets.at("images/objects/blog/kazino-venetion-macao.jpg")" id="img3" class="casino-blog__img" alt="Дорогие казино Venetion Macao">
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <div class="casino-blog__social">
+                        <h3 class="casino-blog__social__header casino-blog__header">Пожалуйста, поделитесь этой статьей</h3>
+                        <!-- AddThis Button BEGIN -->
+                        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                            <a class="addthis_button_vk"></a>
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" tw:url="@routes.ObjectPages.casinoArticles("samoe-dorogoe-kazino").absoluteURL(false)(request)"></a>
+                            <a class="addthis_button_google_plusone_share"></a>
+                            <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Button END -->
+                    </div>
+
+                </div>
+
+            </section>
+            @elements.footer()
+        </div>
+        @article1scripts()
+    </body>
+</html>

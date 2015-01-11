@@ -1,0 +1,175 @@
+@* CASINO PAGE *@
+@(title: String)(implicit callbackForm: Form[CallBack], subscribeForm : Form[SubscribeForm], info: Info, request: play.api.mvc.Request[Any])
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- SEARCH ENGINES -->
+        <meta name="author" content="Royal Casino Riga">
+        <meta name="description" content="Самый крупный выигрыш в казино за всю историю существования игорных домов. Как стать миллионером за один вечер">
+
+        <!-- THE TWITTER MACHINE -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@Html("@rigaroyal")">
+        <meta name="twitter:creator" content="@Html("@rigaroyal")">
+        <meta name="twitter:title" content="Самый крупный выигрыш в казино: как разбогатеть за один вечер">
+        <meta name="twitter:description" content="Самый крупный выигрыш в казино за всю историю существования игорных домов. Как стать миллионером за один вечер">
+        <meta name="twitter:image:src" content="@routes.Assets.at("images/objects/blog/vigrish-v-kazino-anons-royal-casino.jpg").absoluteURL(false)(request)">
+
+        <!-- FACESPACE -->
+        @*<meta property="fb:admins" content="579622216,709634581">
+        <meta property="fb:app_id" content="1389892087910588">*@
+        <meta property="og:url" content="@routes.ObjectPages.casinoArticles("vigrish-v-kazino").absoluteURL(false)(request)">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Самый крупный выигрыш в казино: как разбогатеть за один вечер">
+        <meta property="og:image" content="@routes.Assets.at("images/objects/blog/vigrish-v-kazino-anons-royal-casino.jpg").absoluteURL(false)(request)">
+        <meta property="og:description" content="Самый крупный выигрыш в казино за всю историю существования игорных домов. Как стать миллионером за один вечер">
+        <meta property="og:site_name" content="Royal Casino SPA and Hotel Resort">
+        @*<meta property="article:author" content="https://www.facebook.com/NCerminara">*@
+        <meta property="article:publisher" content="https://www.facebook.com/rigaroyal">
+
+        <!-- G++ -->
+        <meta itemprop="name" content="Самый крупный выигрыш в казино: как разбогатеть за один вечер">
+        <meta itemprop="description" content="Самый крупный выигрыш в казино за всю историю существования игорных домов. Как стать миллионером за один вечер">
+        <meta itemprop="image" content="@routes.Assets.at("images/objects/blog/vigrish-v-kazino-anons-royal-casino.jpg").absoluteURL(false)(request)">
+
+        @article2links()
+    </head>
+    <body class="mainpage casino-page">
+            <!--[if lt IE 7]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headermini("Luxury-отель в Риге. Роскошь в деталях")
+
+            <section class="objects-casino-blog">
+
+                <div class="container">
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li><a href="@routes.ObjectPages.casinoMain()">Казино</a></li>
+                            <li><a href="@routes.ObjectPages.casinoArticlesMain()">Статьи</a></li>
+                            <li class="currentpage">Самый крупный выигрыш</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container">
+
+                        <h1 class="casino-blog__header"><span class="f-size1-7">С</span>амый крупный выигрыш в казино: история одного счастливчика</h1>
+                        <hr class="objects-delimeter objects-delimeter--mini">
+                        <p class="casino-blog__synopsis">Попытать счастье за колесом рулетки или игрой блэкджэк сегодня великое множество, и все они льнут к знаменитым казино Монте-Карло, Лас-Вегаса и Лос-Анджелеса. Столицы азарта даруют своим следователям немалые выигрыши, о которых говорят во всеуслышание, и ущербные проигрыши, о которых предпочитают молчать.
+                            <br/><br/>Кому же из всех фортуна улыбается шире? Ведь известно, что везет чаще именно новичкам, а любителям рискнуть на голову чаще сваливались суммы головокружительных размеров, нежели тем, кто проводил за игорным столом сутками. Давайте поговорим о везунчиках и их «добычах»..</p>
+
+                        <div class="casino-blog__social">
+
+                        </div>
+
+                        <section class="casino-blog__default">
+
+                            <div class="flag flag-wrapper">
+                                <div class="flag-left flag__body">
+                                    <h2 class="casino-blog__head">Просто, как дважды два</h2>
+                                    <p class="casino-blog__description">Интересной рисуется история Эшли Ревелла из Лондона, который отчаянно отправился в Лас-Вегас со <span class="strong">135,500$</span> в кошельке. Для этого ему потребовалось продать вещи и дом, а при входе в казино поставить на красное все, что он имел. Что же произошло? Он удвоил свое богатство после нескольких мгновений нервного ожидания и попадания шарика на красную семерку рулетки. Логика и здравый смысл подсказали Ревеллу довольствоваться выигрышем в казино, не делая больше ни ставки. </p>
+                                </div>
+                                <div class="flag-right flag__image">
+                                    <div class="casino-blog__img-wrapper">
+                                        <a href="http://www.youtube.com/watch?v=zGCdBsOIKYA" class="popup-youtube casino-promo__video__button button-flat button-flat--white button-flat--bgdark">
+                                            <span>Смотреть видео</span>
+                                        </a>
+                                        <img src="@routes.Assets.at("images/objects/blog/ashley-revall-casino-riga.jpg")" id="img1" class="casino-blog__img" alt="Крупный выигрыш в казино Эшли">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+
+                        <hr class="objects-delimeter">
+
+                    <section class="casino-blog__default">
+
+                        <div class="flag flag-wrapper">
+                            <div class="flag-left flag__image">
+                                <div class="casino-blog__img-wrapper">
+                                    <a href="http://www.youtube.com/watch?v=Llj-PoiVJiU" class="popup-youtube casino-promo__video__button button-flat button-flat--white button-flat--bgdark">
+                                        <span>Смотреть видео</span>
+                                    </a>
+                                    <img src="@routes.Assets.at("images/objects/blog/elmer-sherwin-las-vegas.jpg")" id="img2" class="casino-blog__img" alt="Выигрыш Элмера Шервина (Elmer Sherwin) в казино">
+                                </div>
+                            </div>
+                            <div class="flag-right flag__body">
+                                <h2 class="casino-blog__head">Сорвать куш и уйти без оглядки</h2>
+                                <p class="casino-blog__description">Элмер Шервин выиграл за жизнь <span class="strong">26 миллионов долларов</span>, однако это включало всего два сорванных джекпота. Крупный выигрыш в казино ему впервые перепал в 1989 году, а спустя 16 лет любимец фортуны повторил свой успех. Другой знаменательной победой стал денежный куш для жителя американской столицы Ральфа Р., который помимо джекпота в 320 449 долларов получил в придачу в этот день еще и сына.  </p>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+
+                <section class="casino-blog__cta">
+                        <div class="container">
+                            <div class="casino-cta__left">
+                                <h3 class="casino-blog__cta__header">Почувствуйте истинный вкус азарта в одном из лучших казино СНГ<br/><strong>Royal Casino SPA&Hotel Resort</strong></h3>
+                                <div class="casino-blog__cta__content">
+                                    <a href="@routes.ObjectPages.casinoMain()" class="casino-blog__cta__button button-flat--white"><span>Подробнее</span></a>
+                                    <p class="casino-blog__cta__why">Узнайте все о лучшем казино Риги, ознакомьтесь с отзывами игроков.</p>
+                                </div>
+                            </div>
+
+                            <div class="casino-cta__logo">
+                                <a href="@routes.ObjectPages.casinoMain()">
+                                    <img src="@routes.Assets.at("images/objects/blog/riga-royal-logo-bg.png")" alt="Казино Риги Royal Casino">
+                                </a>
+                            </div>
+                        </div>
+                </section>
+
+                <div class="container">
+
+                    <section class="casino-blog__default">
+
+                        <div class="flag flag-wrapper">
+                            <div class="flag-left flag__body">
+                                <h2 class="casino-blog__head">Шанс всей жизни или провал судьбы?</h2>
+                                <p class="casino-blog__description">Пожалуй, самый крупный выигрыш случился с 25-летним инкогнито — спортсменом баскетбольной команды, который решил прогуляться по Лас-Вегасу перед соревнованиями и… в итоге получить практически <span class="strong">40 миллионов долларов</span>! Ученые выяснили, а практика подтвердила: немалый процент выигрыша в казино приходится на случаи, когда игрок не владеет какой-либо выверенной стратегией, а действует наудачу. Ну и не следует чересчур рисковать: к примеру, Керри Паркер, выигравший 20 миллионов долларов в 1997 году, проиграл через пару лет аж 28. </p>
+                            </div>
+                            <div class="flag-right flag__image">
+                                <img src="@routes.Assets.at("images/objects/blog/win-or-loose-riga-casino.jpg")" id="img3" class="casino-blog__img" alt="Один из крупнейших выигрышей в казино">
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <div class="casino-blog__social">
+                        <h3 class="casino-blog__social__header casino-blog__header">Пожалуйста, поделитесь этой статьей</h3>
+                        <!-- AddThis Button BEGIN -->
+                        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                            <a class="addthis_button_vk"></a>
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" tw:url="@routes.ObjectPages.casinoArticles("samoe-dorogoe-kazino").absoluteURL(false)(request)"></a>
+                            <a class="addthis_button_google_plusone_share"></a>
+                            <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Button END -->
+                    </div>
+
+                </div>
+
+            </section>
+            @elements.footer()
+        </div>
+        @article2scripts()
+    </body>
+</html>

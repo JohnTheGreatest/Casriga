@@ -1,0 +1,43 @@
+
+@objects.casino.blog.blogscripts()
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var img1 = $("#img1");
+        var img2 = $("#img2");
+        var img3 = $("#img3");
+
+        $('.popup-youtube').magnificPopup({
+            disableOn: 700,
+            type: 'iframe',
+            mainClass: 'mfp-fade',
+            removalDelay: 160,
+            preloader: false,
+            fixedContentPos: false
+        });
+
+        window.onscroll = function(e){
+
+            if(!img1.hasClass("watched")) {
+                if(isInLoadableArea(img1)) {
+                    setTimeout(function() {
+                    img1.css({'opacity': 1});
+                    img1.addClass("animated rollIn watched");
+                }, 500);
+                }
+            }
+
+        }
+
+        function isInLoadableArea(elem) {
+            var top = $(window).scrollTop();
+            var bot = top + $(window).height();
+            var elementTop = $(elem).offset().top;
+            var elementBottom = elementTop + $(elem).height();
+
+            return ((elementBottom >= top) && (elementTop <= bot)
+            || (elementBottom <= bot) && (elementTop >= top) );
+        }
+
+    });
+</script>

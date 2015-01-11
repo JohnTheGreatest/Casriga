@@ -1,0 +1,94 @@
+@(dateIn: Option[String], dateOut: Option[String], people: Option[String])
+
+<section class="fortune-wheel">
+
+        <div class="container">
+
+            <div class="fortune-wheel__booking">
+                <form method="POST" action="@routes.Booking.step1save()">
+
+                    <div class="fortune-wheel__booking__datein">
+                        <div class="frmlabel frmcart">Дата заезда</div>
+                        <div id="datepicker1-main">
+                            <input id="datepicker1-text" type="text" name="checkin" class="frmtxt calender" placeholder="18 июня" />
+                        </div>
+                    </div>
+
+                    <div class="fortune-wheel__booking__dateout">
+                        <div class="frmlabel frmsmily">Дата выезда</div>
+                        <div id="datepicker2-main">
+                            <input id="datepicker2-text" type="text" name="checkout" class="frmtxt calender" placeholder="22 июня" />
+                        </div>
+                    </div>
+
+                    <div class="fortune-wheel__booking__people">
+                        <div class="frmlabel">Количество человек</div>
+                        <input id="peoplePicker" type="text" name="people" class="frmtxt frmtxtmini" value=@people.getOrElse("2") />
+                    </div>
+
+
+                    <div class="fortune-wheel__booking__btn">
+                        <input id="booking-button" type="submit" name="submit" class="frmbut" value="Забронировать" />
+                    </div>
+                </form>
+            </div>
+
+            <div id="headline2" class="fortune-wheel__booking__header">
+                <h2>Везет ли Вам? Получите 1 из 24 специальных призов.<br/><span class="strong f-size1-7">Крутите колесо!</span></h2>
+                <span class="wheel-arrow"></span>
+            </div>
+
+            <div id="congratsBlock" class="fw-modal">
+                <p class="fw-modal__congrats__content f-size1-7">Поздравляем!<br/>Вы выиграли:<br/><span class="prizeName f-size1"></span><p>
+                <p class="prizeInfo smallertext"></p>
+                <p>Инструкцию и секретный код мы пришлем Вам на электронный адрес:</p>
+                <form class="wheel-form mtop20 to-hide" name="congratsForm" novalidate>
+                    <div class="preloader">
+                        <div class="bubblingG">
+                            <span class="bubblingG_1">
+                            </span>
+                            <span class="bubblingG_2">
+                            </span>
+                            <span class="bubblingG_3">
+                            </span>
+                        </div>
+                    </div>
+                    <input class="newstxt" type="email" required="" name="email" placeholder="Ваш адрес">
+                    <input class="newsbut btn-congrats" type="submit" name="submit" value="">
+                </form>
+                <div class="booking-thankyou">
+                    <div class="booking-step4-form flag">
+                        <img class="flag__image" src="@routes.Assets.at("images/thankyou-boy.png")" alt="Thank you from all of Royal Casino SPA&Hotel Resort Team" />
+                        <p class="flag__body">Большое вам спасибо за то, что приняли участие в игре вместе с Royal Casino SPA&amp;Hotel Resort.<br/><br/>
+                            Мы отправили на вашу почту письмо подробными инструкциями по активации приза. Ознакомьтесь пожалуйста и <b>до скорой встречи!</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="secondTryBlock" class="fw-modal">
+                <h3 id="secondTryText">Не переживайте, все еще впереди!</h3>
+                <p class="mtop20">В качестве исключения, мы даем Вам возможность еще раз испытать удачу! Просто введите ваш электронный адрес и начните крутить колесо снова</p>
+                <form class="mtop20 wheel-form" name="secondTryForm" novalidate>
+                    <input class="newstxt" type="email" name="email" placeholder="Ваш адрес">
+                    <button class="newsbut btn-try" type="submit" name="submit" value=""></button>
+                </form>
+                <div class="booking-thankyou">
+                    <div class="booking-step4-form flag">
+                        <img class="flag__image" src="@routes.Assets.at("images/thankyou-boy.png")" alt="Thank you from all of Royal Casino SPA&Hotel Resort Team" />
+                        <p class="flag__body">Большое вам спасибо за то, что приняли участие в игре вместе с Royal Casino SPA&amp;Hotel Resort.<br/><br/>
+                            Мы отправили на вашу почту письмо подробными инструкциями по активации приза. Ознакомьтесь пожалуйста и <b>до скорой встречи!</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="byeBlock" class="fw-modal">
+                <p>Попробуйте пожалуйста через несколько часов ;) Или... звоните нам: мы подберем вам замечательный отдых и предложим хорошую скидку</p>
+            </div>
+
+            <div id="wheel">
+                <h2 class="headline"></h2>
+            </div>
+
+        </div>
+
+</section>

@@ -1,0 +1,111 @@
+@()(implicit info:Info, subscribeForm: Form[SubscribeForm], request: play.api.mvc.Request[Any])
+
+<footer>
+    <div class="container">
+        <div class="purple_pattern">
+            <div class="footerbut">
+
+                <div class="footerbut_question">
+                    <a href="@routes.Contacts.index()" class="footerbut_left"></a>
+                    <a href="@routes.Contacts.index()" class="footerbut_left_content">Задать вопрос</a>
+                    <p>Ответим в течение 1 часа в<br /> рабочее время</p>
+                </div>
+                <div class="footerbut_tel">
+                    <a href="#callback-form" class="footerbut_center"></a>
+                    <p>@info.telRussia</p>
+                    <a href="#callback-form" class="footermobile">Мы перезвоним</a>
+                </div>
+                <div class="footerbut_book">
+                    <a href="@routes.Booking.step1()" class="footerbut_right"></a>
+                    <a href="@routes.Booking.step1()" class="footerbut_right_content">Забронируйте</a>
+                    <p>номер в одном из лучших<br /> отелей Риги</p>
+                </div>
+
+            </div>
+
+            <div class="clear"></div>
+
+            <hr class="purplehr" style="width:85%" />
+
+                <div class="footermenu">
+                    <ul>
+                        <li><a href="@routes.Application.index()">Главная</a></li>
+                        <li><a href="@routes.RoomController.rooms()">Номера</a></li>
+                        <li><a href="@routes.Booking.step1()">Бронирование</a></li>
+                        <li><a href="@routes.ObjectPages.casinoMain()">Услуги</a></li>
+                        <li><a href="@routes.Offers.offer("wedding")">Акции</a></li>
+                        <li><a href="@routes.Contacts.index()">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="newsletterdiv">
+                    <div class="newsletterfrm">
+
+                        <div class="preloader preloader-subscribe">
+                            <div class="bubblingG">
+                                <span class="bubblingG_1">
+                                    </span>
+                                <span class="bubblingG_2">
+                                    </span>
+                                <span class="bubblingG_3">
+                                    </span>
+                            </div>
+                        </div>
+
+                        <div class="booking-thankyou-subscribe">
+                            <div class="booking-step4-form">
+                                <p>Спасибо за подписку от всего коллектива Royal Casino SPA &amp; Hotel Resort
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 class="to-hide-subscribe">Узнавайте об акциях первыми</h3>
+
+                        @helper.form(action = routes.Application.sendSubscribe(), args = 'id -> "subscribe-form", 'class -> "to-hide-subscribe") {
+
+                            @subscribeForm.globalError.map { error =>
+                                <p>
+                                    @error.message
+                                </p>
+                            }
+
+                            <fieldset style="border:0">
+
+                                <div class="clear"></div>
+
+                                @helper.inputText(subscribeForm("email"),
+                                    '_label -> "",
+                                    'placeholder -> "Введите адрес почты",
+                                    'type -> "email",
+                                    '_help -> "",
+                                    'class -> "newstxt",
+                                    'required -> ""
+                                )
+
+                                <button class="newsbut" type="submit" value=""></button>
+
+                                <div class="clear"></div>
+
+                                <input name="url" type="hidden" value="@request.uri">
+
+                            </fieldset>
+                        }
+
+                        </div>
+                    </div>
+
+                    @*<div class="socialicons">
+                        <img src="@routes.Assets.at("images/footer_social.png")" alt="footer_social" />
+                    </div>*@
+
+                    <div class="clear"></div>
+
+                    <hr class="purplehr" style="width:80%" />
+                    <div  style="text-align:center" class="footerlogo">
+                        <a href="@routes.Application.index()">
+                            <img src="@routes.Assets.at("images/footer_logo.png")" alt="Royal Casino SPA and Hotel Resort" />
+                        </a>
+                    </div>
+                </div>
+        </div>
+</footer>

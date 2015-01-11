@@ -1,0 +1,8 @@
+﻿User-Agent: *
+Disallow: /booking/step2
+Disallow: /booking/step3
+Disallow: /booking/step4
+
+Host:  www.riga-royal.ru
+Sitemap: http://www.riga-royal.ru/sitemap.xml
+

@@ -1,0 +1,39 @@
+/* LayerSlider No Skin */
+
+
+
+.ls-noskin {
+}
+
+.ls-defaultskin .ls-bottom-nav-wrapper {
+	display: none;
+}
+
+.ls-defaultskin .ls-nav-sides,
+.ls-defaultskin .ls-bottom-slidebuttons a,
+.ls-defaultskin .ls-nav-prev,
+.ls-defaultskin .ls-nav-next,
+.ls-defaultskin .ls-nav-start,
+.ls-defaultskin .ls-nav-stop {
+	display: none;
+}
+
+
+.ls-defaultskin .ls-nav-prev,
+.ls-defaultskin .ls-nav-next {
+	width: 27px;
+	height: 75px;
+	z-index: 10000;
+	top: 50%;
+	margin-top: -37px;	
+	position: absolute;
+	display:block;
+}
+
+.ls-defaultskin .ls-nav-prev {
+	left: 5px;	
+}
+
+.ls-defaultskin .ls-nav-next {
+	right: 5px;	
+}

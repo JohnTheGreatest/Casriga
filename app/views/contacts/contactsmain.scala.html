@@ -1,0 +1,161 @@
+@* OFFERS: WEDDING *@
+@(title: String)(implicit callbackForm: Form[CallBack], contactsForm: Form[ContactsForm], subscribeForm : Form[SubscribeForm], info: Info, request: play.api.mvc.Request[Any], session: play.api.db.slick.Config.driver.simple.Session)
+@import helper._
+
+<!DOCTYPE html>
+
+@import models.Currencys
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Riga Rooms">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @contactslinks()
+    </head>
+    <body class="mainpage offers-page">
+            <!--[if lt IE 7]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headermini(info.sloganMain)
+
+            <section class="contacts">
+
+                <div class="container">
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li class="currentpage">Контакты</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container bg-white">
+
+                    <div class="contacts-content">
+
+                        <div class="casino-header">
+                            <h2 class="casino-header__main">На связи 24 часа в сутки, каждый день</h2>
+                            <hr class="objects-delimeter objects-delimeter--mini">
+                        </div>
+
+                        <div class="flag">
+
+                            <div class="contacts-address flag__body">
+
+                                <p class="contacts-address__header">Рига, Тербатас 73</p>
+
+                                <div class="casino-contacts">
+
+                                    <div class="casino-contacts__tel">
+                                        <span class="icon-phone-callback2"></span>
+                                        <ul>
+                                            <li>
+                                                <p>Россия: @info.telRussia</p>
+                                            </li>
+                                            <li>
+                                                <p>Рига: @info.telRiga</p>
+                                            </li>
+                                        </ul>
+                                        <a href="#callback-form" class="casino-contacts__callback">Мы перезвоним</a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="contacts-form flag__body booking-step4-content">
+
+                                <div class="booking-step4-form">
+
+                                @helper.form(action = routes.Contacts.send(), args = 'id -> "contacts-form") {
+
+                                    @contactsForm.globalError.map { error =>
+                                        <p>
+                                            @error.message
+                                        </p>
+                                    }
+
+                                    <fieldset style="border:0">
+
+                                        @helper.inputText(contactsForm("name"),
+                                            '_label -> "",
+                                            'placeholder -> "Как вас зовут?",
+                                            'type -> "text",
+                                            '_help -> "",
+                                            'class -> "human",
+                                            'required -> ""
+                                        )
+
+                                        @helper.inputText(contactsForm("email"),
+                                            '_label -> "",
+                                            'placeholder -> "Ваш электронный адрес",
+                                            'type -> "email",
+                                            '_help -> "",
+                                            'class -> "mail",
+                                            'required -> ""
+                                        )
+
+                                        @helper.textarea(contactsForm("question"),
+                                            '_label -> "",
+                                            'placeholder -> "Ваш вопрос",
+                                            'type -> "text",
+                                            '_help -> "",
+                                            'required -> ""
+                                        )
+
+                                    </fieldset>
+
+                                </div>
+
+                                <div class="clear"></div>
+
+                                <div class="booking-thankyou">
+                                    <div class="booking-step4-form">
+                                        <p>Мы ответим в течение нескольких часов.<br/><br/>
+                                            Оставайтесь всегда на связи вместе с <strong>Royal Casino SPA&Hotel Resort</strong>!
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="booking-step4-form text-center">
+                                    <div class="preloader">
+                                        <div class="bubblingG">
+                                            <span class="bubblingG_1">
+                                            </span>
+                                            <span class="bubblingG_2">
+                                            </span>
+                                            <span class="bubblingG_3">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <button class="button button-3d-action bookingform-btn to-hide" type="submit" value="Забронировать">
+                                        <span>Отправить вопрос</span>
+                                    </button>
+                                </div>
+
+                                }
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div id="contacts-map"></div>
+
+                </div>
+            </section>
+            @elements.footer()
+        </div>
+        @contactsscripts()
+    </body>
+</html>

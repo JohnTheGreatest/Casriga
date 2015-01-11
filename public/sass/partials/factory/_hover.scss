@@ -1,0 +1,66 @@
+/* generic css */
+.hover-effect {
+
+  &:hover {
+
+    img {
+      -webkit-transform: scale(10);
+      transform: scale(10);
+      opacity: 0;
+    }
+
+    .mask {
+      opacity: 1;
+
+      span {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    p {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+/*3*/
+
+.hover-effect img {
+  transform: scaleY(1);
+  transition: all .7s ease-in-out;
+}
+
+.hover-effect .mask {
+  background-color: rgba(226, 140, 24, 0.87);
+  transition: all 0.5s linear;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  padding: 20px;
+  vertical-align: middle;
+
+  span {
+    display: inline-block;
+    margin-top: 20px;
+    color: #ffffff;
+    padding: 10px 30px;
+    background-color: transparent;
+    border: 3px solid #ffffff;
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.hover-effect p {
+  display: inline-block;
+  vertical-align: middle;
+  color: #ffffff;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.5s linear;
+  padding: 10px;
+  font-family: parangon-220;
+}

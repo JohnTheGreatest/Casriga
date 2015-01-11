@@ -1,0 +1,52 @@
+@elements.mainscripts()
+
+<script type="text/javascript">
+
+    var menu = $('.menudropdown ul');
+
+    $(document).ready(function () {
+
+        $(".menudropdown").hover(function(event){
+            event.stopPropagation();
+            menu.toggleClass('hidden');
+        });
+
+        $(".menudropdown").click(function(event){
+            event.stopPropagation();
+        });
+
+        $(".select-button" ).click(function(e){
+
+            var room = $(this).closest(".step2-roomslist-content").find("h3" ).html();
+            var price = $(this).closest(".step2-roomslist-content").find("#price" ).html();
+
+            //convert to JSON
+            var obj = {};
+
+            obj = {
+                rooms: room,
+                price: price
+            };
+
+            var jsonData = JSON.stringify(obj);
+
+            $.ajax({
+                type: "POST",
+                url: "@routes.Booking.step2save()",
+                dataType: "text",
+                data: jsonData,
+                contentType: "application/json; charset=utf-8"
+                }).done(function ( data ) {
+                    window.location.href = '@routes.Booking.step3()';
+                }).fail(function ( data ) {
+                    alert("Извините, наши серверы временно недоступны. Пожалуйста, оформите заказ по телефону.");
+                });
+            e.preventDefault();
+        });
+
+    });
+
+    $(document).click( function(){
+        menu.addClass('hidden');
+    });
+</script>

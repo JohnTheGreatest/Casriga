@@ -1,0 +1,282 @@
+/* CASINO BLOG */
+
+/*
+<h2 class="casino-blog__header"><span class="f-size3">5</span> самых дорогих казино мира</h2>
+<hr class="objects-delimeter objects-delimeter--mini">
+<p class="casino-blog__synopsis">Вы знали о том, что каждый год казино может приносить госбюджету 5-15% доходности? Безусловно, прибыли без затрат не бывает, и многие игорные заведения идут на отчаянные шаги ради новых посетителей. Стоимость проектов порой превышает разумные рамки — а все потому, что каждому казино хочется «перещеголять» соседнее.
+                    <br/><br/>И теперь в Лас-Вегасе мы можем встретить собственную Эйфелеву башню и аналог пирамид, а Макао и Сингапур готов покорить вас невиданными развлечениями прямо у игровых комплексов. О рекордсменах этого направления мы и расскажем в нашей статье.</p>
+
+<div class="casino-blog__social">
+
+</div>
+
+<section class="casino-blog__default">
+
+<span class="casino-blog__default__number">1</span>
+<p></p>
+
+</section>*/
+
+.objects-casino-blog {
+  background-color: #ffffff;
+  padding-bottom: 30px;
+
+  .flag {
+
+    display: block;
+
+    @include MQ(M) {
+      display: table;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .flag__image {
+    text-align: center;
+  }
+
+  #img1 {
+    .cssanimations & {
+      opacity: 0;
+    }
+  }
+
+  #number1, #number2, #number3, #number4, #number5 {
+    .cssanimations & {
+      opacity: 0;
+    }
+  }
+
+  .addthis_toolbox {
+    margin-top: 30px;
+  }
+
+  .casino-promo__video__button {
+    z-index: 1000;
+  }
+
+}
+
+.casino-blog__header {
+  font-family: Georgia, daysregularfont;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.casino-blog__synopsis {
+  font-style: italic;
+  font-size: 1.1em;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.casino-blog__default {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.casino-blog__default__number-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.casino-blog__default__number {
+  display: inline-block;
+  @extend %inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  margin-bottom: 30px;
+
+  background-color: #98b635;
+  @include border-radius(100px);
+
+  p {
+    color: #ffffff;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: daysregularfont, Georgia;
+    font-size: 2em;
+    line-height: 1.5em;
+  }
+}
+
+.casino-blog__description {
+
+}
+
+.casino-blog__img {
+  @extend %center-block;
+  @include border-radius(10px);
+  max-height: 300px;
+  max-width: 100%;
+}
+
+.casino-blog__bg {
+  position: relative;
+  @include pie-clearfix();
+
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include MQ(L) {
+    min-height: 400px;
+  }
+}
+
+.casino-blog__bg__img-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.casino-blog__bg__img {
+  width: 100%;
+}
+
+.casino-blog__bg__content {
+
+  .casino-blog__description {
+    color: #ffffff;
+    font-size: 1em;
+    padding: 20px;
+    background-color: rgba(black, .47);
+  }
+
+  & .bg-darker {
+    background-color: rgba(black, .67);
+  }
+
+  @include text-shadow(rgba(black, 0.5) 0px 1px 3px);
+  text-align: center;
+}
+
+.casino-blog__bg--pad {
+  padding-top: 300px;
+  background-position: center center;
+
+  .casino-blog__description {
+    background-color: rgba(black, .67);
+  }
+}
+
+.casino-blog__cta {
+  background: image-url('pattern/purple_pattern_light_1.png',false,false) repeat;
+  overflow: hidden;
+  position: relative;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.casino-blog__cta__button {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+  color: #ffffff;
+  @extend %center-block;
+  @include transition(all 0.5s ease);
+
+  span {
+    display: block;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  &:hover {
+    background-color: #5e3f6b;
+    border: 3px solid #916aa2;
+  }
+}
+
+.casino-cta__left {
+
+}
+
+.casino-cta__logo {
+  height: 100%;
+  display: block;
+  position: relative;
+  display: none;
+  @include pie-clearfix();
+
+  @include MQ(M) {
+    display: inline;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    @include pie-clearfix();
+    position: absolute;
+    right: -100px;
+    top: 50px;
+
+    @include MQ(L) {
+      right: 0;
+      top: 0;
+    }
+
+    img {
+      max-width: 100%;
+      vertical-align: top;
+    }
+  }
+}
+
+.casino-blog__cta__header {
+  text-align: center;
+  font-family: Georgia, daysregularfont;
+  font-size: 1.5em;
+  color: #ffffff;
+}
+
+.casino-blog__cta__content {
+  text-align: center;
+  color: #ffffff;
+  margin-top: 30px;
+}
+
+.casino-blog__cta__why {
+  margin-top: 20px;
+}
+
+.casino-blog__social {
+  text-align: center;
+}
+
+.casino-blog-main {
+  .news-section__list {
+    li {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.casino-blog__head {
+  font-family: Georgia, daysregularfont;
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+
+.casino-blog__img-wrapper {
+  position: relative;
+  display: inline-block;
+  @extend %inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.casino-blog__bg__header {
+  font-family: daysregularfont;
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+
+

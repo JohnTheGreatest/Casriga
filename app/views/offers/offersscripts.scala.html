@@ -1,0 +1,70 @@
+@()(implicit request: play.api.mvc.Request[Any])
+
+@elements.mainscripts()
+
+<script src="@routes.Assets.at("javascripts/jquery.smoothscroll.js")" type="text/javascript"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="@routes.Assets.at("javascripts/jquery.ui.touch-punch.min.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/ui.datepicker-ru.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/head.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/jquery.countdown/jquery.countdown.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(".smooth-scroll" ).smoothScroll({
+            offset: 0,
+            direction: 'top',
+            scrollTarget: null,
+            easing: 'swing',
+            speed: 800,
+            autoCoefficent: 2
+        });
+
+    var today = new Date();
+    var tomorrow = today.getDate()+1;
+    $('.offer__timer').countdown({until: new Date(2014, 4-1, tomorrow), format: 'HMS'});
+
+    DatepickerInitialize("#datepicker1-main", "#datepicker1-text", "#datepicker2-main", "#datepicker2-text", "#peoplePicker", false, false, false, "#booking-button", false);
+
+    $ ('#offer-form').submit(function(e){
+        e.preventDefault();
+
+        // Preloader
+        $('.to-hide' ).animate({opacity: 0}, 500);
+
+        $('.preloader').css({
+            'display' : 'block',
+            'position' : 'absolute',
+            'left' : '50%',
+            'top' : '50%',
+            'margin-left' : -$('.preloader').width()/2,
+            'margin-top' : -$('.container').height()/2
+        });
+
+        jsRouter.controllers.Offers.send().ajax({
+            type: "POST",
+            data: $("#offer-form" ).serialize(),
+            dataType: "text",
+            success: function(response) {
+                $('.to-hide' ).hide();
+                $('.preloader').hide();
+                $('.booking-thankyou').addClass('animated bounceInLeft');
+                $('.booking-thankyou img').addClass('animated rollIn');
+                $('.booking-thankyou' ).show();
+                setTimeout(function() {
+                    $(".booking-step4-content").hide();
+                }, 10000);
+            },
+            error: function(response) {
+                $('.preloader').hide();
+                alert("Извините, наши серверы временно недоступны. Пожалуйста, позвоните нам по телефону и расскажите о выигрыше.");
+            }
+        });
+
+    });
+
+    });
+
+</script>

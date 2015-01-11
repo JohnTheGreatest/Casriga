@@ -1,0 +1,43 @@
+@(dateIn: Option[String], dateOut: Option[String], people: Option[String])
+
+@elements.mainscripts()
+<script src="@routes.Assets.at("javascripts/jquery.countdown/jquery.countdown.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/layerslider.kreaturamedia.jquery.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/jquery-ui-1.10.4.custom.min.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/jquery.ui.touch-punch.min.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/ui.datepicker-ru.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/head.js")" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+
+            $('.popup-vimeo').magnificPopup({
+                disableOn: 700,
+                type: 'iframe',
+                mainClass: 'mfp-fade',
+                removalDelay: 160,
+                preloader: false,
+                fixedContentPos: false
+            });
+
+				$('#layerslider').layerSlider({
+					skinsPath : '../assets/stylesheets/skins/',
+					globalBGColor : '#333',
+					skin : 'defaultskin',
+					autoStart: false,
+					pauseOnHover : 'false'
+				});
+                var today = new Date();
+                var tomorrow = today.getDate()+1;
+                $('.offer__timer').countdown({until: new Date(2014, 5-1, tomorrow), format: 'HMS'});
+
+                DatepickerInitialize("#datepicker1-main", "#datepicker1-text", "#datepicker2-main", "#datepicker2-text", "#peoplePicker", "@dateIn.getOrElse("")", "@dateOut.getOrElse("")", "@people.getOrElse("")", "#booking-button");
+
+			});
+
+            $(document).on('touchstart', function (event) {
+                if (!$(event.target).closest('.ui-datepicker').length) {
+                $('.ui-datepicker').hide()
+                }
+            });
+		</script>	

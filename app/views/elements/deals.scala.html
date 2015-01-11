@@ -1,0 +1,92 @@
+@()(implicit session: play.api.db.slick.Config.driver.simple.Session)
+@import models.Currencys
+
+<div class="container-metro">
+
+    <div class="offer">
+
+        <div class="box">
+            <div class="box--imgwrapper-offer box--offer-height">
+
+                <div class="offer__info">
+                    <p>Ночь в декорированном <a href="@routes.RoomController.roomPage("venice")">номере Venice</a> или <a href="@routes.RoomController.roomPage("vienna")">Vienna</a>, завтрак в номер, свадебный комплимент, SPA-ритуал для двоих, поздний выезд</p>
+                </div>
+
+                <div class="offer__price">
+                    <span class="offer__price--lthrough">@{710*Math.round(Currencys.first.value)}</span>
+                    <div class="offer__price--box">
+                        <span class="offer__price--normal">@{420*Math.round(Currencys.first.value)}</span>
+                        <span class="ruble-icon"></span>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+                <div class="offer__timer">
+                    <span class="offer__timer--icon"></span>
+                    <p class="offer__timer--hours">11&nbsp;:</p><p class="offer__timer--minutes">&nbsp;11:</p><p class="offer__timer--seconds">&nbsp;11</p>
+                </div>
+
+                <a href="@routes.Offers.offer("wedding")" class="button button-3d-action button-pill offer__btn"><i class="icon-fire"></i><span>Подробнее</span></a>
+
+            </div>
+            <div class="box__snippet box__snippet--top box__snippet--deals">
+                <p>Незабываемая свадебная ночь</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="offer-image">
+
+        <div class="box--imgwrapper-offer-image box--offer-height">
+
+            <a href="@routes.Offers.offer("wedding")" class="button button-flat-primary button-pill offer-image__btn">Все предложения</a>
+
+        </div>
+
+    </div>
+
+    <div class="offer-promise">
+
+        <div class="box--imgwrapper-offer-pattern2 box--offer-height">
+
+            <p>Вот уже более 10 лет мы оказываем высокий уровень услуг в самом центре старинной части города Риги, в шикарном отеле Риги <b>Royal Casino SPA&Hotel Resort</b>.<br/><br/>
+            5-звездочный отель, несколько ночных клубов и ресторанов, спортивный зал, расслабляющие спа-процедуры, казино и многое другое!<br/><br/>
+            Прибавьте к этому высокий европейский уровень обслуживания и у вас не должно остаться сомнений, в каком отеле Риги остановиться и провести свое время.<br/></p>
+
+
+            <div class="offer-promise__rating-wrapper">
+
+                    <a href="http://www.booking.com/hotel/lv/royal-casino-spa-resort.html?aid=330843;lang=ru" rel="nofollow" class="offer-promise__rating leftside">
+                        <div class="offer-promise__rating__logo logo-booking">Royal Casino SPA&Hotel Resort - Booking Отзывы</div>
+                        <div class="offer-promise__rating__info info-booking">
+                            <p>Превосходно 9/10</p>
+                        </div>
+                    </a>
+
+                    <a href="http://www.tripadvisor.ru/Hotel_Review-g274967-d1735349-Reviews-Royal_Casino_Spa_Hotel_Resort-Riga_Riga_Region.html" rel="nofollow" class="offer-promise__rating offer-promise--trip rightside">
+                        <div class="offer-promise__rating__logo logo-trip">Royal Casino SPA&Hotel Resort - TripAdvisor Отзывы</div>
+                        <div class="offer-promise__rating__info info-trip">
+                            <span class="star-trip">
+                                <img src="@routes.Assets.at("images/metro/star-trip.png")" alt="star" />
+                                <img src="@routes.Assets.at("images/metro/star-trip.png")" alt="star" />
+                                <img src="@routes.Assets.at("images/metro/star-trip.png")" alt="star" />
+                                <img src="@routes.Assets.at("images/metro/star-trip.png")" alt="star" />
+                                <img src="@routes.Assets.at("images/metro/star-trip.png")" alt="star" />
+                            </span>
+                            <p>5/5</p>
+                            <div class="clear"></div>
+                        </div>
+                    </a>
+
+                <div class="clear"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+

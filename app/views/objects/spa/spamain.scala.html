@@ -1,0 +1,409 @@
+@* CASINO PAGE *@
+@(title: String)(implicit callbackForm: Form[CallBack], subscribeForm : Form[SubscribeForm], info: Info, request: play.api.mvc.Request[Any])
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Спа отдых в Прибалтике - прекрасный выбор. Европейское качество обслуживания по отечественным ценам">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @spalinks()
+    </head>
+    <body class="mainpage casino-page">
+            <!--[if lt IE 7]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+            @headers.headermini("Спа-салон в Риге", true)
+
+            <section class="objects-casino">
+
+                <div class="container">
+                    <div class="pagebreadcrumb">
+                        <ul>
+                            <li><a href="@routes.Application.index()">Главная</a></li>
+                            <li><a href="">Услуги</a></li>
+                            <li class="currentpage">SPA</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container">
+
+                    <div class="objects-menu">
+                        <ul>
+                            <li><a class="active" href="@routes.ObjectPages.casinoMain()">
+                                <span class="objects-casino-icon"></span>
+                                <p>Казино</p>
+                            </a></li>
+                        </ul>
+                    </div>
+
+                    <section class="casino-content">
+
+                        <div class="casino-header">
+                            <h2 class="casino-header__main">Лучшие специалисты обеспечат Вам отличный спа отдых в Прибалтике.</h2>
+                            <hr class="objects-delimeter objects-delimeter--mini">
+                        </div>
+
+                        <div class="container-metro padding-null">
+
+                            <div class="casino-promo">
+                                <div class="casino-promo__content">
+                                    <div class="table-wrapper">
+                                        <div class="table-block">
+                                            <p>Водоворот азарта и страстей.
+                                                Манящее зеленое сукно игральных столов.
+                                                Сорванный крупный куш и порция адреналина в придачу.<br/><br/>
+                                                Все это начнется специально для вас,
+                                                <b>здесь и сейчас</b>, в элитном рижском
+                                                Royal Casino.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="casino-promo__video">
+                                    <a href="https://vimeo.com/91777959" class="popup-vimeo casino-promo__video__button button-flat button-flat--white button-flat--bgdark">
+                                        <span>Смотреть видео</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div class="menu-flat casino-menu">
+                                <ul>
+                                    <li><a class="smooth-scroll" href="#tours">
+                                            <span class="icon-casino-search"></span>
+                                        <p>Ознакомительный тур</p>
+                                    </a></li>
+                                    <li><a class="smooth-scroll" href="#tours">
+                                        <span class="icon-casino-djanket"></span>
+                                        <p>Джанкет тур</p>
+                                    </a></li>
+                                    <li><a class="smooth-scroll" href="#reviews">
+                                        <span class="icon-casino-comments"></span>
+                                        <p>Отзывы наших игроков</p>
+                                    </a></li>
+                                    <li><a class="smooth-scroll" href="#news">
+                                        <span class="icon-casino-blog"></span>
+                                        <p>Заметки о казино</p>
+                                    </a></li>
+                                    <li><a class="smooth-scroll" href="#cta">
+                                        <span class="icon-casino-booking"></span>
+                                        <p class="white-color">Выберите свой тур</p>
+                                    </a></li>
+                                </ul>
+                            </div>
+
+                            <div class="casino-contacts">
+
+                                <div class="casino-contacts-social">
+                                    <div class="casino-contacts-twitter">
+                                        <a href="https://www.twitter.com/rigaroyal" class="flag">
+                                            <p class="icon-twitter zocial-twitter flag__body"></p>
+                                        </a>
+                                    </div>
+
+                                    <div class="casino-contacts-instagram">
+                                        <a href="" class="flag">
+                                            <p class="casino-contacts-instagram__content flag__body hint hint--left" data-hint="Скоро">Instagram</p>
+                                        </a>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+
+                                <div class="casino-contacts__tel">
+                                    <span class="icon-phone-callback2"></span>
+                                    <ul>
+                                        <li>
+                                            <p>Россия: @info.telRussia</p>
+                                        </li>
+                                        <li>
+                                            <p>Рига: @info.telRigaCasino</p>
+                                        </li>
+                                    </ul>
+                                    <a href="#callback-form" class="casino-contacts__callback">Мы перезвоним</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- What is our journey -->
+
+                        <section class="casino-list">
+                                <div class="casino-list__header">
+                                    <h2>Заказывая туры в казино Royal Casino, вы получаете эксклюзивную гарантию<br/>
+                                        одного из лучших казино СНГ на успех:
+                                    </h2>
+                                </div>
+
+                                <div class="casino-list__content">
+                                    <ul>
+                                        <li>Богатейший выбор одного из <b>12 игровых столов</b></li>
+                                        <li><b>Клубный покер</b> в Риге для баловней судьбы или партия на ставку «Ante» от 5 € до максимума</li>
+                                        <li>Элитарный <b>Black Jack</b> с вариантами ставок от 10 до 1000 € на бокс</li>
+                                        <li><b>Рулетка</b> для любителей красного и черного —
+                                            2-200 € в цифру</li>
+                                        <li>Везунчикам: отдельный роскошный <b>VIP-зал</b> для игр без лимита</li>
+                                    </ul>
+                                </div>
+                            </section>
+
+
+                        <div class="clear"></div>
+
+                            <!-- Choose your casino tour -->
+                        <div class="container">
+                            <h2 class="casino-header__main">Какой из туров предпочтителен для вас?</h2>
+                        </div>
+
+                        <section id="tours" class="casino-choose">
+
+                                <div class="casino-choose-self-wrapper">
+
+                                    <div class="casino-choose-self">
+
+                                        <div class="casino-choose-wrapper">
+                                            <h3 class="casino-choose-self__header">Ознакомительный тур</h3>
+                                            <ul>
+                                                <li>Доверяйте только себе! Прилетайте к нам, чтобы самолично познакомиться с роскошью и азартом, царствующим в Royal Casino.</li>
+                                                <li>Все понравилось? Начинайте играть. Мы оплатим ваш перелет, проживание и вы получите все привелегии наших постоянных игроков.</li>
+                                            </ul>
+
+                                            <a href="#cta" class="casino-choose-self__button button-flat--orange smooth-scroll">
+                                                <span>Оставить заявку</span>
+                                            </a>
+
+                                            <span class="casino-arrow"></span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="casino-choose-djanket">
+                                        <h3 class="casino-choose-self__header">Джанкет тур</h3>
+                                        <p class="casino-choose-djanket-slogan strong">Заказывая фишки на определенную сумму<br/> вы
+                                            <span class="underline strong">бесплатно</span> получайте:</p>
+                                        <ul>
+                                            <li>Перелет туда-обратно (эконом или бизнес-класс) на две персоны</li>
+                                            <li>Личный консъерж</li>
+                                            <li>Трансфер из аэропорта и обратно</li>
+                                            <li>Номер в отеле стоимостью от 500 евро/ночь <a href="@routes.RoomController.rooms()">Посмотреть номера</a></li>
+                                            <li>Бесплатный бар и ресторан казино</li>
+                                            <li>Свободный вход в элитный клуб Studio69, стриптиз Tutti-Frutti для вас и друзей</li>
+                                            <li>1 из 15 дополнительных услуг, которую вы выберете при приезде</li>
+                                        </ul>
+
+                                        <a href="#cta" class="casino-choose-djanket__button button-flat--white smooth-scroll">
+                                            <span>Оставить заявку</span>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                        </section>
+
+                    </section>
+
+                </div>
+
+                <section id="reviews" class="casino-reviews">
+                    <div class="container">
+                        <h2 class="casino-header__main">Отзывы игроков</h2>
+
+                        <div class="casino-reviews__content">
+                            <div data-role='z-tabs' data-options='{"theme": "flat-orange", "style": "pills", "spaced": true,"rounded": false, "bordered": true, "orientation": "vertical"}'>
+                                <ul>
+                                    <li><a>Елена</a></li>
+                                    <li><a>Александр</a></li>
+                                    <li><a>Николай</a></li>
+                                </ul>
+                                <div>
+                                    <div>
+                                        <p>Побывали в двух минских казино, в одном московском. Не сравнить с вашим! Здесь чувствуется какая-то домашняя атмосфера, очень доброжелательные люди вокруг.<br/><br/> Ваше казино одобрено нами по многим причинам: прежде всего, мы любим именно небольшие уютные игровые заведения, а «вокзальный» тип с автоматами терпеть не можем. Потому оцениваю казино Риги на все 10 баллов.</p>
+                                    </div>
+                                    <div
+                                    <p>
+                                        Искренне хотелось бы оставить отзыв о своих приятных впечатлениях на вашей странице, не смог удержаться. А все потому, что в Рояль Казино я встретил невероятно внимательное и чуткое отношение к себе как к человеку и клиенту. Что уж говорить об удивительной обстановке залов, уюте и стиле! Просто невероятно!<br/><br/>
+
+                                        Уже через 10 минут после появления в игровых залах я понял, насколько здесь тепло и радушно встречают каждого гостя. Рояль создал у меня ощущение того, что я — эксклюзивный клиент. И я действительно поверил этому. Представьте только: к моему приезду все в залах уже было подготовлено, хотя я зашел туда совершенно случайно. Теплое, бережное отношение к каждому клиенту. И ты начинаешь чувствовать комфорт в каждой детали, в каждом действии.
+                                            <br/><br/>
+                                        Кроме того, я вовсе не подозревал, что зашел не только в Рояль казино, а в клубы, СПА-салон и даже в отель мирового уровня… Сотрудники заведений детально рассказали обо всех доступных услугах, я обомлел. Как оказалось, здесь есть всё! Одна из сотрудниц по имени Алина абсолютно ненавязчиво предложила мне посетить рижский концерт Лары Фабиан, сделав заказ билета в VIP-зоне. К сожалению, я не смог послушать эту прекрасную музыку, т.к. устал и хотел отдохнуть. Меня приятно удивила приятная забота персонала о моем состоянии и в ту же минуту мне предложили «массаж в четыре руки». И я не смог ускользнуть от этого удовольствия.
+                                            <br/><br/>
+                                        После трехчасовых процедур в несколько рук я был как новенький. Алина побеспокоилась о том, чтобы поселить меня в элитном номере и дать поспать после массажа, деловых визитов. Мне попался номер Дубай, довольно впечатляющий и яркий. После прилета в Ригу мне необходимо было находиться сразу в двух местах…
+                                            <br/><br/>
+                                        К завтраку я проснулся, спустился и начал поиск ресторана или хотя бы захудалого общепита. Мне не пришлось даже успеть растеряться — меня встретили внимательные сотрудницы отеля и предложили целую культурную программу на четверг. Начиная с плотного завтрака в ресторанчике «Дрова» и заканчивая модным клубом 69 ближе к полуночи. Разумеется, резервацией и организацией всех мероприятий для меня они занялись сами, быстро и качественно. Я тогда был настолько восхищен, что не верил такому отношению!
+                                            <br/><br/>
+                                        Думал, что заеду в казино, и всего на несколько часов. А оказалось, что прожил здесь вплоть до субботы. В день отлета для меня предусмотрительно вызвали роскошный Bentley — и я отправился на нем до аэропорта. В Москве я уже спешил поделиться с товарищами своими приятными впечатлениями!
+                                            <br/><br/>
+                                        Я хочу оставить свои благодарности сотрудникам Казино Рояль, профессионалам в руководстве. Отдельный привет и благодарность Алине за заботу. Намерен вскоре снова приехать в казино Риги.
+
+                                    </p>
+                                    </div>
+                                    <div>
+                                        <p>Как-то раз, еще три года назад, я начал изучать покер и немного выигрывать. Успел побывать в Лас-Вегасе, китайском Venetian Macao и итальянском Casino di Venezia. Безусловно, в каждой стране казино прекрасно по-своему. И мне изначально казалось, что Рига ничем меня не удивит, тем более наряду с Италией и Китаем. Я ошибался.<br/><br/> Прежде всего, я встретил город захватывающей красоты. Люди добры и спокойны, атмосфера новогодней сказки. Чудная средневековая архитектура с элементами современности.
+
+                                            Больше всего меня поразило то, что меня встретили уже в аэропорту, как ближайшего родственника. Отель впечатлил богатством номеров, я и в Вегасе подобного не встречал. Причем комфортно и то, что все и сразу — в одном месте! Здесь нашелся и уютный барчик, и стрип-клуб, да и ночной рядышком. Все под одной крышей, с одним уровнем обслуживания — высоким. Мне везде шли навстречу. Так что рекомендую всем Ригу и Рояль как отличное место для элитного отдыха.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                </section>
+
+                <section id="cta" class="casino-cta lazy" data-src="../assets/images/objects/casino-cta.jpg">
+                    <div class="container">
+                        <div class="casino-cta__header">
+                            <h2 class="casino-header__main">Казино туры Royal Casino — это ваши незабываемые прогулки по рижским достопримечательностям и триумфальное шествие по красному и черному.</h2>
+                        </div>
+
+                        <div class="preloader">
+                            <div class="bubblingG">
+                                <span class="bubblingG_1">
+                                </span>
+                                <span class="bubblingG_2">
+                                </span>
+                                <span class="bubblingG_3">
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="booking-thankyou booking-thankyou-casino">
+                            <div class="flag">
+                                <img class="flag__image" src="@routes.Assets.at("images/objects/thankyou-girl.png")" alt="Thank you from all of Royal Casino SPA&Hotel Resort Team" />
+                                <p class="flag__body">Спасибо за заявку!<br/><br/>Мы свяжемся с Вами в самое ближайшее время и обсудим все детали Вашей <b>замечательной поездки</b>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="casino-cta__form to-hide">
+                            @helper.form(action = routes.Application.send(), args = 'id -> "cta-form") {
+
+                                @callbackForm.globalError.map { error =>
+                                    <p>
+                                        @error.message
+                                    </p>
+                                }
+
+                                <fieldset style="border:0; text-align: center;">
+
+                                    @helper.inputText(callbackForm("username"),
+                                        '_label -> "",
+                                        'placeholder -> "Ваше имя",
+                                        '_help -> "",
+                                        'class -> "human",
+                                        'required -> ""
+                                    )
+
+                                    @helper.inputText(callbackForm("tel"),
+                                        '_label -> "",
+                                        'placeholder -> "Ваш телефон",
+                                        'type -> "tel",
+                                        '_help -> "",
+                                        'class -> "phone",
+                                        'required -> ""
+                                    )
+
+                                    <dl class=" " id="url_field">
+                                        <dt><label for="url"></label></dt>
+                                        <dd>
+                                            <input type="hidden" id="url" name="url" value="@request.uri" class="phone" required="">
+                                        </dd>
+                                        <dd class="info"></dd>
+                                    </dl>
+
+                                </fieldset>
+
+                                <button class="casino-cta__button button-flat--white" type="submit" value="Узнать подробности">
+                                    <span>Узнать подробности</span>
+                                </button>
+                            }
+
+                            <p class="casino-cta__helper">Мы созвонимся и обсудим с Вами детали ознакомительного или джанкет-тура.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="news" class="news-section">
+                    <div class="container">
+
+                        <h2 class="news-section__header">Интернесные заметки из мира казино</h2>
+
+                        <ul class="news-section__list">
+                            <li>
+                                <a class="news_section__img hover-effect" href="@routes.ObjectPages.casinoArticles("samoe-dorogoe-kazino")">
+                                    <div class="mask">
+                                        <p>Вы знали о том, что каждый год казино может приносить госбюджету 5-15% доходности? Безусловно, прибыли без затрат не бывает, и многие игорные заведения идут на отчаянные шаги ради новых посетителей. </p>
+                                        <span>Подробнее</span>
+                                    </div>
+                                    <img src="@routes.Assets.at("images/objects/blog/kazino-venetion-macao.jpg")" alt="ТОП-5 самых дорогих казино мира Venetion Macao">
+                                </a>
+                                <div class="news_section__content">
+                                    <h3 class="news_section__header">ТОП-5 самых дорогих казино мира</h3>
+                                    <hr class="objects-delimeter objects-delimeter--mini news_section-delimeter">
+                                    <div class="news_section__button-wrapper">
+                                        <a class="news_section__button" href="@routes.ObjectPages.casinoArticles("samoe-dorogoe-kazino")">Читать</a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a class="news_section__img hover-effect" href="@routes.ObjectPages.casinoArticles("vigrish-v-kazino")">
+                                    <div class="mask">
+                                        <p>Столицы азарта даруют своим следователям немалые выигрыши, о которых говорят во всеуслышание, и ущербные проигрыши, о которых предпочитают молчать. Кому же из всех фортуна улыбается шире?  </p>
+                                        <span>Подробнее</span>
+                                    </div>
+                                    <img src="@routes.Assets.at("images/objects/blog/win-or-loose-riga-casino.jpg")" alt="Самые крупные выигрыши в казино кому они достаются">
+                                </a>
+                                <div class="news_section__content">
+                                    <h3 class="news_section__header">Крупнейшие выигрыши: кому фортуна улыбается шире?</h3>
+                                    <hr class="objects-delimeter objects-delimeter--mini news_section-delimeter">
+                                    <div class="news_section__button-wrapper">
+                                        <a class="news_section__button" href="@routes.ObjectPages.casinoArticles("vigrish-v-kazino")">Читать</a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a class="news_section__img hover-effect" href="@routes.ObjectPages.casinoArticles("samoe-izvestnoe-kazino")">
+                                    <div class="mask">
+                                        <p>Имя и репутация — главные «козыри» каждого казино. О многих заведениях мы не слышали, о многих успели услышать, а лишь единицам научились доверять. Сегодня речь пойдет о наиболее известных игорных точках в мире. </p>
+                                        <span>Подробнее</span>
+                                    </div>
+                                    <img src="@routes.Assets.at("images/objects/blog/monaco-casino.jpg")" alt="Самые известный казино мира: топ-4 по версии Royal Casino SPA and Hotel Resort">
+                                </a>
+                                <div class="news_section__content">
+                                    <h3 class="news_section__header">Самые известные казино мира: топ-4 лучших игорных заведений</h3>
+                                    <hr class="objects-delimeter objects-delimeter--mini news_section-delimeter">
+                                    <div class="news_section__button-wrapper">
+                                        <a class="news_section__button" href="@routes.ObjectPages.casinoArticles("samoe-izvestnoe-kazino")">Читать</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="news-section__all-wrapper">
+                            <a href="@routes.ObjectPages.casinoArticlesMain()" class="news-section__all" title="Лучшие статьи и заметки на тему казино в Рунете">
+                                <i class="seeall-icon"></i>
+                                <span>Все заметки</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+            @elements.footer()
+        </div>
+        @spascripts()
+    </body>
+</html>

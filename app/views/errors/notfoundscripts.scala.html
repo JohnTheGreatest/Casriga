@@ -1,0 +1,19 @@
+@elements.mainscripts()
+
+<script type="text/javascript">
+
+    var menu = $('.menudropdown ul');
+
+    $(document).ready(function () {
+
+        $(".menudropdown").hover(function(event){
+            event.stopPropagation();
+            menu.toggleClass('hidden');
+        });
+
+    });
+
+</script>
+
+
+

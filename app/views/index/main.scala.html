@@ -1,0 +1,36 @@
+@(title: String, dateIn: Option[String], dateOut: Option[String], people: Option[String], rooms:List[Room])(implicit callbackForm: Form[CallBack], subscribeForm : Form[SubscribeForm], info: Info, request: play.api.mvc.Request[Any], session: play.api.db.slick.Config.driver.simple.Session)
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    	<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@title</title>
+        <meta name="description" content="Гостиницы Риги приглашают гостей на незабываемый отдых. Доступные цены в гостинице в Риге приятно удивят. Вы легко можете забронировать номер.">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name='yandex-verification' content='7e9d423edf3f57cf' />
+        <meta name="google-site-verification" content="eIc1YeBoBPcSEvXKSZ-KgiBs_yD3VJKhrAcinzkTlco" />
+        @links()
+    </head>
+    <body class="mainpage">
+        <!--[if lt IE 8]>
+            <p class="browsehappy">Вы используйте <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите Ваш браузер.</a></p>
+        <![endif]-->
+        <div id="content-layer"></div>
+        @elements.menumobile()
+        <div class="main">
+    	    @headers.header(dateIn, dateOut, people, rooms, true)
+            <section class="main-content">
+                @elements.metrogrid()
+            </section>
+            <section class="deals">
+                @elements.deals()
+            </section>
+            @elements.footer()
+        </div>
+        @scripts(dateIn, dateOut, people)
+    </body>
+</html>

@@ -1,0 +1,370 @@
+.offers-menu {
+  @include box-shadow(none);
+  display: none;
+  background-color: #f9f9f9;
+
+  @include MQ(S) {
+    display: inline;
+  }
+
+  ul {
+
+    @include pie-clearfix();
+
+    li {
+      position: relative;
+      display: block;
+      float: left;
+
+      a {
+        @include pie-clearfix();
+        position: relative;
+
+        border-bottom: 1px solid #6f4980;
+        background-color: #784f8a;
+
+        max-width: 100px;
+
+        @include MQ(L) {
+          max-width: 100%;
+        }
+
+        &:before {
+          border-bottom: 1px solid #7f5492;
+        }
+
+        &:hover, &.active {
+
+          background-color: #855998;
+
+          &:after {
+            z-index: 100;
+            display: block;
+            content: " ";
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            margin-top: -10px;
+            border-left: 15px solid #855998;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+          }
+
+          p {
+            color: #ffffff;
+          }
+        }
+
+        img {
+          max-width: 100%;
+          width: 100%;
+          height: auto;
+          position: relative;
+          z-index: 100;
+          vertical-align: middle;
+        }
+
+        p {
+          color: #ffffff;
+          margin-left: 0;
+          font-size: 1.1em;
+        }
+      }
+    }
+  }
+}
+
+.offers-menu__content {
+  width: 100%;
+  height: auto;
+
+  display: none;
+
+  @include MQ(L) {
+    display: table-cell;
+  }
+}
+
+.svg-wrapper {
+  max-width: 100px;
+  min-width: 50px;
+  height: auto;
+
+  @include MQ(L) {
+    min-width: 60px;
+  }
+}
+
+.offers-menu__timer {
+  display: none;
+
+  @include MQ(L) {
+    display: block;
+  }
+
+  padding: 30px;
+  background-color: #6c477c;
+  border-bottom: 1px solid #654474;
+}
+
+.offers-menu__timer__header {
+  font-size: 1.4em;
+  font-family: 'daysregularfont', Arial, sans-serif;
+  text-align: center;
+  color: #ffffff;
+}
+
+.offers-content {
+  background-color: #f9f9f9;
+
+  @include MQ(S) {
+    padding: 20px;
+  }
+
+  @include MQ(L) {
+    padding: 30px;
+  }
+
+}
+
+.offers-content__header {
+
+  @include pie-clearfix();
+
+  .casino-header__main {
+    font-family: Georgia;
+  }
+}
+
+.offers-content__price {
+  padding-top: 30px;
+  overflow: auto;
+
+  @include pie-clearfix();
+
+  .offers-content__price__lined {
+    width: 50%;
+    @include border-radius(0);
+    background-color: #e27373;
+    display: inline-block;
+    @extend %inline-block;
+    margin-left: 0;
+    text-align: center;
+    vertical-align: middle;
+
+    @include MQ(M) {
+      width: 30%;
+    }
+  }
+
+  .offers-content__price__normal {
+    width: 50%;
+    @include border-radius(0);
+    background-color: #98b635;
+    display: inline-block;
+    @extend %inline-block;
+    margin-left: -4px;
+    text-align: center;
+    vertical-align: middle;
+
+    @include MQ(M) {
+      width: 30%;
+    }
+  }
+
+  .offers-content__price__btn {
+    width: 100%;
+    margin: 0;
+    display: inline-block;
+    @extend %inline-block;
+    margin-left: 0;
+    height: auto;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px;
+
+    @include MQ(M) {
+      width: 40%;
+      margin-left: -4px;
+    }
+  }
+}
+
+/* Sections */
+
+.offers-content__section {
+
+  border-bottom: 3px solid #eaeaea;
+  padding-bottom: 30px;
+  padding-top: 30px;
+
+  .more {
+    @include background-image(linear-gradient(bottom, #edb735 0%, #f6c245 100%));
+    width: 200px;
+    margin-left: -100px;
+  }
+
+  a {
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: block;
+
+    &:hover {
+      .more {
+        opacity: .93;
+      }
+    }
+
+    img {
+      @include border-radius(10px);
+      border: 3px solid #ccc1d1;
+      vertical-align: top;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .flag-wrapper {
+    margin-top: 30px;
+  }
+
+}
+
+.offers-content__section__header {
+  font-family: Georgia, Arial;
+  font-size: 1.4em;
+  color: $main-color;
+  text-align: center;
+}
+
+.offers-content__section__description {
+  text-align: center;
+
+  &.flag__body {
+    padding-right: 20px;
+  }
+}
+
+.offers-content__img {
+  padding-right: 0;
+  vertical-align: top;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  @extend %center-block;
+}
+
+.offers-content__image--border {
+  border: 3px solid #CCC1D1;
+  border-radius: 10px;
+}
+
+.flag-left, .flag-right {
+  width: 100%;
+  display: block;
+  padding: 0;
+
+  @include MQ(M) {
+    display: table-cell;
+    width: 50%;
+  }
+}
+
+.flag-right {
+  margin-top: 30px;
+
+  @include MQ(M) {
+    margin-top: 0;
+  }
+}
+
+.flag-left {
+  @include MQ(M) {
+    padding-right: 20px;
+  }
+}
+
+.offers {
+  .casino-header__main {
+    font-family: Georgia, daysregularfont;
+  }
+
+  .booking-step4-content {
+    padding-top: 30px;
+    @include pie-clearfix();
+    background: transparent;
+  }
+
+  .booking-step1 {
+    @include pie-clearfix();
+    background: transparent;
+  }
+
+  .fortune-wheel__booking__datein {
+    @include MQ(M) {
+      width: 45%;
+      display: inline-block;
+      float: left;
+    }
+  }
+
+  .fortune-wheel__booking__dateout {
+    @include MQ(M) {
+      width: 45%;
+      display: inline-block;
+      float: right;
+    }
+  }
+
+  .frmlabel {
+    color: $main-color;
+  }
+
+  .frmcart {
+    background-image: none;
+    padding-left: 0;
+  }
+
+  .frmsmily {
+    background-image: none;
+    padding-left: 0;
+  }
+
+  .calender {
+    background-image: image-url('offers/calendar.png',false,false);
+  }
+
+  #datepicker1-text, #datepicker2-text {
+    margin-bottom: 0;
+  }
+
+  #datepicker1-main .ui-datepicker, #datepicker2-main .ui-datepicker {
+    @include MQ(M) {
+      width: 100%;
+    }
+  }
+
+  .booking-step4-content {
+    position: relative;
+  }
+
+  .booking-thankyou {
+    background: transparent;
+  }
+
+  ul {
+    li {
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+}
+
+.flag-image-wrapper {
+  width: 100%;
+}
